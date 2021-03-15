@@ -4,11 +4,11 @@ OBJS = ${SRCS:.cpp=.o}
 
 NAME = megaphone
 
-CFLAGS = -Wall -Wextra -Werror
-CC = clang++
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+CXX=clang++
 
 ${NAME}: ${OBJS}
-	${CC} -o ${NAME} ${OBJS} ${CFLAGS}
+	${CXX} -o ${NAME} ${OBJS} ${CPPFLAGS}
 
 all: ${NAME}
 
