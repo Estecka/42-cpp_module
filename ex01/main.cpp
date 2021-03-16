@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 23:04:13 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/16 18:05:22 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/16 18:35:09 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ extern int	main() {
 ous phonebook" << std::endl;
 	while (1) {
 		std::cout << "> ";
-		std::cin >> input;
+		std::getline(std::cin, input);
 		if (input == "EXIT") {
 			std::cout << "Sayonara mf" << std::endl;
 			return EXIT_SUCCESS;
