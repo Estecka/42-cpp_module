@@ -1,6 +1,9 @@
 HDRS = contact.hpp \
 
-SRCS = main.cpp \
+SRCS = \
+	main.cpp \
+	contact.cpp \
+	contact_add.cpp \
 
 OBJS = ${SRCS:.cpp=.o}
 
@@ -11,6 +14,8 @@ CXX=clang++
 
 ${NAME}: ${OBJS}
 	${CXX} -o ${NAME} ${OBJS} ${CPPFLAGS}
+
+${OBJS}: ${HDRS}
 
 all: ${NAME}
 

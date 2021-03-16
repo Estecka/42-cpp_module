@@ -6,34 +6,39 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 23:04:07 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/16 14:12:23 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/16 16:51:42 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef CONTACT_HPP
+#define CONTACT_HPP
+
+#include <iostream>
 
 class contact
 {
 public:
-	char*	firstName;
-	char*	lastName;
-	char*	nickName;
-	char*	login;
+	static contact	clist[8];
+	static unsigned	ccount;
 
-	char*	postalAdress;
-	char*	emailAdress;
-	char*	phoneNumber;
+	std::string	firstName;
+	std::string	lastName;
+	std::string	nickName;
+	std::string	login;
 
-	char*	birthdayDate;
-	char*	favoriteMeal;
-	char*	darkestSecret;
+	std::string	postalAdress;
+	std::string	emailAdress;
+	std::string	phoneNumber;
+
+	std::string	birthdayDate;
+	std::string	favoriteMeal;
+	std::string	underwearColor;
+	std::string	darkestSecret;
 
 	contact();
 	~contact();
+
+	static void	add();
 };
 
-contact::contact()
-{
-}
-
-contact::~contact()
-{
-}
+#endif
