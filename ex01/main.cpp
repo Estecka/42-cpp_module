@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 23:04:13 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/16 18:35:09 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/16 18:54:26 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,11 @@ ous phonebook" << std::endl;
 			return EXIT_SUCCESS;
 		} 
 		else if (input == "ADD")
-			contact::add();
+			contact::Add();
 		else if (input == "SEARCH")
-			std::cout << "Not in the mood rn" << std::endl;
+			contact::Search();
+		else if (input == "add" || input == "search" || input == "exit")
+			std::cout << "Louder for those in the back." << std::endl;
 		else
 			std::cout << "Nani tf are you saying ?" << std::endl;
 	}

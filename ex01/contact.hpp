@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 23:04:07 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/16 16:51:42 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/16 18:54:18 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ public:
 	contact();
 	~contact();
 
-	static void	add();
+	static void	Add();
+	static void	Search();
+
+	void	DisplayRow(unsigned index);
 };
 
 #endif

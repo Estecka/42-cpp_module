@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 15:20:55 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/16 18:36:32 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/16 18:54:38 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #define BOLD(s)	"\e[1m" << s << "\e[0m"
 
-void	contact::add(){
+void	contact::Add(){
 	if (ccount >= 8)
 	{
 		std::cout << "Thank you, but I'm not hungry anymore." << std::endl \

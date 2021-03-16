@@ -4,6 +4,7 @@ SRCS = \
 	main.cpp \
 	contact.cpp \
 	contact_add.cpp \
+	contact_search.cpp \
 
 OBJS = ${SRCS:.cpp=.o}
 
