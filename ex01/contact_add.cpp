@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 15:20:55 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/16 18:54:38 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/16 21:47:12 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,14 @@ Nowadays you can't tell anything to anyone without getting spammed. u_u" \
 	getline(std::cin, contact::clist[ccount].birthdayDate);
 
 	std::cout << "Hopefully they'll live to see the next one." << std::endl \
-		<< "What's their " << BOLD("Favorite Meal") \
+		<< "What's their " << BOLD("Favourite Meal") \
 		<< " then ? It's for... a cake." << std::endl;
-	getline(std::cin, contact::clist[ccount].favoriteMeal);
+	getline(std::cin, contact::clist[ccount].favouriteMeal);
 
 	std::cout << "Adequate." << std::endl \
-		<< "Now we get to the important part. What's the " << BOLD("Color") \
+		<< "Now we get to the important part. What's the " << BOLD("Colour") \
 		<< " of their " << BOLD("Underwear") << " ? owo" << std::endl;
-	getline(std::cin, contact::clist[ccount].underwearColor);
+	getline(std::cin, contact::clist[ccount].underwearColour);
 
 	std::cout << "Last but not least; tell me about their " \
 		<< BOLD("Darkest Secret") << " !" << std::endl;

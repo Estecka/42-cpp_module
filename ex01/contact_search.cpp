@@ -6,13 +6,15 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 18:15:58 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/16 21:35:48 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/16 21:54:23 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "contact.hpp"
 
 #include <stdlib.h>
+
+#define BOLD(s)	"\e[1m" << s << "\e[0m"
 
 static bool	IsNumber(std::string s)
 {
@@ -52,7 +54,7 @@ der my feet." << std::endl;
 	} 
 	else {
 		std::cout << "You have chosen subject n°" << index \
-			<< ", this is an excellent choice." << std::endl;
+			<< ", this is an excellent choice." << std::endl << std::endl;
 		clist[index].DisplayFull();
 	}
 }
@@ -85,4 +87,17 @@ void	contact::DisplayRow(unsigned i) {
 }
 
 void	contact::DisplayFull(){
+	std::cout \
+		<< BOLD("First Name: ") << this->firstName << std::endl \
+		<< BOLD("Last Name: ") << this->lastName  << std::endl \
+		<< BOLD("Nickname: ") << this->nickName  << std::endl \
+		<< BOLD("Login: ") << this->login     << std::endl \
+		<< BOLD("Postal Address: ") << this->postalAdress << std::endl \
+		<< BOLD("Email Address ") << this->emailAdress  << std::endl \
+		<< BOLD("Phone Number: ") << this->phoneNumber  << std::endl \
+		<< BOLD("Birthday Date: ") << this->birthdayDate    << std::endl \
+		<< BOLD("Favourite Meal: ") << this->favouriteMeal   << std::endl \
+		<< BOLD("Underwear Colour: ") << this->underwearColour << std::endl \
+		<< BOLD("Darkest Secret: ") << this->darkestSecret   << std::endl \
+		;
 }

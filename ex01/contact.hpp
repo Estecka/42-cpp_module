@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 23:04:07 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/16 20:03:55 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/16 21:47:15 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ public:
 	std::string	phoneNumber;
 
 	std::string	birthdayDate;
-	std::string	favoriteMeal;
-	std::string	underwearColor;
+	std::string	favouriteMeal;
+	std::string	underwearColour;
 	std::string	darkestSecret;
 
 	contact();
