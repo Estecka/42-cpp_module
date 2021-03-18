@@ -6,11 +6,14 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 19:09:35 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/18 20:03:19 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/18 21:06:16 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Pony.hpp"
+
+#include <stdlib.h>
+#include <time.h>
 
 static void	PonyAdventuresTwoPointO(Pony *pony){
 	(void)pony;
@@ -18,6 +21,7 @@ static void	PonyAdventuresTwoPointO(Pony *pony){
 	pony->Sleep();
 	pony->Sleep();
 	pony->WakeUp();
+	pony->Jump();
 }
 
 static void	PonyOnTheHeap(){
@@ -34,6 +38,8 @@ static void	PonyOnTheStack(){
 }
 
 extern int	main(){
+	srand(time(NULL));
+
 	PonyOnTheHeap();
 	PonyOnTheStack();
 }

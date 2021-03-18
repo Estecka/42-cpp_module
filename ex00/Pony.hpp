@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 19:07:43 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/18 19:24:28 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/18 20:49:04 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ public:
 	float	Run(float distance);
 	void	Shine();
 	void	Transcend();
+
+private:
+	void	BreakALeg();
 };
 
 #endif
