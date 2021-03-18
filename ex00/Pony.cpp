@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 19:08:58 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/18 22:09:32 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/18 22:36:01 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,14 @@ Pony::Pony(std::string name, std::string robeColor) {
 }
 
 Pony::~Pony(){
-	std::cout << name << " was destroyed." << std::endl;
+	std::cout << "Your memories of "<< name << " are slowly fading away. " \
+		<< "Their " << robeColor << " robe is now no more but a far-off ideal."\
+		<< std::endl;
 }
 
 bool	Pony::Sleep(){
 	if (this->isAlive) {
-		std::cout << name << " went to sleep." << std::endl; \
-			;
+		std::cout << name << " went to sleep. ";
 		if (this->isAwake)
 			std::cout << "Good dreams, " << name << "." << std::endl;
 		else
@@ -79,7 +80,7 @@ void	Pony::BreakALeg(){
 	this->legsBroken++;
 	if (this->legsBroken >= 4){
 		std::cout << name << " broke all their legs. Unable to keep going, "\
-			<< "they eventually succumbe to their wounds." << std::endl;
+			<< "they eventually succumb to their wounds." << std::endl;
 		this->isAlive = false;
 		this->isAwake = false;
 	}
@@ -166,4 +167,19 @@ bool	Pony::Run() {
 		}
 		return true;
 	}
+}
+
+void	Pony::Shine(){
+	if (!this->isAlive)
+		std::cout << name << " shines in death like they shined in life. "\
+			<< "Although with much less vitality." << std::endl;
+	else if (!this->isAwake)
+		std::cout << name << " dreams of Fame and Glory. As for what exactly m"\
+			<< "akes up the details of this dream, our eyes are unable to perc"\
+			<< "eive it." << std::endl;
+	else
+		std::cout << name << " raises their head, and proudly shows off their "\
+			<< "splendid " << this->robeColor << " robe. Their magnificent coa"\
+			<< "t shines magnificently, with much magnificence. A sight to beh"\
+			<< "old." << std::endl;
 }
