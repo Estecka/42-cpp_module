@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 19:08:58 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/18 21:03:16 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/18 21:27:53 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ Pony::Pony(void){
 	this->isAlive = true;
 	this->isAwake = true;
 
-	this->distanceWalked = 0;
 	this->legsBroken = 0;
 }
 
@@ -32,7 +31,6 @@ Pony::Pony(std::string name, std::string robeColor) {
 	this->isAlive = true;
 	this->isAwake = true;
 
-	this->distanceWalked = 0;
 	this->legsBroken = 0;
 }
 
@@ -98,14 +96,39 @@ break a leg." << std::endl;
 		return true;
 	} else {
 		if (this->legsBroken)
-			std::cout << name << " Clumsily attempts to jump.";
+			std::cout << name << " Clumsily attempts to jump." << std::endl;
 		else
-			std::cout << name << " performs a majestuous jump.";
+			std::cout << name << " performs a majestuous jump." << std::endl;
 		if (!(rand() % 4)) {
-			std::cout << " Unfortunately, they break a leg when landing.";
+			std::cout << "Unfortunately, they break a leg when landing." << std::endl;
 			this->BreakALeg();
 		}
-		std::cout << std::endl;
+		return true;
+	}
+}
+
+bool	Pony::Walk() {
+	if (!this->isAlive)
+		return false;
+	else {
+		if (!this->isAwake){
+			std::cout << name << " starts sleepwalking." << std::endl;
+			if (!(rand() % 3)) {
+				std::cout << "Unable to see their surrounding, they twist a le\
+g on a pebble." << std::endl;
+				this->BreakALeg();
+			}
+		}
+		else if (this->legsBroken) {
+			std::cout << name << " limps with difficulty toward you." << std::endl;
+			if (!(rand() % 4)) {
+				std::cout << "So much difficulty in fact, that they twist anoth\
+er leg." << std::endl;
+				this->BreakALeg();
+			}
+		}
+		else
+			std::cout << name << " walks happyly toward you." << std::endl;
 		return true;
 	}
 }

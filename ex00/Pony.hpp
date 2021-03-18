@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 19:07:43 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/18 20:49:04 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/18 21:14:29 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,14 @@ public:
 	bool	isAlive;
 	bool	isAwake;
 
-	float	distanceWalked;
 	unsigned int	legsBroken;
 
 
 	bool	Sleep();
 	bool	WakeUp();
 	bool	Jump();
-	float	Walk(float distance);
-	float	Run(float distance);
+	bool	Walk();
+	bool	Run();
 	void	Shine();
 	void	Transcend();
 
