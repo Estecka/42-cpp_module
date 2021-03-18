@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 19:08:58 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/18 22:36:01 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/18 23:09:36 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,4 +182,26 @@ void	Pony::Shine(){
 			<< "splendid " << this->robeColor << " robe. Their magnificent coa"\
 			<< "t shines magnificently, with much magnificence. A sight to beh"\
 			<< "old." << std::endl;
+}
+
+void	Pony::Transcend(){
+	if (!this->isAlive) {
+		std::cout << "From the lowest depths of misfortune, " << name \
+			<< " ascends to a new plane of existence. Their mind's eye opens. "\
+			<< "They can see it clearly now, the path to eternal life. " \
+			<< name << "'s once deceased body rises again; they shine brighter "\
+			<< "than ever before, and, through a demonstration of sheer willpow"\
+			<< "er, rejuvenate themselves." << std::endl;
+		this->isAlive = true;
+		this->isAwake = true;
+		this->legsBroken = 0;
+	}
+	else if (!this->isAwake)
+		std::cout << name << " enters a state of dream so deep, that it might "\
+			<< "better be described as a transe. They almost manage to pierce "\
+			<< "the secrets of life, but a nightmare steals it away before " \
+			<< name << " is able to touch them." << std::endl;
+	else
+		std::cout << name << " reflects upon their life. However, they are inc"\
+			<< "apable of coming to any significant conclusions." << std::endl;
 }

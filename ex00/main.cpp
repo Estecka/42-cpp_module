@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 19:09:35 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/18 22:29:34 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/18 22:47:28 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	PonyAdventuresTwoPointO(Pony *pony){
 	pony->Walk();
 	pony->Run();
 	pony->Shine();
+	pony->Transcend();
 
 	pony->Sleep();
 	pony->Sleep();
@@ -28,6 +29,7 @@ static void	PonyAdventuresTwoPointO(Pony *pony){
 	pony->Walk();
 	pony->Run();
 	pony->Shine();
+	pony->Transcend();
 }
 
 static void	PonyOnTheHeap(){
