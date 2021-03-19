@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 21:00:27 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/19 23:19:00 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/19 23:30:13 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include <time.h>
 
 #define HORDEMAX	10
 
@@ -39,9 +40,11 @@ static void	Horde(Zombie* horde[HORDEMAX], ZombieEvent* builder){
 		if (horde[i])
 			horde[i]->Announce();
 
-	Zombie** empty = FindEmpty(horde);
-	if (empty)
-		*empty = builder->randomChump();
+	for (int i=(rand()%3); i<2; i++){
+		Zombie** empty = FindEmpty(horde);
+		if (empty)
+			*empty = builder->randomChump();
+	}
 
 }
 static void	Attack(Zombie* horde[HORDEMAX]){
@@ -69,7 +72,7 @@ static void	Attack(Zombie* horde[HORDEMAX]){
 	else {
 		std::cout << "You grab a fireaxe, and strike at the nearest zombie." << std::endl;
 		Zombie** target = FindZombie(horde);
-		if (target && !(rand() % 3)){
+		if (target && (rand() % 3)){
 			delete *target;
 			*target = NULL;
 		}
@@ -139,9 +142,10 @@ extern int	main(int argc, char** argv){
 	if (argc >= 2)
 		name = argv[1];
 
+	srand(time(NULL));
 	std::cout << "[hint:] The available commands are:" << std::endl \
 		<< "atk (Attack), def (Defend), and esc (Escape)." << std::endl \
 		<< "================" << std::endl << std::endl;
 	ZombieAdventures(name);
-	std::cout << "As it turns out, they were infected all along." << std::endl;
+	std::cout << "As it turns out, " << name << " was infected all along." << std::endl;
 }
