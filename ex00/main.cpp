@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 19:09:35 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/19 15:05:47 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/19 17:11:17 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,16 @@ extern int	main(int argc, char** argv){
 	if (argc >= 3)
 		robe = argv[2];
 
-	
-	std::cout << "[hint:] The available commands are: sleep, wakeup, walk, run"\
-		<< ", jump, shine, transcend, and exit. You are free to use any of the"\
-		<< "m, in any order, and in any context." << std::endl \
+	std::cout << "[hint:] The available commands are:" << std::endl \
+		<< "sleep, wakeup, walk, run, jump, shine, transcend, and exit." << std::endl \
+		<< "You are free to use any of them, in any order, and in any context." << std::endl \
 		<< "================" << std::endl << std::endl;
 
 	std::cout << "==== Pony on the Heap ====" << std::endl;
 	PonyOnTheHeap(name, robe);
 	std::cout << std::endl;
 
-	// std::cout << "==== Pony on the Stack ====" << std::endl;
-	// PonyOnTheStack(name, robe);
-	// std::cout << std::endl;
+	std::cout << "==== Pony on the Stack ====" << std::endl;
+	PonyOnTheStack(name, robe);
+	std::cout << std::endl;
 }
