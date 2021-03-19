@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 19:08:58 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/19 16:45:44 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/19 17:03:44 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ Pony::Pony(std::string name, std::string robeColour) {
 	this->name = name;
 	this->robeColour = robeColour;
 
-	this->isAlive = true;
 	this->isAwake = true;
-
 	this->legsBroken = 0;
 
 	std::cout << "You welcome a new pony into the ranch. Their name is " \
@@ -33,8 +31,15 @@ Pony::~Pony(){
 		<< std::endl;
 }
 
+std::string	Pony::GetName()       { return this->name;                         }
+std::string	Pony::GetRobeColour() { return this->robeColour;                   }
+int        	Pony::GetHealth()     { return (4 - this->legsBroken);             }
+bool       	Pony::IsAlive()       { return (this->GetHealth() > 0);            }
+bool       	Pony::IsAwake()       { return (this->isAwake && this->IsAlive()); }
+
+
 bool	Pony::Sleep(){
-	if (this->isAlive) {
+	if (this->IsAlive()) {
 		std::cout << name << " went to sleep. ";
 		if (this->isAwake)
 			std::cout << "Good dreams, " << name << "." << std::endl;
@@ -50,7 +55,7 @@ bool	Pony::Sleep(){
 }
 
 bool	Pony::WakeUp(){
-	if (!this->isAlive) {
+	if (!this->IsAlive()) {
 		std::cout << "You attempt to wake " << name << " up, "\
 			<< "but whatever you do, they won't budge." << std::endl;
 		return false;
@@ -75,13 +80,12 @@ void	Pony::BreakALeg(){
 	if (this->legsBroken >= 4){
 		std::cout << name << " broke all their legs. Unable to keep going, "\
 			<< "they eventually succumb to their wounds." << std::endl;
-		this->isAlive = false;
 		this->isAwake = false;
 	}
 }
 
 bool	Pony::Jump() {
-	if (!this->isAlive) {
+	if (!this->IsAlive()) {
 		std::cout << name << " performs a majestuous non-jump. They just lay th"\
 			<< "ere, with impressive stillness." << std::endl;
 		return false;
@@ -105,7 +109,7 @@ bool	Pony::Jump() {
 }
 
 bool	Pony::Walk() {
-	if (!this->isAlive) {
+	if (!this->IsAlive()) {
 		std::cout << "The dead... do not actually start walking. " \
 			<< "You're note quite sure whether you should feel relieved or sad"\
 			<< " about it." << std::endl;
@@ -136,7 +140,7 @@ bool	Pony::Walk() {
 }
 
 bool	Pony::Run() {
-	if (!this->isAlive)	{
+	if (!this->IsAlive())	{
 		std::cout << name << " runs as fast as their lack of functional legs a"\
 			<< "llows them to. Which is to say, a speed nearing 0mph, almost m"\
 			<< "athching one of a snail." << std::endl;
@@ -171,7 +175,7 @@ bool	Pony::Run() {
 }
 
 void	Pony::Shine(){
-	if (!this->isAlive)
+	if (!this->IsAlive())
 		std::cout << name << " shines in death as they did in life. "\
 			<< "Although with much less vitality." << std::endl;
 	else if (!this->isAwake)
@@ -186,14 +190,13 @@ void	Pony::Shine(){
 }
 
 void	Pony::Transcend(){
-	if (!this->isAlive) {
+	if (!this->IsAlive()) {
 		std::cout << "From the lowest depths of misfortune, " << name \
 			<< " ascends to a new plane of existence. Their mind's eye opens. "\
 			<< "They can see it clearly now, the path to eternal life. " \
 			<< name << "'s once deceased body rises again; they shine brighter "\
 			<< "than ever before, and, through a demonstration of sheer willpow"\
 			<< "er, rejuvenate themselves." << std::endl;
-		this->isAlive = true;
 		this->isAwake = true;
 		this->legsBroken = 0;
 		std::cout << "HP FULL" << std::endl;

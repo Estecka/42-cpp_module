@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 19:07:43 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/19 01:23:45 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/19 17:03:24 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@
 
 class Pony {
 public:
-	std::string	name;
-	std::string	robeColour;
-
 	Pony(std::string name, std::string robeColour);
 	~Pony();
 
@@ -31,10 +28,18 @@ public:
 	void	Shine();
 	void	Transcend();
 
+	std::string	GetName();
+	std::string	GetRobeColour();
+	int        	GetHealth();
+	bool       	IsAlive();
+	bool       	IsAwake();
+
 private:
-	bool	isAlive;
-	bool	isAwake;
-	unsigned int	legsBroken;
+	std::string	name;
+	std::string	robeColour;
+	bool       	isAwake;
+	unsigned   	legsBroken;
+
 	void	BreakALeg();
 };
 
