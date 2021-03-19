@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:28:58 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/19 19:44:39 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/19 20:59:39 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,19 @@ Zombie::~Zombie(){
 
 std::string	Zombie::GetName() { return this->name; }
 std::string	Zombie::GetType() { return this->type; }
-std::string	Zombie::GetMatricule() {return this->type + "-" + this->name; }
+std::string	Zombie::GetMatricule() {
+	std::string	type;
+
+	type = this->type.substr(0, 6);
+	for (unsigned i=0; i<type.length(); i++)
+		if ('a' <= type[i] || type[i] <= 'a')
+			type[i] += 'A' - 'a';
+		
+	return type.substr(0, 6) + "-" + this->name;
+}
 
 
-void	Zombie::Advert(){
+void	Zombie::Announce(){
 	std::cout << "<" << GetMatricule() << "> ";
 	switch (rand() % 4)
 	{

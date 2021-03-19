@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   ZombieEvent.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/19 19:21:03 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/19 20:30:48 by abaur            ###   ########.fr       */
+/*   Created: 2021/03/19 19:54:47 by abaur             #+#    #+#             */
+/*   Updated: 2021/03/19 20:34:54 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-#define ZOMBIE_HPP
+#ifndef ZOMBIEEVENT_HPP
+#define ZOMBIEEVENT_HPP
 
-#include <iostream>
+#include <Zombie.hpp>
 
-class Zombie
+class ZombieEvent
 {
 public:
-	Zombie(std::string name, std::string type);
-	~Zombie();
+	ZombieEvent();
+	~ZombieEvent();
 
-	std::string	GetName();
-	std::string	GetType();
-	std::string	GetMatricule();
-
-	void	Announce();
+	void	setZombieType(std::string type);
+	Zombie*	newZombie(std::string name);
+	Zombie*	randomChump();
 
 private:
-	std::string	name;
 	std::string	type;
 };
 
