@@ -6,11 +6,13 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 20:34:54 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/19 20:48:27 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/19 21:09:37 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ZombieEvent.hpp"
+
+#include <stdlib.h>
 
 ZombieEvent::ZombieEvent(){
 	this->type = "fodder";
@@ -29,10 +31,15 @@ Zombie*	ZombieEvent::newZombie(std::string name){
 
 Zombie*	ZombieEvent::randomChump(){
 	Zombie* zozo;
-	std::string	name;
+	int     id;
+	char    name[5];
 
-	name = std::to_string(rand() % 10000);
-	name = std::string("0000").substr(0, 4-name.length()) + name;
+	id = rand() % 10000;
+	for (int i=3; i >= 0; i--){
+		name[i] = '0' + id % 10;
+		id /= 10;
+	}
+	name[4] = '\0';
 
 	zozo = new Zombie(name, this->type);
 	zozo->Announce();

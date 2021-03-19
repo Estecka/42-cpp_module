@@ -6,11 +6,13 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:28:58 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/19 20:59:39 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/19 21:03:58 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <Zombie.hpp>
+#include "Zombie.hpp"
+
+#include <stdlib.h>
 
 Zombie::Zombie(std::string name, std::string type) {
 	this->name = name;
