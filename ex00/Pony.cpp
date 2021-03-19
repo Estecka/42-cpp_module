@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 19:08:58 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/19 01:25:39 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/19 16:45:44 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ bool	Pony::WakeUp(){
 	}
 	else if (this->isAwake) {
 		std::cout << "You shout at " << name << ", but they're already awake. "\
-			<< "They look at you with a concerned look on their horsy face." \
+			<< "They stare at you with a concerned look on their horsy face." \
 			<< std::endl;
 		return true;
 	}
@@ -71,6 +71,7 @@ bool	Pony::WakeUp(){
 
 void	Pony::BreakALeg(){
 	this->legsBroken++;
+	std::cout << (4 - legsBroken) << "/4 HP" << std::endl;
 	if (this->legsBroken >= 4){
 		std::cout << name << " broke all their legs. Unable to keep going, "\
 			<< "they eventually succumb to their wounds." << std::endl;
@@ -81,9 +82,8 @@ void	Pony::BreakALeg(){
 
 bool	Pony::Jump() {
 	if (!this->isAlive) {
-		return false;
-	} else if (this->legsBroken >= 4) {
-		std::cout << name << " is unable to jump." << std::endl;
+		std::cout << name << " performs a majestuous non-jump. They just lay th"\
+			<< "ere, with impressive stillness." << std::endl;
 		return false;
 	} else if (!this->isAwake) {
 		std::cout << name << " attempts to jump in their sleep. Doing so, they"\
@@ -105,8 +105,12 @@ bool	Pony::Jump() {
 }
 
 bool	Pony::Walk() {
-	if (!this->isAlive)
+	if (!this->isAlive) {
+		std::cout << "The dead... do not actually start walking. " \
+			<< "You're note quite sure whether you should feel relieved or sad"\
+			<< " about it." << std::endl;
 		return false;
+	}
 	else {
 		if (!this->isAwake){
 			std::cout << name << " starts sleepwalking." << std::endl;
@@ -132,8 +136,12 @@ bool	Pony::Walk() {
 }
 
 bool	Pony::Run() {
-	if (!this->isAlive)
+	if (!this->isAlive)	{
+		std::cout << name << " runs as fast as their lack of functional legs a"\
+			<< "llows them to. Which is to say, a speed nearing 0mph, almost m"\
+			<< "athching one of a snail." << std::endl;
 		return false;
+	}
 	else {
 		if (!this->isAwake) {
 			std::cout << name << " starts sleepwalking, but faster than usual."\
@@ -164,7 +172,7 @@ bool	Pony::Run() {
 
 void	Pony::Shine(){
 	if (!this->isAlive)
-		std::cout << name << " shines in death like they shined in life. "\
+		std::cout << name << " shines in death as they did in life. "\
 			<< "Although with much less vitality." << std::endl;
 	else if (!this->isAwake)
 		std::cout << name << " dreams of Fame and Glory. As for what exactly m"\
@@ -188,6 +196,7 @@ void	Pony::Transcend(){
 		this->isAlive = true;
 		this->isAwake = true;
 		this->legsBroken = 0;
+		std::cout << "HP FULL" << std::endl;
 	}
 	else if (!this->isAwake)
 		std::cout << name << " enters a state of dream so deep, that it might "\
