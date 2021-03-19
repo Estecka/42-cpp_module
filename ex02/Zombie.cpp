@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:28:58 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/19 21:03:58 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/19 21:51:22 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 Zombie::Zombie(std::string name, std::string type) {
 	this->name = name;
 	this->type = type;
-	std::cout << "A new Zombie, " << GetMatricule() << ", emerges from the rad"\
-		<< "ioactive wastes of the old laboratory." << std::endl;
+	std::cout << "A new Zombie, emerges from the radioactive wastes of the old"\
+		<< " laboratory." << std::endl;
 }
 
 Zombie::~Zombie(){
-	std::cout << GetMatricule() << " turns back into dust." \
-		<< " It will not be remembered." << std::endl;
+	std::cout << this->name << " turned back into dust and was scattered by th"\
+		<< "e wind." << std::endl;
 }
 
 
