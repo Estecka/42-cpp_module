@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 20:34:54 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/19 21:09:37 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/19 22:31:10 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ ZombieEvent::ZombieEvent(){
 	this->type = "fodder";
 }
 ZombieEvent::~ZombieEvent(){
-	std::cout << "[debug] ZombieEvent" << type << "destroyed" << std::endl;
+	// std::cout << "[debug] ZombieEvent" << type << "destroyed" << std::endl;
 }
 
 void	ZombieEvent::setZombieType(std::string type){
