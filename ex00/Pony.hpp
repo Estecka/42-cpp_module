@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 19:07:43 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/18 21:14:29 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/19 01:13:11 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ class Pony {
 public:
 
 	std::string	name;
-	std::string	robeColor;
+	std::string	robeColour;
 
-	Pony(std::string name, std::string robeColor);
+	Pony(std::string name, std::string robeColour);
 	Pony(void);
 	~Pony();
 

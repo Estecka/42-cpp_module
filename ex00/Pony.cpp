@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 19:08:58 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/18 23:09:36 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/19 01:16:27 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 Pony::Pony(void){
 	this->name = "Johny the Default Pony";
-	this->robeColor = "blank";
+	this->robeColour = "blank";
 
 	this->isAlive = true;
 	this->isAwake = true;
@@ -24,9 +24,9 @@ Pony::Pony(void){
 	this->legsBroken = 0;
 }
 
-Pony::Pony(std::string name, std::string robeColor) {
+Pony::Pony(std::string name, std::string robeColour) {
 	this->name = name;
-	this->robeColor = robeColor;
+	this->robeColour = robeColour;
 
 	this->isAlive = true;
 	this->isAwake = true;
@@ -36,7 +36,7 @@ Pony::Pony(std::string name, std::string robeColor) {
 
 Pony::~Pony(){
 	std::cout << "Your memories of "<< name << " are slowly fading away. " \
-		<< "Their " << robeColor << " robe is now no more but a far-off ideal."\
+		<< "Their " << robeColour << " robe is now no more but a far-off ideal."\
 		<< std::endl;
 }
 
@@ -46,7 +46,7 @@ bool	Pony::Sleep(){
 		if (this->isAwake)
 			std::cout << "Good dreams, " << name << "." << std::endl;
 		else
-			std::cout << "It's like a dream within a dream." << std::endl;
+			std::cout << "Again. It's like a dream within a dream." << std::endl;
 		this->isAwake = false;
 		return true;
 	}
@@ -179,7 +179,7 @@ void	Pony::Shine(){
 			<< "eive it." << std::endl;
 	else
 		std::cout << name << " raises their head, and proudly shows off their "\
-			<< "splendid " << this->robeColor << " robe. Their magnificent coa"\
+			<< "splendid " << this->robeColour << " robe. Their magnificent coa"\
 			<< "t shines magnificently, with much magnificence. A sight to beh"\
 			<< "old." << std::endl;
 }
