@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:28:58 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/19 22:17:56 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/19 22:47:16 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 Zombie::Zombie(std::string name, std::string type) {
 	this->name = name;
 	this->type = type;
-	std::cout << "A new Zombie, emerges from the radioactive wastes of the old"\
-		<< " laboratory." << std::endl;
+	std::cout << "A new zombie emerges from the radioactive wastes of the old"\
+		<< " laboratory, it looks like... a " << this->type << "." << std::endl;
 }
 
 Zombie::~Zombie(){
@@ -43,13 +43,14 @@ std::string	Zombie::GetMatricule() {
 
 void	Zombie::Announce(){
 	std::cout << "<" << GetMatricule() << "> ";
-	switch (rand() % 4)
+	switch (rand() % 5)
 	{
 		default: std::cout << "My, what a fascinating sediment I just found laying right there !"; break;
 		case 0:	std::cout << "Baaaaaah,.."; break;
 		case 1:	std::cout << "RrrrRrrRRh !"; break;
 		case 2:	std::cout << "Guuuuuuuuuh..."; break;
 		case 3:	std::cout << "BRainbrainbrainbrAin"; break;
+		case 4:	std::cout << "* Regurgitates in zombie * "; break;
 	}
 	std::cout << std::endl;
 }
