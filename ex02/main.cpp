@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 21:00:27 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/19 22:49:21 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/19 23:19:00 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,48 @@ static void	Horde(Zombie* horde[HORDEMAX], ZombieEvent* builder){
 		*empty = builder->randomChump();
 
 }
-static void	Attack(){
-	std::cout << "You attack !" << std::endl;
+static void	Attack(Zombie* horde[HORDEMAX]){
+	unsigned dice = rand() % 100;
+
+	if (dice < 20) {
+		std::cout << "You open your inner shakras, and temporarily becomes the"\
+			<< " Hokage. You swiftly dash back and forth across the battlefie"\
+			<< "ld, dealing a fatal strike to all who stand there." << std::endl;
+		for (unsigned i=0; i<HORDEMAX; i++)
+			if (horde[i]){
+				delete horde[i];
+				horde[i] = NULL;
+			}
+	}
+	else if (dice < 45) {
+		std::cout << "You pull a gatling gun out of your arse, and spray it ai"\
+			<< "mlessly across the field." << std::endl;
+		for (unsigned i=0; i<HORDEMAX; i++)
+			if (horde[i] && (rand() % 3)){
+				delete horde[i];
+				horde[i] = NULL;
+			}
+	}
+	else {
+		std::cout << "You grab a fireaxe, and strike at the nearest zombie." << std::endl;
+		Zombie** target = FindZombie(horde);
+		if (target && !(rand() % 3)){
+			delete *target;
+			*target = NULL;
+		}
+		else
+			std::cout << "You wave the axe around, but it fails to hit a target." << std::endl;
+	}
 };
-static void	Defend(){
-	std::cout << "You take cover. Dodging an attack at the last moment." << std::endl;
+static void	Defend(Zombie* horde[HORDEMAX]){
+	Zombie** opponent = FindZombie(horde);
+
+	if (opponent){
+		(*opponent)->Announce();
+		std::cout << "You dodge a bite at the very last moment." << std::endl;
+	}
+	else
+		std::cout << "You take cover, and observe the laboratory from afar." << std ::endl;
 };
 
 
@@ -78,9 +115,9 @@ static void	ZombieAdventures(const char* WillisName){
 		std::cin >> input;
 		std::cout << std::endl;
 		if (input == "atk")
-			Attack();
+			Attack(horde);
 		else if (input == "def")
-			Defend();
+			Defend(horde);
 		else
 			continue;
 	}

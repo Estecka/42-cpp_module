@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:28:58 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/19 22:47:16 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/19 23:03:16 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Zombie::Zombie(std::string name, std::string type) {
 }
 
 Zombie::~Zombie(){
-	std::cout << this->name << " turned back into dust and was scattered by th"\
+	std::cout << this->name << " turned into dust and was scattered by th"\
 		<< "e wind." << std::endl;
 }
 
