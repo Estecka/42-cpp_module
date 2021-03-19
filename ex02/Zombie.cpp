@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:28:58 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/19 21:51:22 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/19 22:17:56 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ std::string	Zombie::GetMatricule() {
 
 	type = this->type.substr(0, 6);
 	for (unsigned i=0; i<type.length(); i++)
-		if ('a' <= type[i] || type[i] <= 'a')
+		if ('a' <= type[i] && type[i] <= 'z')
 			type[i] += 'A' - 'a';
 		
 	return type.substr(0, 6) + "-" + this->name;

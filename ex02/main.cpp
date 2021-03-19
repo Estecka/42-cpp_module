@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 21:00:27 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/19 21:55:54 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/19 22:18:17 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,47 @@
 
 #include <iostream>
 
-void	Horde(){
-	std::cout << "The horde does its thing." << std::endl;
+#define HORDEMAX	10
+
+static Zombie**	FindEmpty(Zombie* horde[HORDEMAX]){
+	for (unsigned i=0; i<HORDEMAX; i++)
+		if (!horde[i])
+			return &horde[i];
+	return NULL;
 }
-void	Attack(){
+static Zombie**	FindZombie(Zombie* horde[HORDEMAX]){
+	for (unsigned i=0; i<HORDEMAX; i++)
+		if (horde[i])
+			return &horde[i];
+	return NULL;
+}
+
+
+static void	Horde(Zombie* horde[HORDEMAX]){
+	Zombie**	empty;
+
+	empty = FindEmpty(horde);
+	if (empty) {
+		*empty = new Zombie("Bneh", "Fodder");
+		(*empty)->Announce();
+	}
+
+	std::cout << "The horde moves forward ominously, toward you." << std::endl;
+	for (unsigned i=0; i<HORDEMAX; i++)
+		if (horde[i])
+			horde[i]->Announce();
+}
+static void	Attack(){
 	std::cout << "You attack !" << std::endl;
 };
-void	Defend(){
-	std::cout << "You defend !" << std::endl;
+static void	Defend(){
+	std::cout << "You take cover. Dodging an attack at the last moment." << std::endl;
 };
+
 
 static void	ZombieAdventures(const char* WillisName){
 	Zombie	Willis = Zombie(WillisName, "friend");
-	Zombie*	horde[10] = { NULL };
-	unsigned int hordec = 0;
+	Zombie*	horde[HORDEMAX] = { NULL };
 	std::string	input;
 
 	Willis.Announce();
@@ -40,7 +67,7 @@ static void	ZombieAdventures(const char* WillisName){
 
 	while (input != "esc")
 	{
-		Horde();
+		Horde(horde);
 		std::cout << "> ";
 		std::cin >> input;
 		if (input == "atk")
