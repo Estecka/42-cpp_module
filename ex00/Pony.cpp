@@ -6,23 +6,13 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 19:08:58 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/19 01:16:27 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/19 01:25:39 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Pony.hpp"
 
 #include <stdlib.h>
-
-Pony::Pony(void){
-	this->name = "Johny the Default Pony";
-	this->robeColour = "blank";
-
-	this->isAlive = true;
-	this->isAwake = true;
-
-	this->legsBroken = 0;
-}
 
 Pony::Pony(std::string name, std::string robeColour) {
 	this->name = name;
@@ -32,6 +22,9 @@ Pony::Pony(std::string name, std::string robeColour) {
 	this->isAwake = true;
 
 	this->legsBroken = 0;
+
+	std::cout << "You welcome a new pony into the ranch. Their name is " \
+		<< name << ", and their robe is coloured " << robeColour << "." << std::endl;
 }
 
 Pony::~Pony(){
