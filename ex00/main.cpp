@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 19:09:35 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/19 01:29:33 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/19 15:05:47 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,32 @@
 #include <stdlib.h>
 #include <time.h>
 
+#pragma clang diagnostic ignored "-Wunused-function"
+
 static void	PonyAdventuresTwoPointO(Pony *pony){
-	pony->Walk();
-	pony->Run();
+	std::string	input;
 
-	pony->Sleep();
-	pony->Jump();
-	pony->Walk();
-	pony->Run();
-	pony->Sleep();
-	pony->Shine();
-	pony->Transcend();
-
-	pony->WakeUp();
-	pony->Jump();
-	pony->Walk();
-	pony->Run();
-	pony->Shine();
-	pony->WakeUp();
-	pony->Transcend();
+	while (input != "exit")
+	{
+		std::cout << "> ";
+		std::cin >> input;
+		if (input == "sleep")
+			pony->Sleep();
+		else if (input == "wakeup")
+			pony->WakeUp();
+		else if (input == "walk")
+			pony->Walk();
+		else if (input == "run")
+			pony->Run();
+		else if (input == "jump")
+			pony->Jump();
+		else if (input == "shine")
+			pony->Shine();
+		else if (input == "transcend")
+			pony->Transcend();
+		else
+			continue;
+	}
 }
 
 static void	PonyOnTheHeap(std::string name, std::string colour){
@@ -59,11 +66,17 @@ extern int	main(int argc, char** argv){
 	if (argc >= 3)
 		robe = argv[2];
 
+	
+	std::cout << "[hint:] The available commands are: sleep, wakeup, walk, run"\
+		<< ", jump, shine, transcend, and exit. You are free to use any of the"\
+		<< "m, in any order, and in any context." << std::endl \
+		<< "================" << std::endl << std::endl;
+
 	std::cout << "==== Pony on the Heap ====" << std::endl;
 	PonyOnTheHeap(name, robe);
 	std::cout << std::endl;
 
-	std::cout << "==== Pony on the Stack ====" << std::endl;
-	PonyOnTheStack(name, robe);
-	std::cout << std::endl;
+	// std::cout << "==== Pony on the Stack ====" << std::endl;
+	// PonyOnTheStack(name, robe);
+	// std::cout << std::endl;
 }

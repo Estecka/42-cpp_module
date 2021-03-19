@@ -4,7 +4,7 @@ SRCS = Pony.cpp main.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
-NAME = pony.out
+NAME = ponyAdventures.out
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 CXX=clang++
