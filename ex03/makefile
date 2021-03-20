@@ -1,11 +1,9 @@
 HDRS = \
 	Zombie.hpp \
-	ZombieEvent.hpp \
 	ZombieHorde.hpp \
 
 SRCS = main.cpp \
 	Zombie.cpp \
-	ZombieEvent.cpp \
 	ZombieHorde.cpp \
 
 OBJS = ${SRCS:.cpp=.o}

@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:28:58 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/19 23:03:16 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/20 19:16:24 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,21 @@
 
 #include <stdlib.h>
 
-Zombie::Zombie(std::string name, std::string type) {
-	this->name = name;
-	this->type = type;
-	std::cout << "A new zombie emerges from the radioactive wastes of the old"\
-		<< " laboratory, it looks like... a " << this->type << "." << std::endl;
+static std::string	RandomName(unsigned min, unsigned max){
+	std::string	name = "";
+	unsigned	size = min + (rand() % (max-min+1));
+
+	for (unsigned i=0; i<size; i++)
+		name += 'a' + (rand() % 26);
+	name[0] += 'A' - 'a';
+	return (name);
+}
+
+Zombie::Zombie(void) {
+	this->name = RandomName(4, 10);
+	this->type = "citizen";
+	std::cout << "Another " << type << ", our dear " << name << ", was infecte"\
+		<< "d by the latest trending virus." << std::endl;
 }
 
 Zombie::~Zombie(){
@@ -32,25 +42,27 @@ std::string	Zombie::GetType() { return this->type; }
 std::string	Zombie::GetMatricule() {
 	std::string	type;
 
-	type = this->type.substr(0, 6);
+	type = this->type;
 	for (unsigned i=0; i<type.length(); i++)
 		if ('a' <= type[i] && type[i] <= 'z')
 			type[i] += 'A' - 'a';
 		
-	return type.substr(0, 6) + "-" + this->name;
+	return type + "-" + this->name;
 }
 
 
 void	Zombie::Announce(){
 	std::cout << "<" << GetMatricule() << "> ";
-	switch (rand() % 5)
+	switch (rand() % 7)
 	{
 		default: std::cout << "My, what a fascinating sediment I just found laying right there !"; break;
-		case 0:	std::cout << "Baaaaaah,.."; break;
-		case 1:	std::cout << "RrrrRrrRRh !"; break;
-		case 2:	std::cout << "Guuuuuuuuuh..."; break;
+		case 0:	std::cout << "The infection is not real !"; break;
+		case 1:	std::cout << "* Coughs in your face *"; break;
+		case 2:	std::cout << "Masks are usless !"; break;
 		case 3:	std::cout << "BRainbrainbrainbrAin"; break;
 		case 4:	std::cout << "* Regurgitates in zombie * "; break;
+		case 5:	std::cout << "The Earth is fake, wake up !"; break;
+		case 6:	std::cout << "I haven't washed my hands in years and I'm perfectly fine."; break;
 	}
 	std::cout << std::endl;
 }
