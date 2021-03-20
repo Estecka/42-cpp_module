@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/20 17:02:39 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/20 19:09:51 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/20 19:31:36 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ ZombieHorde::~ZombieHorde(){
 
 void	ZombieHorde::Announce(){
 	for (unsigned i=0; i<this->population; i++)
-		this->horde->Announce();
+		this->horde[i].Announce();
 }
 
 

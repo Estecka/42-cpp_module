@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:28:58 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/20 19:16:24 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/20 19:37:46 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ static std::string	RandomName(unsigned min, unsigned max){
 
 Zombie::Zombie(void) {
 	this->name = RandomName(4, 10);
-	this->type = "citizen";
-	std::cout << "Another " << type << ", our dear " << name << ", was infecte"\
-		<< "d by the latest trending virus." << std::endl;
+	this->type = "infected-citizen";
+	// std::cout << "Another " << type << ", our dear " << name << ", was infecte"\
+	// 	<< "d by the latest trending virus." << std::endl;
 }
 
 Zombie::~Zombie(){
@@ -47,13 +47,13 @@ std::string	Zombie::GetMatricule() {
 		if ('a' <= type[i] && type[i] <= 'z')
 			type[i] += 'A' - 'a';
 		
-	return type + "-" + this->name;
+	return type + ": " + this->name;
 }
 
 
 void	Zombie::Announce(){
 	std::cout << "<" << GetMatricule() << "> ";
-	switch (rand() % 7)
+	switch (rand() % 8)
 	{
 		default: std::cout << "My, what a fascinating sediment I just found laying right there !"; break;
 		case 0:	std::cout << "The infection is not real !"; break;
@@ -63,6 +63,7 @@ void	Zombie::Announce(){
 		case 4:	std::cout << "* Regurgitates in zombie * "; break;
 		case 5:	std::cout << "The Earth is fake, wake up !"; break;
 		case 6:	std::cout << "I haven't washed my hands in years and I'm perfectly fine."; break;
+		case 7:	std::cout << "Let's all gather in this very crowded place."; break;
 	}
 	std::cout << std::endl;
 }
