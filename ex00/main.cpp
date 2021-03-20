@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 19:09:35 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/19 17:11:17 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/20 20:15:38 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	PonyAdventuresTwoPointO(Pony *pony){
 	{
 		std::cout << "> ";
 		std::cin >> input;
+		std::cout << std::endl;
 		if (input == "sleep")
 			pony->Sleep();
 		else if (input == "wakeup")
@@ -75,7 +76,7 @@ extern int	main(int argc, char** argv){
 	PonyOnTheHeap(name, robe);
 	std::cout << std::endl;
 
-	std::cout << "==== Pony on the Stack ====" << std::endl;
-	PonyOnTheStack(name, robe);
-	std::cout << std::endl;
+	// std::cout << "==== Pony on the Stack ====" << std::endl;
+	// PonyOnTheStack(name, robe);
+	// std::cout << std::endl;
 }
