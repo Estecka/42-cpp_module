@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/20 19:17:17 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/20 19:54:48 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/21 18:37:09 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	ZombieApocalypse(const char* cityName){
 	ZombieHorde*	horde;
 
 	std::cout << "A new day rises on the lovely city of " << cityName << ". " \
-		<< "Unfortunately, the city is prey to a terrible infection, " \
+		<< "Unfortunately, the city is prey to a new bread of virus, " \
 		<< "spreading amongst the citizens like the pest, and turning them int"\
 		<< "o brainless Zombies." << std::endl << std::endl;
 	horde = new ZombieHorde(10);
@@ -38,10 +38,11 @@ static void	ZombieApocalypse(const char* cityName){
 			break;
 		else
 			std::cout << "You hesitate a moment. A drop of sweat runs along yo"\
-				<< "ur temple. You try to think about alternative outcomes, bu"\
-				<< "t nothing comes to mind. You have to find the resolve to p"\
-				<< "ress this button." << std::endl;
+				<< "ur temple. You try to come up with alternative outcomes, b"\
+				<< "ut nothing comes to mind. You have to find the resolve to "\
+				<< "press this button." << std::endl;
 	}
+
 	std::cout << "You gather all your determination and press the button. "\
 		<< cityName << " vanishes in a blinding flash of light." << std::endl;
 	delete horde;
