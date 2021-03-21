@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 17:07:39 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/21 18:14:45 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/21 18:25:54 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 #include <time.h>
 
-Human::Human(void){
-	this->brain = Brain((long)this & 1);
+Human::Human(void) : brain((long)this & 1) {
+	// this->brain = Brain((long)this & 1);
 	this->time_to_die = 410;
 	this->status = "sleeping";
 }
@@ -24,7 +24,7 @@ Human::~Human(){
 }
 
 
-Brain&	Human::getBrain(){ return this->brain; }
+const Brain&	Human::getBrain(){ return this->brain; }
 std::string	Human::identify(){ return this->brain.identify(); }
 
 

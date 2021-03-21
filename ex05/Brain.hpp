@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 16:48:50 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/21 17:30:23 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/21 18:25:25 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 class Brain
 {
 public:
-	Brain(float initialSmoothness);
+	Brain(float smoothness);
 	Brain(void);
 	~Brain();
 
-	std::string	identify();
+	std::string	identify() const;
 
-	float	Ponder();
-	float	GetSmoothness();
+	void	Ponder() const;
+	float	GetSmoothness() const;
 
 private:
 	float	smoothness;

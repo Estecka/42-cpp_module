@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 16:51:56 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/21 18:12:01 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/21 18:21:51 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ public:
 	~Human();
 
 	std::string	identify();
-	Brain&	getBrain();
+	const Brain&	getBrain();
 
 	void	Think();
 	void	Eat();
 	void	Sleep();
 
 private:
-	Brain	brain;
+	const Brain	brain;
 	float	time_to_die;
 	std::string	status;
 };

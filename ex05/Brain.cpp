@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 16:54:42 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/21 18:12:17 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/21 18:25:17 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,10 @@ Brain::~Brain(){
 }
 
 
-float	Brain::GetSmoothness(){ return this->smoothness; }
+float	Brain::GetSmoothness() const { return this->smoothness; }
 
-float	Brain::Ponder(){
-	smoothness *= smoothness;
+void	Brain::Ponder() const{
 	std::cout << "You ponder an intelligent thought. You brain becomes riper." << std::endl;
-	return this->smoothness;
 }
 
 static char	GetHexDigit(unsigned value){
@@ -42,7 +40,7 @@ static char	GetHexDigit(unsigned value){
 		return 'A' + value - 0xA;
 }
 
-std::string	Brain::identify(){
+std::string	Brain::identify() const {
 	std::string	r = "";
 	unsigned long	adress;
 
