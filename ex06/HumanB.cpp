@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/21 18:58:08 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/21 19:28:13 by abaur            ###   ########.fr       */
+/*   Created: 2021/03/21 19:30:21 by abaur             #+#    #+#             */
+/*   Updated: 2021/03/21 19:35:33 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_HPP
-#define WEAPON_HPP
+#include "HumanB.hpp"
 
-class Weapon
-{
-public:
-	Weapon(const char* type);
-	~Weapon();
+#include <iostream>
 
-	void	setType(const char* type);
-	const char*	GetType() const;
+HumanB::HumanB(const char* name){
+	this->name = name;
+	this->weapon = NULL;
+}
+HumanB::~HumanB(){}
 
-private:
-	const char*	type;
-};
+void	HumanB::attack() {
+	std::cout << name << " attacks with their " << weapon->GetType() << std::endl;
+}
 
-#endif
+void	HumanB::setWeapon(Weapon& weapon){
+	this->weapon = &weapon;
+}

@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 19:02:43 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/21 19:06:27 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/21 19:43:43 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,14 @@ public:
 	void	attack();
 
 private:
-	/* data */
+	/*
+	* Could be either a pointer or a reference, although a reference is more in-
+	* line with the given constructor.
+	* Unlike a pointer, a reference enforces a non-null weapon, and would make t
+	* he human unable to "drop" their weapon to pick another.
+	*/
+	Weapon&	weapon;
+	const char*	name;
 };
 
 #endif

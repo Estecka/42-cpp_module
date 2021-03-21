@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/21 18:58:08 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/21 19:28:13 by abaur            ###   ########.fr       */
+/*   Created: 2021/03/21 19:19:21 by abaur             #+#    #+#             */
+/*   Updated: 2021/03/21 19:30:05 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_HPP
-#define WEAPON_HPP
+#include "Weapon.hpp"
 
-class Weapon
-{
-public:
-	Weapon(const char* type);
-	~Weapon();
+Weapon::Weapon(const char* type){
+	this->type = type;
+}
+Weapon::~Weapon(){}
 
-	void	setType(const char* type);
-	const char*	GetType() const;
-
-private:
-	const char*	type;
-};
-
-#endif
+void	Weapon::setType(const char* type){ this->type = type; }
+const char*	Weapon::GetType(void) const { return this->type; }
