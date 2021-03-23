@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 19:58:20 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/23 19:31:12 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/23 20:02:54 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ StreamCrawler::StreamCrawler
 : input(input), output(output)
 {
 	this->find = find;
-	this->replace = replace;
-
 	this->findSize = strlen(find);
+	this->replace = replace;
+	this->replaceSize = strlen(replace);
+
 	this->bufferCap = (findSize * 2) - 1;
 	if (findSize < BUFFSIZEMIN)
 		this->bufferCap = BUFFSIZEMIN;
@@ -33,11 +34,11 @@ StreamCrawler::StreamCrawler
 	this->bufferSize = 0;
 	this->cursor = bufferCap;
 
-	std::cout \
-		<< "Needle size: " << findSize  << std::endl \
-		<< "bufferCap: "   << bufferCap << std::endl \
-		<< "flushCap: "    << flushCap  << std::endl \
-		;
+	// std::cout \
+	// 	<< "[DEBUG] Needle size: " << findSize  << std::endl \
+	// 	<< "[DEBUG] bufferCap: "   << bufferCap << std::endl \
+	// 	<< "[DEBUG] flushCap: "    << flushCap  << std::endl \
+	// 	;
 }
 StreamCrawler::~StreamCrawler(){
 	delete[] buffer;
@@ -52,7 +53,16 @@ bool	StreamCrawler::ReplaceAll()
 	while (this->bufferSize != 0)
 	{
 		size_t	needle = this->FindNextNeedle();
-		std::cout << "[DEBUG] Needle fount at " << needle << std::endl;
+		bool	ok = true;
+
+		if (needle)
+			ok &= this->Flush(needle);
+		this->cursor = needle;
+		if (needle < bufferSize)
+			ok &= this->ReplaceOnce();
+		ok &= this->Refill();
+		if (!ok)
+			return false;
 		break;
 	}
 	return true;
@@ -92,5 +102,41 @@ size_t	StreamCrawler::FindNextNeedle(){
 		if (miinstrcmp(find, buffer+i))
 			return (i);
 	}
-	return (bufferSize);
+	return bufferSize;
+}
+
+bool	StreamCrawler::Flush(size_t count){
+	if (count > flushCap){
+		std::cout << "[WARN] Attempted to flush more than the flush cap: " 
+			<< count << " lowered to " << flushCap << std::endl;
+		count = bufferSize;
+	}
+	if (count > bufferSize) {
+		std::cout << "[WARN] Attempted to flush more than available: " 
+			<< count << " lowered to " << bufferSize << std::endl;
+		count = bufferSize;
+	}
+
+	this->output.write(buffer, count);
+	this->cursor = count;
+	this->bufferSize -= count;
+
+	if (output.fail())
+		std::cout << "[ERR] Flush operation failed" << std::endl;
+	return !output.fail();
+}
+
+bool	StreamCrawler::ReplaceOnce(){
+	if (bufferSize < findSize){
+		std::cout << "[ERR] Invalid Replace operation" << std::endl;
+		return false;
+	}
+
+	this->output.write(replace, replaceSize);
+	this->cursor += findSize;
+	this->bufferSize -= findSize;
+
+	if (output.fail())
+		std::cout << "[ERR] Replace operation failed" << std::endl;
+	return !output.fail();
 }
