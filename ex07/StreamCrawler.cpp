@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 19:58:20 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/23 21:21:48 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/23 21:44:05 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,27 +65,37 @@ bool	StreamCrawler::ReplaceAll()
 
 		if (flushAmount && !this->Flush(flushAmount))
 			return false;
-		this->cursor = needle;
 		if ((needle != (size_t)-1) && !this->ReplaceOnce())
 			return false;
-		break;
 	}
 	return true;
 }
 
+// #include <stdio.h>
 bool	StreamCrawler::Refill(){
 	size_t	rcount;
 
 	if (bufferSize && cursor)
 		memmove(&buffer[0], &buffer[cursor], bufferSize);
-	this->cursor = 0;
 	rcount = bufferCap - bufferSize;
 	input.read(&buffer[bufferSize], rcount);
-	bufferSize += input.gcount();
 
-	if (input.fail())
-		std::cout << "[ERR] Failed to read from input" << std::endl;
-	return !input.fail();
+	if (input.fail() && !input.eof()){
+		std::cout << "[ERR] Failed to read from input" << std::endl \
+			<< "[DEBUG] failbit: "    << input.failbit << " " << strerror(input.failbit) << std::endl \
+			<< "[DEBUG] badbit:  "    << input.badbit  << " " << strerror(input.badbit) << std::endl \
+			<< "[DEBUG] cursor: "     << cursor         << std::endl \
+			<< "[DEBUG] bufferSize: " << bufferSize     << std::endl \
+			<< "[DEBUG] rcount:"      << rcount         << std::endl \
+			<< "[DEBUG] gcount(): "   << input.gcount() << std::endl \
+			;
+		// printf("[DEBUG] Buffer:\n%.*s\n", (int)bufferSize, buffer);
+		// printf("[DEBUG] Read:\n%.*s\n", (int)input.gcount(), buffer+bufferSize);
+	}
+
+	this->cursor = 0;
+	bufferSize += input.gcount();
+	return (!input.fail() || input.eof());
 }
 
 /*
