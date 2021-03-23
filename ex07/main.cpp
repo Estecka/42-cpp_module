@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 15:09:41 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/23 15:50:06 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/23 21:57:33 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,10 @@ extern int	main(int argc, char** argv){
 			std::cout << "Not enough arguments" << std::endl;
 		else if (argc > 4)
 			std::cout << "Too many arguments" << std::endl;
+		return EXIT_FAILURE;
+	}
+	if (argv[2][0] == '\0'){
+		std::cout << "Empty needle" << std::endl;
 		return EXIT_FAILURE;
 	}
 

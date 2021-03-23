@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 19:58:20 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/23 21:44:05 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/23 21:51:28 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ StreamCrawler::~StreamCrawler(){
 
 bool	StreamCrawler::ReplaceAll()
 {
-	while (!input.eof())
+	while (!input.eof() || bufferSize > 0)
 	{
 		size_t	needle;
 		size_t	flushAmount;

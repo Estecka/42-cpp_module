@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 19:50:15 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/23 20:55:06 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/23 21:59:19 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ private:
 
 	/*
 	* Reads some characters from the input, and appends them to the buffers.
-	* This will discard as many characters from the beginning of the buffer
+	* This will discard all characters before the cursor.
 	*/
 	bool	Refill();
 
