@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 19:58:20 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/23 20:02:54 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/23 21:21:48 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,26 @@ StreamCrawler::~StreamCrawler(){
 
 bool	StreamCrawler::ReplaceAll()
 {
-	if(!this->Refill())
-		return false;
-
-	while (this->bufferSize != 0)
+	while (!input.eof())
 	{
-		size_t	needle = this->FindNextNeedle();
-		bool	ok = true;
+		size_t	needle;
+		size_t	flushAmount;
 
-		if (needle)
-			ok &= this->Flush(needle);
+		if (!this->Refill())
+			return false;
+		needle = this->FindNextNeedle();
+
+		if (needle != (size_t)-1)
+			flushAmount = needle;
+		else if (input.eof())
+			flushAmount = bufferSize;
+		else
+			flushAmount = flushCap;
+
+		if (flushAmount && !this->Flush(flushAmount))
+			return false;
 		this->cursor = needle;
-		if (needle < bufferSize)
-			ok &= this->ReplaceOnce();
-		ok &= this->Refill();
-		if (!ok)
+		if ((needle != (size_t)-1) && !this->ReplaceOnce())
 			return false;
 		break;
 	}
@@ -102,16 +107,15 @@ size_t	StreamCrawler::FindNextNeedle(){
 		if (miinstrcmp(find, buffer+i))
 			return (i);
 	}
-	return bufferSize;
+	return -1;
 }
 
 bool	StreamCrawler::Flush(size_t count){
-	if (count > flushCap){
+	if (!input.eof() && count > flushCap){
 		std::cout << "[WARN] Attempted to flush more than the flush cap: " 
 			<< count << " lowered to " << flushCap << std::endl;
 		count = bufferSize;
-	}
-	if (count > bufferSize) {
+	} else if (count > bufferSize) {
 		std::cout << "[WARN] Attempted to flush more than available: " 
 			<< count << " lowered to " << bufferSize << std::endl;
 		count = bufferSize;

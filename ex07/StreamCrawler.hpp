@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 19:50:15 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/23 19:58:47 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/23 20:55:06 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ private:
 	/*
 	* Finds the first occurrence of `find` in the buffer.
 	* Should only be called when `cursor` is 0.
-	* @return size_t	The index of the first character found, or `bufferSize` 
-	* if no needle were found.
+	* @return size_t	The index of the first character found, or -1 if no 
+	* needle were found.
 	*/
 	size_t	FindNextNeedle();
 
