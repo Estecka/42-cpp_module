@@ -1,8 +1,8 @@
 HDRS = \
-	StreamCrawler.hpp \
+	# StreamCrawler.hpp \
 
 SRCS = main.cpp \
-	StreamCrawler.cpp \
+	# StreamCrawler.cpp \
 
 OBJS = ${SRCS:.cpp=.o}
 
