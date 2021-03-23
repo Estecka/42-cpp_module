@@ -6,9 +6,11 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 15:09:41 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/23 15:39:42 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/23 15:50:06 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "StreamCrawler.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -57,8 +59,9 @@ extern int	main(int argc, char** argv){
 	if (!OpenStreams(argv[1], &input, &output))
 		return EXIT_FAILURE;
 
+	StreamCrawler crawler = StreamCrawler(input, output, argv[2], argv[3]);
+	bool status = crawler.ReplaceAll();
 	input.close();
 	output.close();
-	std::cout << "OK" << std::endl;
-	return EXIT_SUCCESS;
+	return status ? EXIT_SUCCESS : EXIT_FAILURE;
 }
