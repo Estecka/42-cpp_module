@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 19:58:20 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/23 17:52:29 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/23 19:31:12 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,15 @@ StreamCrawler::~StreamCrawler(){
 
 bool	StreamCrawler::ReplaceAll()
 {
-	Refill();
-	this->buffer[bufferCap - 1] = '\0';
-	std::cout << buffer << std::endl;
+	if(!this->Refill())
+		return false;
+
+	while (this->bufferSize != 0)
+	{
+		size_t	needle = this->FindNextNeedle();
+		std::cout << "[DEBUG] Needle fount at " << needle << std::endl;
+		break;
+	}
 	return true;
 }
 
@@ -62,5 +68,29 @@ bool	StreamCrawler::Refill(){
 	input.read(&buffer[bufferSize], rcount);
 	bufferSize += input.gcount();
 
+	if (input.fail())
+		std::cout << "[ERR] Failed to read from input" << std::endl;
 	return !input.fail();
+}
+
+/*
+* The null-terminator at the end of `needle` is not compared against `candidate`.
+* Eventual `\0`'s in candidate are still compared against `needle`.
+*/
+static bool	miinstrcmp(const char* needle, const char* candidate){
+	while (*needle){
+		if (*needle != *candidate)
+			return false;
+		needle++;
+		candidate++;
+	}
+	return true;
+}
+
+size_t	StreamCrawler::FindNextNeedle(){
+	for (size_t i=0; findSize<=(bufferSize-i); i++){
+		if (miinstrcmp(find, buffer+i))
+			return (i);
+	}
+	return (bufferSize);
 }
