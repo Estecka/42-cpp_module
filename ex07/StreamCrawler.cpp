@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 19:58:20 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/23 16:48:55 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/23 17:52:29 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ StreamCrawler::StreamCrawler
 
 	this->buffer = new char[bufferCap];
 	this->bufferSize = 0;
-	this->cursor = 0;
+	this->cursor = bufferCap;
 
 	std::cout \
 		<< "Needle size: " << findSize  << std::endl \
@@ -46,5 +46,21 @@ StreamCrawler::~StreamCrawler(){
 
 bool	StreamCrawler::ReplaceAll()
 {
+	Refill();
+	this->buffer[bufferCap - 1] = '\0';
+	std::cout << buffer << std::endl;
 	return true;
+}
+
+bool	StreamCrawler::Refill(){
+	size_t	rcount;
+
+	if (bufferSize && cursor)
+		memmove(&buffer[0], &buffer[cursor], bufferSize);
+	this->cursor = 0;
+	rcount = bufferCap - bufferSize;
+	input.read(&buffer[bufferSize], rcount);
+	bufferSize += input.gcount();
+
+	return !input.fail();
 }

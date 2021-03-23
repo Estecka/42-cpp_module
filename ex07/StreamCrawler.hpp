@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 19:50:15 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/23 16:50:35 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/23 16:53:08 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,8 @@ private:
 	/*
 	* Reads some characters from the input, and appends them to the buffers.
 	* This will discard as many characters from the beginning of the buffer
-	* @param
 	*/
-	bool	Refill(size_t count);
+	bool	Refill();
 
 	/*
 	* Flushes some characters from the buffer into the output.
