@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 19:50:15 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/23 15:51:52 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/23 16:50:35 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,48 @@ public:
 private:
 	std::ifstream&	input;
 	std::ofstream&	output;
+	char*	buffer;
 	const char*	find;
 	const char*	replace;
 
-	unsigned	bufferSize;
-	unsigned	findSize;
+	size_t	bufferSize;
+	size_t	bufferCap;
+	size_t	flushCap;
+	size_t	findSize;
+	size_t	cursor;
+
+	/*
+	* Finds the first occurrence of `find` in the buffer
+	* @return	The index of the first character found, or `bufferSize` if no 
+	* needle were found.
+	*/
+	size_t	FindNextNeedle();
+
+	/*
+	* Reads some characters from the input, and appends them to the buffers.
+	* This will discard as many characters from the beginning of the buffer
+	* @param
+	*/
+	bool	Refill(size_t count);
+
+	/*
+	* Flushes some characters from the buffer into the output.
+	* @param size_t count	The amount of characters to flush
+	* @return bool
+	* 	TRUE 	Ok;
+	* 	FALSE	Error;
+	*/
+	bool	Flush(size_t count);
+
+	/*
+	* Discards some characters from the buffer, and write `replace` into the 
+	* output.
+	* @param size_t count	The amount of characters to discard.
+	* @return bool
+	* 	TRUE 	Ok;
+	* 	FALSE	Error;
+	*/
+	bool	Replace(size_t index);
 };
 
 #endif
