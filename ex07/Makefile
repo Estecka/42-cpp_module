@@ -20,6 +20,8 @@ all: ${NAME}
 
 clean:
 	rm -f *.o
+	rm -f *.sed
+	rm -f *.replace
 
 fclean: clean
 	rm -f ${NAME}
