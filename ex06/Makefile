@@ -10,7 +10,7 @@ SRCS = main.cpp \
 
 OBJS = ${SRCS:.cpp=.o}
 
-NAME = HUMAN.out
+NAME = violence.out
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 CXX=clang++

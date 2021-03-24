@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 19:58:20 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/23 21:51:28 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/24 15:58:14 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ StreamCrawler::StreamCrawler
 	this->replaceSize = strlen(replace);
 
 	this->bufferCap = (findSize * 2) - 1;
-	if (findSize < BUFFSIZEMIN)
+	if (this->bufferCap < BUFFSIZEMIN)
 		this->bufferCap = BUFFSIZEMIN;
 	this->flushCap = bufferCap - findSize + 1;
 
