@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 19:08:33 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/24 19:22:55 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/24 19:36:48 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ public:
 
 	Fixed& operator =(const Fixed& original);
 
-	static unsigned	GetFixedPoint();
+	static int	GetFixedPoint();
 
 	int 	getRawBits() const;
 	void	setRawBits(const int raw);
 
 private:
-	static const unsigned	fixedPoint;
+	static const int	fixedPoint;
 	signed int	raw;
 };
 
