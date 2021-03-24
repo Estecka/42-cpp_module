@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 19:50:15 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/23 21:59:19 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/24 15:55:06 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 #include <fstream>
 
 #define BUFFSIZEMIN	128
-
-#pragma clang diagnostic ignored "-Wunused-private-field"
 
 class StreamCrawler
 {
