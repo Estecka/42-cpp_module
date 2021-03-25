@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 19:24:30 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/25 18:28:09 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/25 18:54:20 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,3 +84,15 @@ std::string	Fixed::toString() const{
 	} while (rawl);
 	return result;
 }
+
+bool Fixed::operator >(const Fixed& other) const { return this->raw > other.raw; }
+bool Fixed::operator <(const Fixed& other) const { return this->raw < other.raw; }
+bool Fixed::operator >=(const Fixed& other) const { return this->raw >= other.raw; }
+bool Fixed::operator <=(const Fixed& other) const { return this->raw <= other.raw; }
+bool Fixed::operator ==(const Fixed& other) const { return this->raw == other.raw; }
+bool Fixed::operator !=(const Fixed& other) const { return this->raw!= other.raw; }
+
+Fixed& Fixed::operator ++();
+Fixed& Fixed::operator --();
+Fixed& Fixed::operator ++(int);
+Fixed& Fixed::operator --(int);

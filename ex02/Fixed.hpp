@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 19:08:33 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/25 18:29:31 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/25 18:53:09 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,23 @@ public:
 
 	static int	GetFixedPoint();
 
+	static const Fixed&	min(const Fixed& a, const Fixed& b);
+	static const Fixed&	max(const Fixed& a, const Fixed& b);
+	static Fixed&	min(Fixed& a, Fixed& b);
+	static Fixed&	max(Fixed& a, Fixed& b);
+
 	Fixed& operator =(const Fixed& original);
-	Fixed& operator >(const Fixed& other) const;
-	Fixed& operator <(const Fixed& other) const;
-	Fixed& operator >=(const Fixed& other) const;
-	Fixed& operator <=(const Fixed& other) const;
-	Fixed& operator ==(const Fixed& other) const;
-	Fixed& operator !=(const Fixed& other) const;
+	bool operator >(const Fixed& other) const;
+	bool operator <(const Fixed& other) const;
+	bool operator >=(const Fixed& other) const;
+	bool operator <=(const Fixed& other) const;
+	bool operator ==(const Fixed& other) const;
+	bool operator !=(const Fixed& other) const;
+
+	Fixed& operator +(const Fixed& other) const;
+	Fixed& operator -(const Fixed& other) const;
+	Fixed& operator *(const Fixed& other) const;
+	Fixed& operator /(const Fixed& other) const;
 
 	Fixed& operator ++();
 	Fixed& operator --();
@@ -50,9 +60,5 @@ private:
 };
 
 std::ostream& operator <<(std::ostream& dst, const Fixed& src);
-const Fixed&	min(const Fixed& a, const Fixed& b);
-const Fixed&	max(const Fixed& a, const Fixed& b);
-Fixed&	min(Fixed& a, Fixed& b);
-Fixed&	max(Fixed& a, Fixed& b);
 
 #endif
