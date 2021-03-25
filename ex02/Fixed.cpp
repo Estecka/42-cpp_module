@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 19:24:30 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/25 18:54:20 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/25 19:18:20 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ std::string	Fixed::toString() const{
 		rawl *= 10;
 	rawl >>= fixedPoint;
 	// Removes trailing 0 decimals
-	while (decimalPoint > 0 &&  !(rawl % 10)){
+	while (decimalPoint > 0 && !(rawl % 10)){
 		rawl /= 10;
 		decimalPoint --;
 	}
@@ -85,6 +85,37 @@ std::string	Fixed::toString() const{
 	return result;
 }
 
+Fixed Fixed::operator +(const Fixed& other) const {
+	Fixed	r(*this);
+
+	r.raw += other.raw;
+	return r;
+}
+Fixed Fixed::operator -(const Fixed& other) const {
+	Fixed	r(*this);
+
+	r.raw -= other.raw;
+	return r;
+}
+Fixed Fixed::operator *(const Fixed& other) const {
+	Fixed	r;
+	long	rawl = this->raw;
+
+	rawl *= other.raw;
+	rawl >>= fixedPoint;
+	r.raw = (int)rawl;
+	return r; 
+}
+Fixed Fixed::operator /(const Fixed& other) const {
+	Fixed	r;
+	long	rawl = this->raw;
+
+	rawl <<= fixedPoint;
+	rawl /= other.raw;
+	r.raw = (int)rawl;
+	return r;
+}
+
 bool Fixed::operator >(const Fixed& other) const { return this->raw > other.raw; }
 bool Fixed::operator <(const Fixed& other) const { return this->raw < other.raw; }
 bool Fixed::operator >=(const Fixed& other) const { return this->raw >= other.raw; }
@@ -92,7 +123,7 @@ bool Fixed::operator <=(const Fixed& other) const { return this->raw <= other.ra
 bool Fixed::operator ==(const Fixed& other) const { return this->raw == other.raw; }
 bool Fixed::operator !=(const Fixed& other) const { return this->raw!= other.raw; }
 
-Fixed& Fixed::operator ++();
-Fixed& Fixed::operator --();
-Fixed& Fixed::operator ++(int);
-Fixed& Fixed::operator --(int);
+Fixed& Fixed::operator ++() { this->raw++; return *this; }
+Fixed& Fixed::operator --() { this->raw--; return *this; }
+Fixed Fixed::operator ++(int) { Fixed tmp(*this); this->raw++; return tmp; };
+Fixed Fixed::operator --(int) { Fixed tmp(*this); this->raw--; return tmp; };
