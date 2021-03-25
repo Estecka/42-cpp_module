@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 19:24:30 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/25 15:50:05 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/25 15:56:11 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@ Fixed::Fixed(const Fixed& original){
 	*this = original;
 }
 Fixed::Fixed(int value){
+	std::cout << "Int constructor called" << std::endl;
 	this->raw = value << fixedPoint;
 }
 Fixed::Fixed(float value){
+	std::cout << "Float constructor called" << std::endl;
 	this->raw = (int)(value * (1 << fixedPoint));
 }
 Fixed::~Fixed(){
@@ -41,7 +43,7 @@ Fixed::~Fixed(){
 
 Fixed& Fixed::operator =(const Fixed& original){
 	std::cout << "Assignation operator called" << std::endl;
-	this->raw = original.getRawBits();
+	this->raw = original.raw;
 	return *this;
 }
 std::ostream& operator <<(std::ostream& dst, const Fixed& src){
