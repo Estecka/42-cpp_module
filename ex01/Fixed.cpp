@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 19:24:30 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/25 15:56:11 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/25 15:56:46 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,10 @@ std::string	Fixed::toString() const{
 		rawl *= 10;
 	rawl >>= fixedPoint;
 	// Removes trailing 0 decimals
-	/* while (decimalPoint > 0 &&  !(rawl % 10)){
-	// 	rawl /= 10;
-	// 	decimalPoint --;
-	// } */
+	while (decimalPoint > 0 &&  !(rawl % 10)){
+		rawl /= 10;
+		decimalPoint --;
+	}
 	// Write the fractional portion
 	for (int i=0; i<decimalPoint; i++){
 		char c = '0' + (rawl % 10);
