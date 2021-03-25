@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 19:24:30 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/25 19:18:20 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/25 19:22:16 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ Fixed::Fixed(float value){
 }
 Fixed::~Fixed(){
 }
+
+
+const Fixed&	Fixed::min(const Fixed& a, const Fixed& b) { return (a.raw < b.raw) ? a : b; }
+const Fixed&	Fixed::max(const Fixed& a, const Fixed& b) { return (a.raw > b.raw) ? a : b; }
+Fixed&	Fixed::min(Fixed& a, Fixed& b) { return (a.raw < b.raw) ? a : b; }
+Fixed&	Fixed::max(Fixed& a, Fixed& b) { return (a.raw > b.raw) ? a : b; }
 
 
 Fixed& Fixed::operator =(const Fixed& original){
