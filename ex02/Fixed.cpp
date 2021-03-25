@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 19:24:30 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/25 17:58:48 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/25 18:28:09 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,44 +22,27 @@ int	Fixed::GetFixedPoint() { return fixedPoint; }
 
 
 Fixed::Fixed(void){
-	std::cout << "Default constructor called" << std::endl;
 	this->raw = 0;
 }
 Fixed::Fixed(const Fixed& original){
-	std::cout << "Copy constructor called" << std::endl;
 	*this = original;
 }
 Fixed::Fixed(int value){
-	std::cout << "Int constructor called" << std::endl;
 	this->raw = value << fixedPoint;
 }
 Fixed::Fixed(float value){
-	std::cout << "Float constructor called" << std::endl;
 	this->raw = (int)roundf(value * (1 << fixedPoint));
-	// std::cout << value << " => " << raw << std::endl;
 }
 Fixed::~Fixed(){
-	std::cout << "Destructor called" << std::endl;
 }
 
 
 Fixed& Fixed::operator =(const Fixed& original){
-	std::cout << "Assignation operator called" << std::endl;
 	this->raw = original.raw;
 	return *this;
 }
 std::ostream& operator <<(std::ostream& dst, const Fixed& src){
 	return dst << src.toFloat();
-}
-
-
-int 	Fixed::getRawBits() const { 
-	std::cout << "getRawBits member function called" << std::endl;
-	return this->raw; 
-}
-void	Fixed::setRawBits(const int raw){
-	std::cout << "setRawBits member function called" << std::endl;
-	this->raw = raw;
 }
 
 
