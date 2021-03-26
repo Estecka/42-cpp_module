@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 18:39:40 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/26 18:56:05 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/26 19:02:56 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ class FragTrap
 {
 public:
 	FragTrap(void);
+	FragTrap& operator =(const FragTrap&);
 	FragTrap(const FragTrap&);
 	FragTrap(std::string name);
 	~FragTrap();
-	FragTrap& operator =(const FragTrap&);
 
 	void	rangedAttack(std::string& targetName);
 	void	meleeAttack(std::string& targetName);
@@ -32,6 +32,7 @@ public:
 	void	vaulthunter_dot_exe(std::string& targetName);
 
 private:
+	std::string	name;
 	int	hitPoints;
 	int	hitPointsMax;
 	int	energyPoints;
