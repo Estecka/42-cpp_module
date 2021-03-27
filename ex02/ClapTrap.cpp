@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 19:34:50 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/27 19:52:51 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/27 20:01:26 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,20 @@ void	ClapTrap::defaultInit(void){
 }
 
 ClapTrap::ClapTrap(void){
-	std::cout << msgDefaultConstructor() << std::endl;
+	msgDefaultConstructor();
 	this->defaultInit();
 }
 ClapTrap::ClapTrap(const ClapTrap& original){
-	std::cout << msgCopyConstructor(original) << std::endl;
+	msgCopyConstructor(original);
 	*this = original;
 }
 ClapTrap::ClapTrap(std::string name){
-	std::cout << msgNamedConstructor(name) << std::endl;
+	msgNamedConstructor(name);
 	this->defaultInit();
 	this->name = name;
 }
 ClapTrap::~ClapTrap(){
-	std::cout << msgDestructor() << std::endl;
+	msgDestructor();
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& original){
@@ -57,21 +57,21 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& original){
 
 void	ClapTrap::meleeAttack(std::string targetName) {
 	if (this->hitPoints <= 0)
-		std::cout << msgNoHealth() << std::endl;
+		msgNoHealth();
 	else
-		std::cout << msgMelee(targetName) << std::endl;
+		msgMelee(targetName);
 }
 
 void	ClapTrap::rangedAttack(std::string targetName) {
 	if (this->hitPoints <= 0)
-		std::cout << msgNoHealth() << std::endl;
+		msgNoHealth();
 	else
-		std::cout << msgRanged(targetName);
+		msgRanged(targetName);
 }
 
 void	ClapTrap::takeDamage(unsigned int dmgAmount) {
 	if (this->hitPoints <= 0)
-		std::cout << msgAlreadyDead() << std::endl;
+		msgAlreadyDead();
 	else {
 		if (dmgAmount < (unsigned)this->def)
 			dmgAmount = 0;
@@ -79,13 +79,13 @@ void	ClapTrap::takeDamage(unsigned int dmgAmount) {
 			dmgAmount -= this->def;
 
 		if (dmgAmount == 0)
-			std::cout << msgNoDamage() << std::endl;
+			msgNoDamage();
 		else {
 			if (dmgAmount < (unsigned)this->hitPoints)
 				this->hitPoints -= dmgAmount;
 			else
 				this->hitPoints = 0;
-			std::cout << msgDamage(dmgAmount) << std::endl;
+			msgDamage(dmgAmount);
 		}
 	}
 	std::cout << "(" << hitPoints << "/" << hitPointsMax << ")" << std::endl;
@@ -93,13 +93,13 @@ void	ClapTrap::takeDamage(unsigned int dmgAmount) {
 
 void	ClapTrap::beRepaired(unsigned int healAmount){
 	if (this->hitPoints >= hitPointsMax)
-		std::cout << msgFullHealth() << std::endl;
+		msgFullHealth();
 	else {
 		unsigned healMax = this->hitPointsMax - this->hitPoints;
 		if (healAmount > healMax)
 			healAmount = healMax;
 		this->hitPoints += healAmount;
-		std::cout << msgHeal(healAmount) << std::endl;
+		msgHeal(healAmount);
 	}
 	std::cout << "(" << hitPoints << "/" << hitPointsMax << ")" << std::endl;
 }
