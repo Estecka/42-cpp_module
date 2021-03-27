@@ -1,12 +1,14 @@
 HDRS = \
 	FragTrap.hpp \
+	ScavTrap.hpp \
 
 SRCS = main.cpp \
 	FragTrap.cpp \
+	ScavTrap.cpp \
 
 OBJS = ${SRCS:.cpp=.o}
 
-NAME = fragtrap.out
+NAME = scavtrap.out
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 CXX=clang++
