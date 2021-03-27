@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 18:57:11 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/27 16:04:56 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/27 16:18:44 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,26 @@ void	ScavTrap::rangedAttack(std::string targetName) {
 
 void	ScavTrap::takeDamage(unsigned int dmgAmount) {
 	if (this->hitPoints <= 0) {
-		std::cout << "Stop! " << name << " is already dead !" << std::endl;
+		std::cout << "Stop ! " << name << " is already dead !" << std::endl;
 	}
 	else {
-		if (dmgAmount > (unsigned)this->hitPoints)
-			dmgAmount = (unsigned)this->hitPoints;
-		this->hitPoints -= dmgAmount;
-		std::cout << name << " overflowed their stack, they take -" \
-			<< dmgAmount << "HP." << std::endl;
+		if (dmgAmount < (unsigned)this->def)
+			dmgAmount = 0;
+		else
+			dmgAmount -= this->def;
+
+		if (dmgAmount == 0){
+			std::cout << name << " didn't even flinch."
+				<< std::endl;
+		}
+		else {
+			if (dmgAmount < (unsigned)this->hitPoints)
+				this->hitPoints -= dmgAmount;
+			else
+				this->hitPoints = 0;
+			std::cout << name << " overflowed their stack. They take -" \
+				<< dmgAmount << "HP." << std::endl;
+		}
 	}
 	std::cout << "(" << hitPoints << "/" << hitPointsMax << ")" << std::endl;
 }
@@ -105,8 +117,8 @@ void	ScavTrap::beRepaired(unsigned int healAmount){
 		if (healAmount > healMax)
 			healAmount = healMax;
 		this->hitPoints += healAmount;
-		std::cout << name << " bought some extra RAM, they heal for +" \
-			<< healAmount << "HP !" << std::endl;
+		std::cout << name << " bought some extra RAM for their stack, they "\
+			<< "heal for +" << healAmount << "HP !" << std::endl;
 	}
 	std::cout << "(" << hitPoints << "/" << hitPointsMax << ")" << std::endl;
 }
@@ -118,22 +130,22 @@ void	ScavTrap::challengeNewcomer(){
 		return;
 	}
 	if (this->energyPoints < 25){
-		std::cout << name << " lags out, and is unable to think of any cool "\
-			<< "comeback." << std::endl;
+		std::cout << name << " lags out, due to a lack of energy, and is "\
+			<< "unable to think of any cool comeback." << std::endl;
 		return ;
 	}
 	energyPoints -= 25;
 	std::cout << "<" << name << ">: Oh, so you wish to pass through ? ";
 	switch (rand() % 5)
 	{
-		default: std::cout << "Try and take care of that FR4G-TP first." 
+		default: std::cout << "Try and take care of that FR4G-TP first.";
 			break;
-		case 1: std::cout << "Over my dead body !";
+		case 1: std::cout << "Go fetch me some coffee, then I'll consider it.";
 			break;
-		case 2: std::cout << "Go fetch me some coffee, then I'll consider it.";
+		case 2: std::cout << "Over my dead body !";
 			break;
 		case 3: std::cout << "For that you'll need to carry the ring to Mordor "\
-			<< "Sorry, I don't make the rules."
+			<< "Sorry, I don't make the rules.";
 			break;
 		case 4: std::cout << "Dance for me, first. Dance I say !";
 			break;
