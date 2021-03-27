@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 18:39:40 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/26 19:02:56 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/27 14:48:53 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ public:
 	FragTrap(std::string name);
 	~FragTrap();
 
-	void	rangedAttack(std::string& targetName);
-	void	meleeAttack(std::string& targetName);
+	void	rangedAttack(std::string targetName);
+	void	meleeAttack(std::string targetName);
 	void	takeDamage(unsigned int	dmgAmount);
 	void	beRepaired(unsigned int	healAmount);
 
-	void	vaulthunter_dot_exe(std::string& targetName);
+	void	vaulthunter_dot_exe(std::string targetName);
 
 private:
 	std::string	name;
