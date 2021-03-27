@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 18:57:11 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/27 14:53:21 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/27 15:20:52 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,16 @@ FragTrap::FragTrap(const FragTrap& original){
 	*this = original;
 }
 FragTrap::FragTrap(std::string name){
-	*this = FragTrap();
-	std::cout << "Factory FR4G-TP, I hereby dub you " << name << std::endl;
+	std::cout << "A new, unique FR4G-TP came up: " << name << std::endl;
 	this->name = name;
+	this->hitPoints = 100;
+	this->hitPointsMax = 100;
+	this->energyPoints = 100;
+	this->energyPointsMax = 100;
+	this->level = 1;
+	this->atkMelee = 30;
+	this->atkRanged = 20;
+	this->def = 5;
 }
 FragTrap::~FragTrap(){
 	std::cout << this->name << " accidentally initiated their self-destruction "\
@@ -83,32 +90,40 @@ void	FragTrap::takeDamage(unsigned int dmgAmount) {
 	if (this->hitPoints <= 0) {
 		std::cout << name << "'s wreck is taking more damages. It's beating a "\
 			<< "dead horse at this point." << std::endl;
-		return;
 	}
-
-	if (dmgAmount > (unsigned)this->hitPoints)
-		dmgAmount = (unsigned)this->hitPoints;
-	std::cout << name << " forgot to free a pointer. The burden of those leaked "\
-		<< "memories deals them -" << dmgAmount << "HP."
-		<< std::endl;
+	else {
+		if (dmgAmount > (unsigned)this->hitPoints)
+			dmgAmount = (unsigned)this->hitPoints;
+		this->hitPoints -= dmgAmount;
+		std::cout << name << " forgot to free a pointer. The burden of those leaked "\
+			<< "memories deals them -" << dmgAmount << "HP."
+			<< std::endl;
+	}
+	std::cout << "(" << hitPoints << "/" << hitPointsMax << ")" << std::endl;
 }
 
 void	FragTrap::beRepaired(unsigned int healAmount){
 	if (this->hitPoints >= hitPointsMax) {
 		std::cout << name << " is in top shape and ready to fight !" << std::endl;
-		return;
 	}
-	
-	unsigned healMax = this->hitPointsMax - this->hitPoints;
-	if (healAmount > healMax)
-		healAmount = healMax;
-	std::cout << name << " ran Valgrind. They heal for +" << healAmount << "HP !" << std::endl;
-
+	else {
+		unsigned healMax = this->hitPointsMax - this->hitPoints;
+		if (healAmount > healMax)
+			healAmount = healMax;
+		this->hitPoints += healAmount;
+		std::cout << name << " ran Valgrind. They heal for +" << healAmount << "HP !" << std::endl;
+	}
+	std::cout << "(" << hitPoints << "/" << hitPointsMax << ")" << std::endl;
 }
 
 void	FragTrap::vaulthunter_dot_exe(std::string targetName){
+	if (this->hitPoints <= 0){
+		std::cout << name << "'s best effort to look awesome cannot overcome "\
+			<< "death himself." << std::endl;
+		return;
+	}
 	if (this->energyPoints < 25){
-		std::cout << name << " attempts to a sick backwheel flip, but "\
+		std::cout << name << " attempts to do a sick backwheel flip, but "\
 			<< "they don't have enough energy, and instead flop to the ground "\
 			<< "like a wet sponge." << std::endl;
 		return ;
@@ -116,9 +131,9 @@ void	FragTrap::vaulthunter_dot_exe(std::string targetName){
 	energyPoints -= 25;
 	switch (rand() % 5)
 	{
-		default: std::cout << name << " performs a magic trick. The sheer "\
-			<< "awesomness of this trick blows " << targetName << "away, "\
-			<< "literally." << std::endl;
+		default: std::cout << name << " performs a magic trick in front of "\
+			<< targetName << ". The sheer awesomness of this trick blows them "\
+			<< "away, literally." << std::endl;
 			break;
 		case 1: std::cout << name << " gathers all their willpower, and "\
 			<< "summons a meteor that comes crashing onto " << targetName \
@@ -131,8 +146,8 @@ void	FragTrap::vaulthunter_dot_exe(std::string targetName){
 			<< "of " << name << std::endl;
 			break;
 		case 3: std::cout << name << " opens their top trap. A smaller FR4G-TP "\
-			<< "comes out of it and... oh no, there's more coming. They're "\
-			<< "not going to stop ! Run, " << targetName << " ! Run for your "\
+			<< "comes out of it and... oh no, there's more coming, and they're "\
+			<< "not stopping ! Run, " << targetName << " ! Run for your "\
 			<< "life !" << std::endl;
 			break;
 		case 4: std::cout << name << " flamboyantly rips off their body shell, "\
