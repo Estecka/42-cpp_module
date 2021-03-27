@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 19:23:42 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/27 19:33:46 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/27 19:49:22 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,20 @@ protected:
 	int	def;
 
 	virtual void	defaultInit(void);
+	virtual std::string	msgDefaultConstructor(void) const;
+	virtual std::string	msgCopyConstructor(const ClapTrap& original) const;
+	virtual std::string	msgNamedConstructor(std::string name) const;
+	virtual std::string	msgDestructor() const;
 
 	virtual std::string	msgMelee(std::string targetName) const;
 	virtual std::string	msgRanged(std::string targetName) const;
 	virtual std::string	msgDamage(unsigned amount) const;
-	virtual std::string	msgNoDamage(unsigned amount) const;
+	virtual std::string	msgNoDamage() const;
 	virtual std::string	msgAlreadyDead() const;
 	virtual std::string	msgHeal(unsigned amount) const;
 	virtual std::string	msgFullHealth() const;
 	virtual std::string	msgNoEnergy() const;
+	virtual std::string	msgNoHealth() const;
 };
 
 
