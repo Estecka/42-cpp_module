@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 18:57:11 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/27 15:20:52 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/27 15:37:34 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,24 @@ void	FragTrap::takeDamage(unsigned int dmgAmount) {
 			<< "dead horse at this point." << std::endl;
 	}
 	else {
-		if (dmgAmount > (unsigned)this->hitPoints)
-			dmgAmount = (unsigned)this->hitPoints;
-		this->hitPoints -= dmgAmount;
-		std::cout << name << " forgot to free a pointer. The burden of those leaked "\
-			<< "memories deals them -" << dmgAmount << "HP."
-			<< std::endl;
+		if (dmgAmount < (unsigned)this->def)
+			dmgAmount = 0;
+		else
+			dmgAmount -= this->def;
+
+		if (dmgAmount == 0){
+			std::cout << name << " came out of this without even a scrach."
+				<< std::endl;
+		}
+		else {
+			if (dmgAmount < (unsigned)this->hitPoints)
+				this->hitPoints -= dmgAmount;
+			else
+				this->hitPoints = 0;
+			std::cout << name << " forgot to free a pointer. The burden of "\
+				<< "those leaked memories deals them -" << dmgAmount << "HP."\
+				<< std::endl;
+		}
 	}
 	std::cout << "(" << hitPoints << "/" << hitPointsMax << ")" << std::endl;
 }

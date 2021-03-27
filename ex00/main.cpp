@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 14:43:44 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/27 15:16:04 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/27 15:37:54 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ extern int	main(){
 	FragTrap ftp("F1LE-TP");
 
 	std::cout << std::endl << "==Healing==" << std::endl;
+	ftp.takeDamage(4);
 	ftp.beRepaired(100);
 	ftp.takeDamage(25);
 	ftp.beRepaired(50);
