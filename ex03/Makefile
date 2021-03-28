@@ -15,9 +15,9 @@ OBJS = ${SRCS:.cpp=.o}
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 CXX=clang++
 
-all: alltrap.out claptrap.out fragtrap.out scavtrap.out NinjaTrap.out
+all: alltrap.out claptrap.out fragtrap.out scavtrap.out ninjatrap.out
 
-%.out: ${OBJS} main.cpp
+alltrap.out claptrap.out fragtrap.out scavtrap.out ninjatrap.out: ${OBJS} main.cpp
 	${CXX} -o ${@F} ${OBJS} main.cpp ${CPPFLAGS} -D ${@F:.out=}
 
 ${OBJS}: ${HDRS}

@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 19:23:42 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/28 18:46:24 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/28 20:00:52 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ public:
 	ClapTrap& operator =(const ClapTrap&);
 	ClapTrap(const ClapTrap&);
 	ClapTrap(std::string name);
-	~ClapTrap();
+	virtual ~ClapTrap();
 
 	void	rangedAttack(std::string targetName);
 	void	meleeAttack(std::string targetName);
