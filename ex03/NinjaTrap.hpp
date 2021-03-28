@@ -1,49 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   NinjaTrap.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/27 19:23:42 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/28 18:46:24 by abaur            ###   ########.fr       */
+/*   Created: 2021/03/28 18:15:44 by abaur             #+#    #+#             */
+/*   Updated: 2021/03/28 18:18:58 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAPTRAP_HPP
-#define CLAPTRAP_HPP
+#ifndef NINJATRAP_HPP
+#define NINJATRAP_HPP
 
-#include <iostream>
+#include "ClapTrap.hpp"
+#include "FragTrap.hpp"
+#include "ScavTrap.hpp"
 
-class ClapTrap
+class NinjaTrap : public ClapTrap
 {
 public:
-	ClapTrap(void);
-	ClapTrap& operator =(const ClapTrap&);
-	ClapTrap(const ClapTrap&);
-	ClapTrap(std::string name);
-	~ClapTrap();
+	NinjaTrap(void);
+	NinjaTrap& operator =(const NinjaTrap&);
+	NinjaTrap(const NinjaTrap&);
+	NinjaTrap(std::string name);
+	~NinjaTrap();
 
-	void	rangedAttack(std::string targetName);
-	void	meleeAttack(std::string targetName);
-	void	takeDamage(unsigned int	dmgAmount);
-	void	beRepaired(unsigned int	healAmount);
-
-	std::string	getName() const;
+	void	ninjaShoebox(const ClapTrap& target);
+	void	ninjaShoebox(const FragTrap& target);
+	void	ninjaShoebox(const ScavTrap& target);
+	void	ninjaShoebox(const NinjaTrap& target);
 
 protected:
-	std::string	name;
-	int	hitPoints;
-	int	hitPointsMax;
-	int	energyPoints;
-	int	energyPointsMax;
-	int	level;
-	int	atkMelee;
-	int	atkRanged;
-	int	def;
-
 	virtual void	defaultInit(void);
-
 
 	virtual void	msgMelee(std::string targetName) const;
 	virtual void	msgRanged(std::string targetName) const;
@@ -56,8 +45,8 @@ protected:
 	virtual void	msgNoHealth() const;
 
 private:
+	void	msgCopyConstructor(const NinjaTrap& original) const;
 	void	msgDefaultConstructor(void) const;
-	void	msgCopyConstructor(const ClapTrap& original) const;
 	void	msgNamedConstructor(std::string name) const;
 	void	msgDestructor() const;
 };

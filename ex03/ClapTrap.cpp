@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 19:34:50 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/28 17:01:20 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/28 18:47:51 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& original){
 	return *this;
 }
 
+std::string	ClapTrap::getName() const { return this->name; }
 
 void	ClapTrap::meleeAttack(std::string targetName) {
 	if (this->hitPoints <= 0)

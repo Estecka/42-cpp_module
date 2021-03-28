@@ -2,11 +2,13 @@ HDRS = \
 	ClapTrap.hpp \
 	FragTrap.hpp \
 	ScavTrap.hpp \
+	NinjaTrap.hpp \
 
 SRCS = \
 	ClapTrap.cpp \
 	FragTrap.cpp \
 	ScavTrap.cpp \
+	NinjaTrap.cpp \
 
 OBJS = ${SRCS:.cpp=.o}
 
