@@ -3,20 +3,20 @@ HDRS = \
 	FragTrap.hpp \
 	ScavTrap.hpp \
 
-SRCS = main.cpp \
+SRCS = \
 	ClapTrap.cpp \
 	FragTrap.cpp \
 	ScavTrap.cpp \
 
 OBJS = ${SRCS:.cpp=.o}
 
-NAME = claptrap.out
-
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 CXX=clang++
 
-${NAME}: ${OBJS}
-	${CXX} -o ${NAME} ${OBJS} ${CPPFLAGS}
+all: alltrap.out claptrap.out fragtrap.out scavtrap.out
+
+%.out: ${OBJS} main.cpp
+	${CXX} -o ${@F} ${OBJS} main.cpp ${CPPFLAGS} -D ${@F:.out=}
 
 ${OBJS}: ${HDRS}
 
@@ -26,7 +26,7 @@ clean:
 	rm -f *.o
 
 fclean: clean
-	rm -f ${NAME}
+	rm -f *.out
 
 re: fclean all
 

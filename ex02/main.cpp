@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 14:43:44 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/28 17:44:13 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/28 17:58:57 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,15 @@ static void	TestScavTrap();
 static void	TestFragTrap();
 
 extern int	main(){
+	#if defined(alltrap) || defined(claptrap)
 	TestClapTrap();
+	#endif
+	#if defined(alltrap) || defined(fragtrap)
 	TestFragTrap();
+	#endif
+	#if defined(alltrap) || defined(scavtrap)
 	TestScavTrap();
+	#endif
 }
 
 static void	TestClapTrap(){
