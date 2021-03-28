@@ -55,7 +55,41 @@ FragTrap& FragTrap::operator=(const FragTrap& original){
 #pragma clang diagnostic ignored "-Wunused-parameter"
 
 void	FragTrap::vaulthunter_dot_exe(std::string targetName){
-	std::cout << name << " performs some neat vaulthunter tricks." << std::endl;
+	if (this->hitPoints <= 0){
+		msgNoHealth();
+		return;
+	}
+	if (this->energyPoints < 25){
+		msgNoEnergy();
+		return;
+	}
+	energyPoints -= 25;
+	switch (rand() % 5)
+	{
+		default: std::cout << name << " performs a magic trick in front of "\
+			<< targetName << ". The sheer awesomness of this trick blows them "\
+			<< "away, literally." << std::endl;
+			break;
+		case 1: std::cout << name << " gathers all their willpower, and "\
+			<< "summons a meteor that comes crashing onto " << targetName \
+			<< ". Or maybe it was just a coincidence." << std::endl;
+			break;
+		case 2: std::cout << name << " multiplexes into the router, and "
+			<< "reverse-compiles the firewall using " << targetName << "'s "\
+			<< "MAC ip adress. This does not achieve anything, but the "\
+			<< "anti-cheat system ends up banning " << targetName << " instead "\
+			<< "of " << name << std::endl;
+			break;
+		case 3: std::cout << name << " opens their top trap. A smaller FR4G-TP "\
+			<< "comes out of it and... oh no, there's more coming, and they're "\
+			<< "not stopping ! Run, " << targetName << " ! Run for your "\
+			<< "life !" << std::endl;
+			break;
+		case 4: std::cout << name << " flamboyantly rips off their body shell, "\
+			<< "exposing all their internal circuitery. This uncalled display "\
+			<< "of robo-nudity scares " << targetName << " for life." << std::endl;
+			break;
+	}
 }
 
 void	FragTrap::msgDefaultConstructor(void) const {
