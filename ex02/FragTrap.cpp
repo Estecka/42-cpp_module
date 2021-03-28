@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 15:19:21 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/28 17:10:14 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/28 17:44:51 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,7 @@ FragTrap::~FragTrap(){
 }
 
 FragTrap& FragTrap::operator=(const FragTrap& original){
-	this->name = original.name;
-	this->hitPoints = original.hitPoints;
-	this->hitPointsMax = original.hitPointsMax;
-	this->energyPoints = original.energyPoints;
-	this->energyPointsMax = original.energyPointsMax;
-	this->level = original.level;
-	this->atkMelee = original.atkMelee;
-	this->atkRanged = original.atkRanged;
-	this->def = original.def;
+	*(ClapTrap*)this = *(const ClapTrap*)&original;
 	return *this;
 }
 
@@ -105,7 +97,7 @@ void	FragTrap::msgCopyConstructor(const FragTrap& original) const {
 }
 void	FragTrap::msgNamedConstructor(std::string name) const {
 	(void)name;
-	std::cout << name << " now have a FR4G-TP mod to their name !"\
+	std::cout << name << " now has a FR4G-TP mod to their name !"\
 		<< std::endl;
 }
 void	FragTrap::msgDestructor() const {
