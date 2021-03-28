@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 19:23:42 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/27 20:00:39 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/28 16:01:35 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,6 @@ protected:
 
 	virtual void	defaultInit(void);
 
-	virtual void	msgDefaultConstructor(void) const;
-	virtual void	msgCopyConstructor(const ClapTrap& original) const;
-	virtual void	msgNamedConstructor(std::string name) const;
-	virtual void	msgDestructor() const;
 
 	virtual void	msgMelee(std::string targetName) const;
 	virtual void	msgRanged(std::string targetName) const;
@@ -56,6 +52,12 @@ protected:
 	virtual void	msgFullHealth() const;
 	virtual void	msgNoEnergy() const;
 	virtual void	msgNoHealth() const;
+
+private:
+	void	msgDefaultConstructor(void) const;
+	void	msgCopyConstructor(const ClapTrap& original) const;
+	void	msgNamedConstructor(std::string name) const;
+	void	msgDestructor() const;
 };
 
 

@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 14:43:44 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/28 14:21:17 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/28 15:45:51 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ static void	TestClapTrap(){
 }
 
 static void	TestFragTrap(){
+	std::cout << std::endl << "======== FR4G-TP ========" << std::endl;
 	FragTrap ftp("F1LE-TP");
 
 	std::cout << std::endl << "==Healing==" << std::endl;
