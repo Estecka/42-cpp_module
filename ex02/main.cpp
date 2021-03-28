@@ -6,12 +6,12 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 14:43:44 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/28 14:15:57 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/28 14:21:17 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
-// #include "FragTrap.hpp"
+#include "FragTrap.hpp"
 // #include "ScavTrap.hpp"
 
 #pragma clang diagnostic ignored "-Wunused-function"
@@ -52,7 +52,6 @@ static void	TestClapTrap(){
 }
 
 static void	TestFragTrap(){
-	/*
 	FragTrap ftp("F1LE-TP");
 
 	std::cout << std::endl << "==Healing==" << std::endl;
@@ -81,7 +80,6 @@ static void	TestFragTrap(){
 	ftp.vaulthunter_dot_exe("the President");
 
 	std::cout << std::endl;
-	*/
 }
 
 static void	TestScavTrap(){
