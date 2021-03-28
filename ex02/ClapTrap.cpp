@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 19:34:50 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/27 20:01:26 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/28 14:14:41 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	ClapTrap::defaultInit(void){
 	this->name = "ClapityClap the default CL4P-TP";
-	this->hitPoints = 1;
-	this->hitPointsMax = 1;
-	this->energyPoints = 1;
-	this->energyPointsMax = 1;
+	this->hitPoints = 10;
+	this->hitPointsMax = 10;
+	this->energyPoints = 25;
+	this->energyPointsMax = 25;
 	this->level = 1;
-	this->atkMelee = 0;
-	this->atkRanged = 0;
-	this->def = 0;
+	this->atkMelee = 1;
+	this->atkRanged = 1;
+	this->def = 1;
 }
 
 ClapTrap::ClapTrap(void){
@@ -105,43 +105,62 @@ void	ClapTrap::beRepaired(unsigned int healAmount){
 }
 
 
-std::string	ClapTrap::msgDefaultConstructor(void) const{
-	return "";
+void	ClapTrap::msgDefaultConstructor(void) const{
+	std::cout << "Bother, another lambda CL4P-TP was made."\
+		<< std::endl;
 }
-std::string	ClapTrap::msgCopyConstructor(const ClapTrap& original) const{
-	return "";
+void	ClapTrap::msgCopyConstructor(const ClapTrap& original) const{
+	std::cout << "A CL4P-TP was made by copying " << original.name << ", "\
+		<< "the audacity of that guy !"\
+		<< std::endl;
 }
-std::string	ClapTrap::msgNamedConstructor(std::string name) const{
-	return "";
+void	ClapTrap::msgNamedConstructor(std::string name) const{
+	std::cout << "Bother, another CL4P-TP was made, and this one called "\
+		<< "themselve " << name << "."\
+		<< std::endl;
 }
-std::string	ClapTrap::msgDestructor() const{
-	return "";
+void	ClapTrap::msgDestructor() const{
+	std::cout << name << " accidentally triggered their self-destruct "\
+		<< "protocol. Now they look like a burnt tire. Not a pretty sight."\
+		<< std::endl;
 }
 
-std::string	ClapTrap::msgMelee(std::string targetName) const{
-	return "";
+void	ClapTrap::msgMelee(std::string targetName) const{
+	std::cout << name << " hit " << targetName << " with a shovel, "\
+		<< "dealing " << atkMelee << "dmg."\
+		<< std::endl;
 }
-std::string	ClapTrap::msgRanged(std::string targetName) const{
-	return "";
+void	ClapTrap::msgRanged(std::string targetName) const{
+	std::cout << name << " threw a small pebble at " << targetName \
+		<< ", dealing " << atkRanged << "dmg."\
+		<< std::endl;
 }
-std::string	ClapTrap::msgDamage(unsigned amount) const{
-	return "";
+void	ClapTrap::msgDamage(unsigned amount) const{
+	std::cout << name << "'s feeling were hurt for -" << amount << "HP."\
+		<< std::endl;
 }
-std::string	ClapTrap::msgNoDamage() const{
-	return "";
+void	ClapTrap::msgNoDamage() const{
+	std::cout << name << " didn't even feel a thing !"\
+		<< std::endl;
 }
-std::string	ClapTrap::msgAlreadyDead() const{
-	return "";
+void	ClapTrap::msgAlreadyDead() const{
+	std::cout << "You don't know it yet, but " << name \
+		<< " is already dead."\
+		<< std::endl;
 }
-std::string	ClapTrap::msgHeal(unsigned amount) const{
-	return "";
+void	ClapTrap::msgHeal(unsigned amount) const{
+	std::cout << name << "'s feeling better. They gain +" << amount << "HP."\
+		<< std::endl;
 }
-std::string	ClapTrap::msgFullHealth() const{
-	return "";
+void	ClapTrap::msgFullHealth() const{
+	std::cout << name << " is ready and kicking !" << std::endl;
 }
-std::string	ClapTrap::msgNoEnergy() const{
-	return "";
+void	ClapTrap::msgNoEnergy() const{
+	std::cout << "If you see that message, something went wrong with " << name \
+		<< std::endl;
 }
-std::string	ClapTrap::msgNoHealth() const{
-	return "";
+void	ClapTrap::msgNoHealth() const{
+	std::cout << name << " is kind of sick and can't do that right now. "\
+		<< "Jk, they're completely dead."\
+		<< std::endl;
 }

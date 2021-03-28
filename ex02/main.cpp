@@ -6,16 +6,53 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 14:43:44 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/27 16:19:15 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/28 14:15:57 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
-#include "ScavTrap.hpp"
+#include "ClapTrap.hpp"
+// #include "FragTrap.hpp"
+// #include "ScavTrap.hpp"
 
 #pragma clang diagnostic ignored "-Wunused-function"
 
+static void	TestClapTrap();
+static void	TestScavTrap();
+static void	TestFragTrap();
+
+extern int	main(){
+	TestClapTrap();
+	TestScavTrap();
+	TestFragTrap();
+}
+
+static void	TestClapTrap(){
+	std::cout << std::endl << "======== CL4P-TP ========" << std::endl;
+
+	ClapTrap tcp("TR4P-CP");
+
+	std::cout << std::endl << "==Healing==" << std::endl;
+	tcp.takeDamage(0);
+	tcp.beRepaired(100);
+	tcp.takeDamage(5);
+	tcp.beRepaired(50);
+
+
+	std::cout << std::endl << "==Basic attacks==" << std::endl;
+	tcp.meleeAttack("that guy over there");
+	tcp.rangedAttack("their neighbourg");
+
+	std::cout << std::endl << "==death==" << std::endl;
+	tcp.takeDamage(9999);
+	tcp.takeDamage(9999);
+	tcp.meleeAttack("the Mayor");
+	tcp.rangedAttack("the President");
+
+	std::cout << std::endl;
+}
+
 static void	TestFragTrap(){
+	/*
 	FragTrap ftp("F1LE-TP");
 
 	std::cout << std::endl << "==Healing==" << std::endl;
@@ -44,9 +81,11 @@ static void	TestFragTrap(){
 	ftp.vaulthunter_dot_exe("the President");
 
 	std::cout << std::endl;
+	*/
 }
 
 static void	TestScavTrap(){
+	/*
 	ScavTrap http("H0T-TP");
 
 	std::cout << std::endl << "==Healing==" << std::endl;
@@ -73,9 +112,5 @@ static void	TestScavTrap(){
 	http.challengeNewcomer();
 
 	std::cout << std::endl;
-}
-
-extern int	main(){
-	TestScavTrap();
-	// TestFragTrap();
+	*/
 }
