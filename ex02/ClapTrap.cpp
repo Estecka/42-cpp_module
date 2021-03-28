@@ -6,14 +6,13 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 19:34:50 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/28 14:14:41 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/28 17:01:20 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 void	ClapTrap::defaultInit(void){
-	this->name = "ClapityClap the default CL4P-TP";
 	this->hitPoints = 10;
 	this->hitPointsMax = 10;
 	this->energyPoints = 25;
@@ -27,6 +26,7 @@ void	ClapTrap::defaultInit(void){
 ClapTrap::ClapTrap(void){
 	msgDefaultConstructor();
 	this->defaultInit();
+	this->name = "ClapityClap the default CL4P-TP";
 }
 ClapTrap::ClapTrap(const ClapTrap& original){
 	msgCopyConstructor(original);
@@ -106,22 +106,21 @@ void	ClapTrap::beRepaired(unsigned int healAmount){
 
 
 void	ClapTrap::msgDefaultConstructor(void) const{
-	std::cout << "Bother, another lambda CL4P-TP was made."\
+	std::cout << "A default CL4P-TP was built."\
 		<< std::endl;
 }
 void	ClapTrap::msgCopyConstructor(const ClapTrap& original) const{
-	std::cout << "A CL4P-TP was made by copying " << original.name << ", "\
-		<< "the audacity of that guy !"\
+	std::cout << "A CL4P-TP was built by copying " << original.name << "."\
 		<< std::endl;
 }
 void	ClapTrap::msgNamedConstructor(std::string name) const{
-	std::cout << "Bother, another CL4P-TP was made, and this one called "\
-		<< "themselve " << name << "."\
+	std::cout << "A CL4P-TP was built, and hereby dubbed " << name << "."\
 		<< std::endl;
 }
 void	ClapTrap::msgDestructor() const{
-	std::cout << name << " accidentally triggered their self-destruct "\
-		<< "protocol. Now they look like a burnt tire. Not a pretty sight."\
+	std::cout << name << " accidentally triggered their self-destruct protocol. "\
+		<< "Now they look like a small smoking crater. "\
+		<< "Isn't that a nice improvement ?"\
 		<< std::endl;
 }
 

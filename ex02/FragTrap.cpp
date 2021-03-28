@@ -6,14 +6,15 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 15:19:21 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/28 16:10:06 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/28 17:10:14 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
+#include <stdlib.h>
+
 void	FragTrap::defaultInit(void){
-	this->name = "FraggyChan the default FR4G-TP";
 	this->hitPoints = 100;
 	this->hitPointsMax = 100;
 	this->energyPoints = 100;
@@ -27,6 +28,7 @@ void	FragTrap::defaultInit(void){
 FragTrap::FragTrap(void) : ClapTrap(){
 	msgDefaultConstructor();
 	defaultInit();
+	this->name = "FraggyChan the default FR4G-TP";
 }
 FragTrap::FragTrap(const FragTrap& original) : ClapTrap(original){
 	msgCopyConstructor(original);
@@ -34,6 +36,8 @@ FragTrap::FragTrap(const FragTrap& original) : ClapTrap(original){
 }
 FragTrap::FragTrap(std::string name) : ClapTrap(name){
 	msgNamedConstructor(name);
+	defaultInit();
+	this->name = name;
 }
 FragTrap::~FragTrap(){
 	msgDestructor();
@@ -51,8 +55,6 @@ FragTrap& FragTrap::operator=(const FragTrap& original){
 	this->def = original.def;
 	return *this;
 }
-
-#pragma clang diagnostic ignored "-Wunused-parameter"
 
 void	FragTrap::vaulthunter_dot_exe(std::string targetName){
 	if (this->hitPoints <= 0){
@@ -93,7 +95,7 @@ void	FragTrap::vaulthunter_dot_exe(std::string targetName){
 }
 
 void	FragTrap::msgDefaultConstructor(void) const {
-	std::cout << name << "received a default FR4G-TP mod !"\
+	std::cout << "The default CL4P-TP received a default FR4G-TP mod !"\
 		<< std::endl;
 }
 void	FragTrap::msgCopyConstructor(const FragTrap& original) const {
@@ -103,7 +105,7 @@ void	FragTrap::msgCopyConstructor(const FragTrap& original) const {
 }
 void	FragTrap::msgNamedConstructor(std::string name) const {
 	(void)name;
-	std::cout << name << " received a named FR4G-TP mod !"\
+	std::cout << name << " now have a FR4G-TP mod to their name !"\
 		<< std::endl;
 }
 void	FragTrap::msgDestructor() const {
