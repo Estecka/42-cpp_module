@@ -6,13 +6,13 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 18:20:09 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/28 19:01:04 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/28 19:08:49 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "NinjaTrap.hpp"
 
-void	FragTrap::defaultInit(void){
+void	NinjaTrap::defaultInit(void){
 	this->hitPoints = 60;
 	this->hitPointsMax = 60;
 	this->energyPoints = 120;
@@ -23,25 +23,25 @@ void	FragTrap::defaultInit(void){
 	this->def = 0;
 }
 
-FragTrap::FragTrap(void) : ClapTrap(){
+NinjaTrap::NinjaTrap(void) : ClapTrap(){
 	msgDefaultConstructor();
 	defaultInit();
 	this->name = "Jacky the default N1NJ4-TP";
 }
-FragTrap::FragTrap(const FragTrap& original) : ClapTrap(original){
+NinjaTrap::NinjaTrap(const NinjaTrap& original) : ClapTrap(original){
 	msgCopyConstructor(original);
 	*this = original;
 }
-FragTrap::FragTrap(std::string name) : ClapTrap(name){
+NinjaTrap::NinjaTrap(std::string name) : ClapTrap(name){
 	msgNamedConstructor(name);
 	defaultInit();
 	this->name = name;
 }
-FragTrap::~FragTrap(){
+NinjaTrap::~NinjaTrap(){
 	msgDestructor();
 }
 
-FragTrap& FragTrap::operator=(const FragTrap& original){
+NinjaTrap& NinjaTrap::operator=(const NinjaTrap& original){
 	*(ClapTrap*)this = *(const ClapTrap*)&original;
 	return *this;
 }
@@ -71,62 +71,62 @@ void	NinjaTrap::ninjaShoebox(const NinjaTrap& target){
 }
 
 
-void	FragTrap::msgDefaultConstructor(void) const {
+void	NinjaTrap::msgDefaultConstructor(void) const {
 	std::cout << "The default CL4P-TP received a default N1NJ4-TP mod !"\
 		<< std::endl;
 }
-void	FragTrap::msgCopyConstructor(const FragTrap& original) const {
+void	NinjaTrap::msgCopyConstructor(const NinjaTrap& original) const {
 	(void)original;
 	std::cout << original.name << " also copied a N1NJ4-TP mod !"\
 		<< std::endl;
 }
-void	FragTrap::msgNamedConstructor(std::string name) const {
+void	NinjaTrap::msgNamedConstructor(std::string name) const {
 	(void)name;
 	std::cout << name << " now has a N1NJ4-TP mod to their name !"\
 		<< std::endl;
 }
-void	FragTrap::msgDestructor() const {
+void	NinjaTrap::msgDestructor() const {
 	std::cout << name << "'s N1NJ4-TP module self-destruction: enabled"\
 		<< std::endl;
 }
 
-void	FragTrap::msgMelee(std::string targetName) const {
+void	NinjaTrap::msgMelee(std::string targetName) const {
 	std::cout << name << " struck " << targetName << " from the shadows, "\
 		<< "dealing " << atkMelee << "dmg."\
 		<< std::endl;
 }
-void	FragTrap::msgRanged(std::string targetName) const {
+void	NinjaTrap::msgRanged(std::string targetName) const {
 	std::cout << name << " flinged a needle toward " << targetName << ", "\
 		<< "dealing " << atkRanged << "dmg."\
 		<< std::endl;
 }
-void	FragTrap::msgDamage(unsigned amount) const {
+void	NinjaTrap::msgDamage(unsigned amount) const {
 	std::cout << name << " didn't see that one coming. "\
 		<< "They take -" << amount << "HP."\
 		<< std::endl;
 }
-void	FragTrap::msgNoDamage() const {
+void	NinjaTrap::msgNoDamage() const {
 		std::cout << name << " dodged everything ! Somehow."\
 			<< std::endl;
 }
-void	FragTrap::msgAlreadyDead() const {
+void	NinjaTrap::msgAlreadyDead() const {
 	std::cout << name << "'s grave is being desacralised."\
 		<< std::endl;
 }
-void	FragTrap::msgHeal(unsigned amount) const {
+void	NinjaTrap::msgHeal(unsigned amount) const {
 	std::cout << name << " refocused their robo-shakra. "\
 		<< "They heal for +" << amount << "HP !"\
 		<< std::endl;
 }
-void	FragTrap::msgFullHealth() const {
+void	NinjaTrap::msgFullHealth() const {
 	std::cout << name << " is now the mightiest trap in the known universe !"\
 		<< std::endl;
 }
-void	FragTrap::msgNoEnergy() const {
+void	NinjaTrap::msgNoEnergy() const {
 	std::cout << name << "'s ki is failing. This effort is vain."\
 		<< std::endl;
 }
-void	FragTrap::msgNoHealth() const {
+void	NinjaTrap::msgNoHealth() const {
 	std::cout << name << "'s determination failed them. "\
 		<< "They can't take this action."\
 		<< std::endl;
