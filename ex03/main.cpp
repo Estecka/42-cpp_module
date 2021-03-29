@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 14:43:44 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/28 19:15:10 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/29 15:21:28 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,7 @@ static void	TestNinjaTrap(){
 
 
 	std::cout << std::endl << "==Healing==" << std::endl;
+	clap.takeDamage(0);
 	clap.takeDamage(5);
 	clap.beRepaired(100);
 	clap.takeDamage(25);
@@ -147,21 +148,22 @@ static void	TestNinjaTrap(){
 	clap.meleeAttack("that guy over there");
 	clap.rangedAttack("their neighbourg");
 
-	std::cout << std::endl << "==challenger==" << std::endl;
-
+	std::cout << std::endl << "==Ninja Shoe-box==" << std::endl;
 	ClapTrap* oclap = new ClapTrap();
-	ninja.ninjaShoebox(*oclap);
-	delete oclap;
 	FragTrap* ofrag = new FragTrap();
-	ninja.ninjaShoebox(*ofrag);
-	delete ofrag;
 	ScavTrap* oscav = new ScavTrap();
-	ninja.ninjaShoebox(*oscav);
-	delete oscav;
 	NinjaTrap* onin = new NinjaTrap();
+	std::cout << std::endl;
+	ninja.ninjaShoebox(*oclap);
+	ninja.ninjaShoebox(*ofrag);
+	ninja.ninjaShoebox(*oscav);
 	ninja.ninjaShoebox(*onin);
-	delete onin;
 	ninja.ninjaShoebox(ninja);
+	std::cout << std::endl;
+	delete oclap;
+	delete ofrag;
+	delete oscav;
+	delete onin;
 
 	std::cout << std::endl << "==death==" << std::endl;
 	ninja.takeDamage(9999);

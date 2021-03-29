@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 18:20:09 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/28 19:08:49 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/29 15:19:51 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,34 @@ NinjaTrap& NinjaTrap::operator=(const NinjaTrap& original){
 }
 
 void	NinjaTrap::ninjaShoebox(const ClapTrap& target){
+	if (hitPoints <= 0) {
+		msgNoHealth();
+		return;
+	}
 	std::cout << this->name << " clapped the trap of " << target.getName() << " !"\
 		<< std::endl;
 }
 void	NinjaTrap::ninjaShoebox(const FragTrap& target){
+	if (hitPoints <= 0) {
+		msgNoHealth();
+		return;
+	}
 	std::cout << this->name << " threw a fragmentation grenade at " << target.getName() << " !"\
 		<< std::endl;
 }
 void	NinjaTrap::ninjaShoebox(const ScavTrap& target){
+	if (hitPoints <= 0) {
+		msgNoHealth();
+		return;
+	}
 	std::cout << this->name << " looted the body of " << target.getName() << " !"\
 		<< std::endl;
 }
 void	NinjaTrap::ninjaShoebox(const NinjaTrap& target){
+	if (hitPoints <= 0) {
+		msgNoHealth();
+		return;
+	}
 	if (this == &target)
 		std::cout << this->name << " is congratulating himself."\
 			<< std::endl;
