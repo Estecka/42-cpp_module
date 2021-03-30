@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 14:05:20 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/30 17:23:19 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/30 18:51:25 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ void	SuperTrap::msgHeal(unsigned amount)   const { this->ClapTrap::msgHeal(amoun
 void	SuperTrap::msgNoDamage()    const { this->ClapTrap::msgNoDamage();    }
 void	SuperTrap::msgAlreadyDead() const { this->ClapTrap::msgAlreadyDead(); }
 void	SuperTrap::msgFullHealth()  const { this->ClapTrap::msgFullHealth();  }
-void	SuperTrap::msgNoEnergy()    const { this->ClapTrap::msgNoEnergy();    }
 void	SuperTrap::msgNoHealth()    const { this->ClapTrap::msgNoHealth();    }
+void	SuperTrap::msgNoEnergy()    const { this->FragTrap::msgNoEnergy();    }
 
 void	SuperTrap::msgDefaultConstructor() const{
 	std::cout << "What's happening? " << name << " evolved into a default "\
