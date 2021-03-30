@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 18:57:11 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/27 15:37:34 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/30 17:38:27 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ FragTrap& FragTrap::operator=(const FragTrap& original){
 }
 
 
-void	FragTrap::meleeAttack(std::string targetName) {
+void	FragTrap::meleeAttack(const std::string& targetName) {
 	if (this->hitPoints <= 0) {
 		std::cout << name << " tried their best to attack, but couldn't do it "\
 			<< "because they're _dead_. " << targetName << " laughes at this "\
@@ -75,7 +75,7 @@ void	FragTrap::meleeAttack(std::string targetName) {
 		<< std::endl;
 }
 
-void	FragTrap::rangedAttack(std::string targetName) {
+void	FragTrap::rangedAttack(const std::string& targetName) {
 	if (this->hitPoints <= 0) {
 			std::cout << targetName << " is too far away from robo-heaven for "\
 				<< name << " to be able to attack." << std::endl;

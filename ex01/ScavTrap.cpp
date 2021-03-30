@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 18:57:11 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/27 16:18:44 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/30 17:44:44 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& original){
 }
 
 
-void	ScavTrap::meleeAttack(std::string targetName) {
+void	ScavTrap::meleeAttack(const std::string& targetName) {
 	if (this->hitPoints <= 0) {
 		std::cout << name << " is in no shape for melee attacks." << std::endl;
 		return;
@@ -72,7 +72,7 @@ void	ScavTrap::meleeAttack(std::string targetName) {
 		<< "over and take -" << atkMelee << "HP." << std::endl;
 }
 
-void	ScavTrap::rangedAttack(std::string targetName) {
+void	ScavTrap::rangedAttack(const std::string& targetName) {
 	if (this->hitPoints <= 0) {
 			std::cout << targetName << " is too far away from robo-hell for "\
 				<< name << " to be able to attack." << std::endl;
@@ -144,7 +144,7 @@ void	ScavTrap::challengeNewcomer(){
 			break;
 		case 2: std::cout << "Over my dead body !";
 			break;
-		case 3: std::cout << "For that you'll need to carry the ring to Mordor "\
+		case 3: std::cout << "For that you'll need to carry the ring to Mordor. "\
 			<< "Sorry, I don't make the rules.";
 			break;
 		case 4: std::cout << "Dance for me, first. Dance I say !";

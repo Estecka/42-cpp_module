@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 19:34:50 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/30 15:22:29 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/30 17:47:47 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,14 @@ void	ClapTrap::showStats() const {
 		;
 }
 
-void	ClapTrap::meleeAttack(std::string targetName) {
+void	ClapTrap::meleeAttack(const std::string& targetName) {
 	if (this->hitPoints <= 0)
 		msgNoHealth();
 	else
 		msgMelee(targetName);
 }
 
-void	ClapTrap::rangedAttack(std::string targetName) {
+void	ClapTrap::rangedAttack(const std::string& targetName) {
 	if (this->hitPoints <= 0)
 		msgNoHealth();
 	else

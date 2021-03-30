@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 19:23:42 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/30 15:17:19 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/30 17:47:35 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ public:
 	ClapTrap(std::string name);
 	virtual ~ClapTrap();
 
-	void	rangedAttack(std::string targetName);
-	void	meleeAttack(std::string targetName);
+	void	rangedAttack(const std::string& targetName);
+	void	meleeAttack(const std::string& targetName);
 	void	takeDamage(unsigned int	dmgAmount);
 	void	beRepaired(unsigned int	healAmount);
 
