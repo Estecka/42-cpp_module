@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 14:05:20 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/30 15:50:43 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/30 17:23:19 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,16 @@ void	SuperTrap::defaultInit(void){
 	this->name = "SoupError, the default 2UP3R-TP";
 	this->level = 1;
 
-	this->hitPoints    = this->FragTrap::hitPoints;
-	this->hitPointsMax = this->FragTrap::hitPointsMax;
-	this->atkRanged    = this->FragTrap::atkRanged;
-	this->def          = this->FragTrap::def;
+	// FragTrap values
+	this->hitPoints    = 100;
+	this->hitPointsMax = 100;
+	this->atkRanged    = 20;
+	this->def          = 5;
 
-	this->energyPoints    = this->NinjaTrap::energyPoints;
-	this->energyPointsMax = this->NinjaTrap::energyPointsMax;
-	this->atkMelee        = this->NinjaTrap::atkMelee;
+	// NinjaTrap values
+	this->energyPoints    = 120;
+	this->energyPointsMax = 120;
+	this->atkMelee        = 60;
 }
 
 SuperTrap::SuperTrap(void) 
