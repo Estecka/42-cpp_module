@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 14:43:44 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/30 15:09:45 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/30 15:26:27 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ static void	TestClapTrap(){
 
 	ClapTrap clap("TR4P-CP");
 
+	clap.showStats();
+
 	std::cout << std::endl << "==Healing==" << std::endl;
 	clap.takeDamage(0);
 	clap.beRepaired(100);
@@ -72,6 +74,8 @@ static void	TestFragTrap(){
 
 	FragTrap frag("F1LE-TP");
 	ClapTrap& clap = frag;
+
+	frag.showStats();
 
 	std::cout << std::endl << "==Healing==" << std::endl;
 	clap.takeDamage(4);
@@ -107,6 +111,7 @@ static void	TestScavTrap(){
 	ScavTrap scav("H0T-TP");
 	ClapTrap& clap = scav;
 
+	scav.showStats();
 
 	std::cout << std::endl << "==Healing==" << std::endl;
 	clap.takeDamage(3);
@@ -140,6 +145,7 @@ static void	TestNinjaTrap(){
 	NinjaTrap ninja("N4RU-TP");
 	ClapTrap& clap = ninja;
 
+	ninja.showStats();
 
 	std::cout << std::endl << "==Healing==" << std::endl;
 	clap.takeDamage(0);
@@ -181,12 +187,14 @@ static void	TestNinjaTrap(){
 }
 
 static void	TestSuperTrap(){
-	std::cout << std::endl << "======== N1NJ4-TP ========" << std::endl;
+	std::cout << std::endl << "======== 2UP3R-TP ========" << std::endl;
 
 	SuperTrap super("SoupErr0r");
 	ClapTrap& clap = super;
 	FragTrap& frag = super;
 	NinjaTrap& ninja = super;
+
+	super.showStats();
 
 	std::cout << std::endl << "==Healing==" << std::endl;
 	clap.takeDamage(0);

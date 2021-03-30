@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 19:23:42 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/28 19:35:54 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/30 15:17:19 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ public:
 	void	meleeAttack(std::string targetName);
 	void	takeDamage(unsigned int	dmgAmount);
 	void	beRepaired(unsigned int	healAmount);
+
+	std::string	getName() const;
+	void	showStats() const;
 
 protected:
 	std::string	name;
@@ -59,6 +62,5 @@ private:
 	void	msgNamedConstructor(std::string name) const;
 	void	msgDestructor() const;
 };
-
 
 #endif
