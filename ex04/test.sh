@@ -6,5 +6,6 @@ make all || exit;
 ./fragtrap.out > fragtrap.log
 ./scavtrap.out > scavtrap.log
 ./ninjatrap.out > ninjatrap.log
+./supertrap.out > supertrap.log
 
 valgrind ./alltrap.out 1>/dev/null

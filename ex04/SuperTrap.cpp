@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 14:05:20 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/30 14:50:26 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/30 14:57:22 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,3 +44,14 @@ SuperTrap& SuperTrap::operator =(const SuperTrap& original){
 	this->def = original.def;
 	return *this;
 }
+
+void	SuperTrap::msgMelee(std::string targetName)  const { this->NinjaTrap::msgMelee(targetName); }
+void	SuperTrap::msgRanged(std::string targetName) const { this->FragTrap::msgRanged(targetName); }
+
+void	SuperTrap::msgDamage(unsigned amount) const { this->ClapTrap::msgDamage(amount); }
+void	SuperTrap::msgHeal(unsigned amount)   const { this->ClapTrap::msgHeal(amount);   }
+void	SuperTrap::msgNoDamage()    const { this->ClapTrap::msgNoDamage();    }
+void	SuperTrap::msgAlreadyDead() const { this->ClapTrap::msgAlreadyDead(); }
+void	SuperTrap::msgFullHealth()  const { this->ClapTrap::msgFullHealth();  }
+void	SuperTrap::msgNoEnergy()    const { this->ClapTrap::msgNoEnergy();    }
+void	SuperTrap::msgNoHealth()    const { this->ClapTrap::msgNoHealth();    }
