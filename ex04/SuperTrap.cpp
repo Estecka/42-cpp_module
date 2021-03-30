@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 14:05:20 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/30 14:57:22 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/30 15:50:43 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,28 @@ void	SuperTrap::defaultInit(void){
 	this->atkMelee        = this->NinjaTrap::atkMelee;
 }
 
-SuperTrap::SuperTrap(void){}
-SuperTrap::SuperTrap(const SuperTrap& original){}
-SuperTrap::SuperTrap(std::string name){}
-SuperTrap::~SuperTrap(){}
+SuperTrap::SuperTrap(void) 
+: ClapTrap(), NinjaTrap(), FragTrap()
+{
+	this->defaultInit();
+	this->msgDefaultConstructor();
+}
+SuperTrap::SuperTrap(const SuperTrap& original) 
+: ClapTrap(original), NinjaTrap(original), FragTrap(original)
+{
+	*this = original;
+	this->msgCopyConstructor(original);
+}
+SuperTrap::SuperTrap(std::string name)
+: ClapTrap(name), NinjaTrap(name), FragTrap(name)
+{
+	this->defaultInit();
+	this->name = name;
+	this->msgNamedConstructor(name);
+}
+SuperTrap::~SuperTrap(){
+	this->msgDestructor();
+}
 
 SuperTrap& SuperTrap::operator =(const SuperTrap& original){
 	this->name = original.name;
@@ -55,3 +73,24 @@ void	SuperTrap::msgAlreadyDead() const { this->ClapTrap::msgAlreadyDead(); }
 void	SuperTrap::msgFullHealth()  const { this->ClapTrap::msgFullHealth();  }
 void	SuperTrap::msgNoEnergy()    const { this->ClapTrap::msgNoEnergy();    }
 void	SuperTrap::msgNoHealth()    const { this->ClapTrap::msgNoHealth();    }
+
+void	SuperTrap::msgDefaultConstructor() const{
+	std::cout << "What's happening? " << name << " evolved into a default "\
+		<< "2UP3R-TP !"\
+		<< std::endl;
+}
+void	SuperTrap::msgCopyConstructor(const SuperTrap& original) const{
+	std::cout << "What's happening? " << name << " evolved into a copied "\
+		<< "2UP3R-TP !"\
+		<< std::endl;
+}
+void	SuperTrap::msgNamedConstructor(std::string name) const{
+	std::cout << "What's happening? " << name << " evolved into a named "\
+		<< "2UP3R-TP !"\
+		<< std::endl;
+}
+void	SuperTrap::msgDestructor() const {
+	std::cout << name << "'s diamond structure is tearing at the seams. "\
+		<< "Looks like diamond's not unbreakable after all."\
+		<< std::endl;
+}
