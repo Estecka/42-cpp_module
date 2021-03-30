@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   SuperTrap.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/28 14:17:15 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/30 14:30:03 by abaur            ###   ########.fr       */
+/*   Created: 2021/03/30 13:51:39 by abaur             #+#    #+#             */
+/*   Updated: 2021/03/30 14:38:57 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-#define FRAGTRAP_HPP
+#ifndef SUPERTRAP_HPP
+#define SUPERTRAP_HPP
 
-#include "ClapTrap.hpp"
+#include "FragTrap.hpp"
+#include "NinjaTrap.hpp"
 
-class FragTrap : public virtual ClapTrap
+class SuperTrap : public NinjaTrap, public FragTrap
 {
 public:
-	FragTrap(void);
-	FragTrap& operator =(const FragTrap&);
-	FragTrap(const FragTrap&);
-	FragTrap(std::string name);
-	~FragTrap();
-
-	void	vaulthunter_dot_exe(std::string targetName);
+	SuperTrap(void);
+	SuperTrap& operator =(const SuperTrap&);
+	SuperTrap(const SuperTrap&);
+	SuperTrap(std::string name);
+	~SuperTrap();
 
 protected:
 	virtual void	defaultInit(void);
-
 
 	virtual void	msgMelee(std::string targetName) const;
 	virtual void	msgRanged(std::string targetName) const;
@@ -41,7 +39,7 @@ protected:
 	virtual void	msgNoHealth() const;
 
 private:
-	void	msgCopyConstructor(const FragTrap& original) const;
+	void	msgCopyConstructor(const SuperTrap& original) const;
 	void	msgDefaultConstructor(void) const;
 	void	msgNamedConstructor(std::string name) const;
 	void	msgDestructor() const;

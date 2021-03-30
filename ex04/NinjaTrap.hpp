@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 18:15:44 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/28 18:18:58 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/30 14:29:40 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
 
-class NinjaTrap : public ClapTrap
+class NinjaTrap : public virtual ClapTrap
 {
 public:
 	NinjaTrap(void);
