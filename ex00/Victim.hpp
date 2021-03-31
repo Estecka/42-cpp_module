@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 18:03:14 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/31 19:28:07 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/31 19:45:08 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ protected:
 	std::string	name;
 };
 
-std::ostream&	operator <<(const std::ostream& dst, const Victim& src);
+std::ostream&	operator <<(std::ostream& dst, const Victim& src);
 
 #endif

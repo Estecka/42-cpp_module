@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 18:53:22 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/31 19:21:55 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/31 19:42:57 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,12 @@ Victim::~Victim(){
 
 Victim&	Victim::operator =(const Victim& other){
 	this->name = other.name;
+	return *this;
 }
 
 std::ostream&	operator <<(std::ostream& dst, const Victim& src){
 	dst << "I am " << src.getName() << " and I like otters!" << std::endl;
+	return dst;
 }
 
 std::string	Victim::getName() const  { return this->name; }

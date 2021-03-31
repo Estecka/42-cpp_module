@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 19:27:31 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/31 19:31:55 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/31 19:43:16 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ Peon::~Peon(){
 
 Peon&	Peon::operator =(const Peon& other){
 	this->name = other.name;
+	return *this;
 }
 
 void	Peon::getPolymorphed() const {
