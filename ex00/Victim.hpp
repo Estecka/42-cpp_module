@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 18:03:14 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/31 18:10:53 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/31 18:54:35 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class Victim
 {
 public:
 	Victim(void);
-	Victim(std::string name);
+	Victim(const std::string& name);
 	Victim(const Victim&);
 	~Victim();
 	Victim& operator =(const Victim&);
