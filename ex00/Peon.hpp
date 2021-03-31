@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 18:09:26 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/31 18:23:22 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/31 19:28:33 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Peon : public Victim
 {
 public:
 	Peon(void);
-	Peon(std::string name);
+	Peon(const std::string& name);
 	Peon(const Peon&);
 	~Peon();
 	Peon& operator =(const Peon&);

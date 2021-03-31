@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 18:03:14 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/31 18:54:35 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/31 19:28:07 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ public:
 
 	virtual void	getPolymorphed() const;
 
-private:
+protected:
 	std::string	name;
 };
 
