@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 18:53:22 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/31 19:42:57 by abaur            ###   ########.fr       */
+/*   Updated: 2021/03/31 19:48:34 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ Victim::Victim(void){
 }
 Victim::Victim(const std::string& name){
 	this->name = name;
-	std::cout << "Some random victim called " << this->name << " just appeard!"\
+	std::cout << "Some random victim called " << this->name << " just appeared!"\
 		<< std::endl;
 }
 Victim::Victim(const Victim& original){
 	*this = original;
-	std::cout << "Some random victim called " << this->name << " just appeard!"\
+	std::cout << "Some random victim called " << this->name << " just appeared!"\
 		<< std::endl;
 }
 Victim::~Victim(){
@@ -36,7 +36,7 @@ Victim&	Victim::operator =(const Victim& other){
 }
 
 std::ostream&	operator <<(std::ostream& dst, const Victim& src){
-	dst << "I am " << src.getName() << " and I like otters!" << std::endl;
+	dst << "I'm " << src.getName() << " and I like otters!" << std::endl;
 	return dst;
 }
 
