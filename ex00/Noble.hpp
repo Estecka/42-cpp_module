@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 15:40:45 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/01 15:46:12 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/01 16:14:19 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ public:
 	Noble& operator =(const Noble&);
 
 	std::string	getTitle() const;
+	virtual std::ostream&	ToStream(std::ostream& dst) const;
 
 	virtual void	getPolymorphed() const;
 

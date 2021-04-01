@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 18:53:22 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/01 15:49:49 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/01 16:11:08 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,15 @@ Victim&	Victim::operator =(const Victim& other){
 }
 
 std::ostream&	operator <<(std::ostream& dst, const Victim& src){
-	dst << "I'm " << src.getName() << " and I like otters!" << std::endl;
-	return dst;
+	return src.ToStream(dst);
 }
 
 std::string	Victim::getName() const  { return this->name; }
+
+std::ostream& Victim::ToStream(std::ostream& dst) const {
+	dst << "I'm " << this->name << " and I like otters!" << std::endl;
+	return dst;
+}
 
 void	Victim::getPolymorphed() const {
 	std::cout << this->name << " has been turned into a cute little sheep!"\

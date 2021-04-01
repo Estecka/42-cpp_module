@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 19:49:13 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/01 16:01:51 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/01 16:15:46 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ extern int main(){
 	std::cout << *salazar;
 	std::cout << *victim;
 	std::cout << *peon;
-	std::cout << *noble;
+	std::cout << *(Victim*)noble;
 
 	salazar->polymorph(*victim);
 	salazar->polymorph(*peon);
