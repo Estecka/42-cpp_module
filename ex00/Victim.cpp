@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 18:53:22 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/31 19:48:34 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/01 15:49:49 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 Victim::Victim(void){
 	this->name = "nondescript victim";
+	std::cout << "Some random victim called " << this->name << " just appeared!"\
+		<< std::endl;
 }
 Victim::Victim(const std::string& name){
 	this->name = name;

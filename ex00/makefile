@@ -2,11 +2,13 @@ HDRS = \
 	Sorcerer.hpp \
 	Victim.hpp \
 	Peon.hpp \
+	Noble.hpp \
 
 SRCS = \
 	Sorcerer.cpp \
 	Victim.cpp \
 	Peon.cpp \
+	Noble.cpp \
 
 OBJS = ${SRCS:.cpp=.o}
 
