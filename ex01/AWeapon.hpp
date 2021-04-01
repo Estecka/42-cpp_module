@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 17:11:00 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/01 17:20:26 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/01 17:46:51 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@
 class AWeapon
 {
 public:
-	AWeapon(void);
-	AWeapon(const AWeapon&);
 	AWeapon(const std::string& name, int apcost, int damage);
+	AWeapon(const AWeapon&);
 	~AWeapon();
 	AWeapon&	operator =(const AWeapon&);
 
@@ -29,6 +28,14 @@ public:
 	int	getDamage() const;
 
 	virtual void	attack() const = 0;
+
+protected:
+	std::string	name;
+	int	apCost;
+	int	damages;
+
+private:
+	AWeapon(void);
 };
 
 #endif
