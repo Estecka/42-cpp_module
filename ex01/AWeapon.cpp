@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 17:40:36 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/01 17:52:47 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/01 17:59:50 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ AWeapon::AWeapon(const std::string& name, int apcost, int damage){
 	this->apCost = apcost;
 	this->damages = damage;
 }
+AWeapon::~AWeapon(){
+}
+
 AWeapon&	AWeapon::operator=(const AWeapon& other){
 	this->name = other.name;
 	this->damages = other.damages;

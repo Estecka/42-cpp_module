@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 17:11:00 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/01 17:46:51 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/01 18:00:17 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class AWeapon
 public:
 	AWeapon(const std::string& name, int apcost, int damage);
 	AWeapon(const AWeapon&);
-	~AWeapon();
+	virtual ~AWeapon();
 	AWeapon&	operator =(const AWeapon&);
 
 	std::string	getName() const;
