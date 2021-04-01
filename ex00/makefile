@@ -24,9 +24,7 @@ sorcerer.out: ${OBJS} main.o
 sorcerer++.out: ${OBJS} main++.o
 	${CXX} -o sorcerer++.out main++.o ${OBJS} ${CPPFLAGS}
 
-${OBJS}: ${HDRS}
-
-all: ${NAME}
+${OBJS} main.o main++.o: ${HDRS}
 
 clean:
 	rm -f *.o
