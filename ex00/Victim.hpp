@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 18:03:14 by abaur             #+#    #+#             */
-/*   Updated: 2021/03/31 19:45:08 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/01 15:38:02 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ public:
 	Victim(void);
 	Victim(const std::string& name);
 	Victim(const Victim&);
-	~Victim();
+	virtual ~Victim();
 	Victim& operator =(const Victim&);
 
 	std::string getName() const;

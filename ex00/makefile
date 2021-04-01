@@ -3,7 +3,7 @@ HDRS = \
 	Victim.hpp \
 	Peon.hpp \
 
-SRCS = main.cpp \
+SRCS = \
 	Sorcerer.cpp \
 	Victim.cpp \
 	Peon.cpp \
@@ -15,10 +15,12 @@ NAME = sorcerer.out
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 CXX=clang++
 
-all: ${NAME}
+all: sorcerer.out sorcerer++.out
 
-${NAME}: ${OBJS}
-	${CXX} -o ${NAME} ${OBJS} ${CPPFLAGS}
+sorcerer.out: ${OBJS} main.o
+	${CXX} -o sorcerer.out main.o ${OBJS} ${CPPFLAGS}
+sorcerer++.out: ${OBJS} main++.o
+	${CXX} -o sorcerer++.out main++.o ${OBJS} ${CPPFLAGS}
 
 ${OBJS}: ${HDRS}
 
