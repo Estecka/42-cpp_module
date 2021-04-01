@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 18:12:55 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/01 18:50:23 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/01 20:45:28 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ Enemy::Enemy(int hp, const std::string& type){
 Enemy& Enemy::operator=(const Enemy& other){
 	this->type = other.type;
 	this->healthPoints = other.healthPoints;
+	this->deathCry = other.deathCry;
 	return *this;
 }
 

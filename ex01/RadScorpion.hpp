@@ -1,41 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Enemy.hpp                                          :+:      :+:    :+:   */
+/*   RadScorpion.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/01 17:14:31 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/01 20:01:39 by abaur            ###   ########.fr       */
+/*   Created: 2021/04/01 19:51:08 by abaur             #+#    #+#             */
+/*   Updated: 2021/04/01 19:56:55 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENEMY_HPP
-#define ENEMY_HPP
+#ifndef RADSCORPION_HPP
+#define RADSCORPION_HPP
 
-#include <iostream>
+#include "Enemy.hpp"
 
-class Enemy
+class RadScorpion : public Enemy
 {
 public:
-	Enemy(const Enemy&);
-	Enemy(int hp, const std::string& type);
-	virtual ~Enemy();
-	Enemy&	operator =(const Enemy&);
-
-	std::string	getType() const;
-	int	getHP() const;
-
-	virtual void	takeDamage(int amount);
-
-protected:
-	std::string	type;
-	int	healthPoints;
-
-	std::string	deathCry;
-
-private:
-	Enemy(void);
+	RadScorpion(void);
+	RadScorpion(const RadScorpion&);
+	~RadScorpion();
+	RadScorpion&	operator =(const RadScorpion&);
 };
 
 #endif
