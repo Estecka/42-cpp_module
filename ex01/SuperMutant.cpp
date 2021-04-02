@@ -6,20 +6,21 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 14:05:42 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/02 14:36:31 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/02 15:06:55 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "SuperMutant.hpp"
 
 SuperMutant::SuperMutant(void)
 : Enemy(80, "Super Mutant") {
 	this->deathCry = "Aaargh...";
+	std::cout << "Gaah. Me want smash heads!" << std::endl;
 }
 
 SuperMutant::SuperMutant(const SuperMutant& other)
 : Enemy(other) {
+	std::cout << "Gaah. Me want smash heads!" << std::endl;
 }
 
 SuperMutant::~SuperMutant(){
