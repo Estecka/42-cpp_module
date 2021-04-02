@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 16:34:35 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/02 18:04:58 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/02 18:15:48 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,21 @@ static void Attack(Character& player, Enemy*& prey){
 		prey = NULL;
 }
 
+
+static AWeapon*	g_weapons[] = {
+	new PlasmaRifle(),
+	new PowerFist(),
+	NULL,
+};
+
 static void	Swap(Character& player){
 	AWeapon* next = NULL;
 	static int	i = 2;
-	static AWeapon*	weapons[] = {
-		new PlasmaRifle(),
-		new PowerFist(),
-		NULL,
-	};
 
 	i++;
 	if (i > 2)
 		i = 0;
-	next = weapons[i];
+	next = g_weapons[i];
 
 	if (player.getWeapon())
 		std::cout << "You put away your " << player.getWeapon()->getName() \
@@ -109,6 +111,11 @@ static void	FalloutAdventures(const std::string& name) {
 		else
 			continue;
 	}
+
+	if (prey)
+		delete prey;
+	for (int i=0; g_weapons[i] != NULL; i++)
+		delete g_weapons[i];
 }
 
 extern int main(int argc, char** argv)
