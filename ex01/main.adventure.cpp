@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.adventure.cpp                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/02 16:34:35 by abaur             #+#    #+#             */
+/*   Updated: 2021/04/02 16:40:00 by abaur            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "AWeapon.hpp"
 #include "Character.hpp"
 #include "Enemy.hpp"
@@ -6,8 +18,22 @@
 #include "RadScorpion.hpp"
 #include "SuperMutant.hpp"
 
+#include <stdlib.h>
+
 static void	EnemyTurn(Enemy*& enemy){
-	(void)enemy;
+	if (!enemy && !(rand() % 3)) {
+		std::cout << "Something is moving in the far." << std::endl;
+		switch (rand() % 2) {
+			default:
+			case 0: enemy = new RadScorpion(); break;
+			case 1: enemy = new SuperMutant(); break;
+		}
+		std::cout << "You spotted a " << enemy->getType() << "." << std::endl;
+	}
+	if (enemy)
+		std::cout << "The " << enemy->getType() << " frolicates happily through"\
+			" the radioactive wastelands."
+			<< std::endl;
 }
 
 static void Attack(Character& player, Enemy*& prey){
@@ -61,5 +87,6 @@ extern int main(int argc, char** argv)
 	else
 		name = argv[1];
 
+	srand(name[0]);
 	FalloutAdventures(name);
 }
