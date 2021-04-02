@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 17:19:29 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/02 15:36:33 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/02 17:37:51 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ public:
 	std::string	getName() const;
 	int	getAP() const;
 	int getAPMax() const;
-	const AWeapon*	getWeapon() const;
+	AWeapon*	getWeapon() const;
 
 	void	recoverAP();
 	void	equip(AWeapon*);

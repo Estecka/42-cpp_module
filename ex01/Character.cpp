@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 14:11:16 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/02 15:37:05 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/02 17:37:57 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ Character&	Character::operator =(const Character& other){
 std::string	Character::getName() const { return this->name; }
 int	Character::getAP() const    { return this->actionPoints;    }
 int	Character::getAPMax() const { return this->actionPointsMax; }
-const AWeapon*	Character::getWeapon() const { return this->weapon; }
+AWeapon*	Character::getWeapon() const { return this->weapon; }
 
 void	Character::recoverAP(){
 	this->actionPoints += 10;

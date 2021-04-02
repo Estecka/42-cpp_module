@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 16:34:35 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/02 16:40:00 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/02 17:57:22 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	EnemyTurn(Enemy*& enemy){
 		std::cout << "You spotted a " << enemy->getType() << "." << std::endl;
 	}
 	if (enemy)
-		std::cout << "The " << enemy->getType() << " frolicates happily through"\
+		std::cout << "The " << enemy->getType() << " frolics happily through"\
 			" the radioactive wastelands."
 			<< std::endl;
 }
@@ -52,6 +52,29 @@ static void Attack(Character& player, Enemy*& prey){
 		prey = NULL;
 }
 
+static void	Swap(Character& player){
+	AWeapon* next = NULL;
+	static int	i = 2;
+	static AWeapon*	weapons[] = {
+		new PlasmaRifle(),
+		new PowerFist(),
+		NULL,
+	};
+
+	i++;
+	if (i > 2)
+		i = 0;
+	next = weapons[i];
+
+	if (player.getWeapon())
+		std::cout << "You put away your " << player.getWeapon()->getName() \
+			<< "." << std::endl;
+	if (next)
+		std::cout << "You grab your trusty " << next->getName() << "."\
+			<< std::endl;
+	player.equip(next);
+}
+
 static void	FalloutAdventures(const std::string& name) {
 	Character	player(name);
 	Enemy*	prey = NULL;
@@ -60,10 +83,11 @@ static void	FalloutAdventures(const std::string& name) {
 		std::string	input;
 
 		EnemyTurn(prey);
-		std::cout << std::endl << player \
+		std::cout << player \
 			<< "[hint: exit, rest, atk, swap]" << std::endl 
 			<< "> ";
 		std::getline(std::cin, input);
+		std::cout << std::endl;
 	
 		if (input == "exit")
 			break;
@@ -73,6 +97,8 @@ static void	FalloutAdventures(const std::string& name) {
 		}
 		else if (input == "atk") 
 			Attack(player, prey);
+		else if (input == "swap")
+			Swap(player);
 		else
 			continue;
 	}
