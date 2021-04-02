@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 16:34:35 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/02 17:57:22 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/02 18:04:58 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,17 @@ static void	EnemyTurn(Enemy*& enemy){
 		}
 		std::cout << "You spotted a " << enemy->getType() << "." << std::endl;
 	}
-	if (enemy)
-		std::cout << "The " << enemy->getType() << " frolics happily through"\
-			" the radioactive wastelands."
-			<< std::endl;
+	if (enemy){
+		if (enemy->getHP() < enemy->getHPMax())
+			std::cout << "The " << enemy->getType() << " is angry. "\
+				"(" << enemy->getHP() << "/" << enemy->getHPMax() << "HP)"\
+				<< std::endl;
+		else
+			std::cout << "The " << enemy->getType() << " frolics happily "\
+				"through the radioactive wastelands."
+				<< std::endl;
+
+	}
 }
 
 static void Attack(Character& player, Enemy*& prey){

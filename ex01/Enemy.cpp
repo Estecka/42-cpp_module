@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 18:12:55 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/02 14:57:20 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/02 18:00:03 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ Enemy::Enemy(const Enemy& other){
 
 Enemy::Enemy(int hp, const std::string& type){
 	this->healthPoints = hp;
+	this->healthPointsMax = hp;
 	this->type = type;
 }
 Enemy::~Enemy(){
@@ -37,7 +38,8 @@ Enemy& Enemy::operator=(const Enemy& other){
 }
 
 std::string	Enemy::getType() const { return this->type; }
-int	Enemy::getHP() const { return this->healthPoints; }
+int	Enemy::getHP() const    { return this->healthPoints; }
+int	Enemy::getHPMax() const { return this->healthPointsMax; }
 
 void	Enemy::takeDamage(int dmgAmount){
 	if (dmgAmount > this->healthPoints)
