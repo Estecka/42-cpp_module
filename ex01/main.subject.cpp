@@ -2,7 +2,7 @@
 #include "Character.hpp"
 #include "Enemy.hpp"
 #include "PlasmaRifle.hpp"
-#include "Powerfist.hpp"
+#include "PowerFist.hpp"
 #include "RadScorpion.hpp"
 #include "SuperMutant.hpp"
 

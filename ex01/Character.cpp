@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 14:11:16 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/02 14:35:54 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/02 14:54:13 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,23 @@ std::string	Character::getName() const { return this->name; }
 int	Character::getAP() const    { return this->actionPoints;    }
 int	Character::getAPMax() const { return this->actionPointsMax; }
 const AWeapon*	Character::getWeapon() const { return this->weapon; }
+
+void	Character::recoverAP(){
+	this->actionPoints += 10;
+	if (this->actionPoints > this->actionPointsMax)
+		this->actionPoints = this->actionPointsMax;
+}
+void	Character::equip(AWeapon* weapon){
+	this->weapon = weapon;
+}
+void	Character::attack(Enemy* enemy){
+	if (weapon) {
+		weapon->attack();
+		enemy->takeDamage(weapon->getDamage());
+		if (enemy->getHP() <= 0)
+			delete enemy;
+	}
+}
 
 std::ostream&	operator <<(std::ostream& dst, const Character& src){
 	dst << src.getName() << " has " << src.getAP();
