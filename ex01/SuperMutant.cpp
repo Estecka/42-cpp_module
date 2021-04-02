@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 14:05:42 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/02 14:08:36 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/02 14:36:31 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ SuperMutant::~SuperMutant(){
 
 SuperMutant& SuperMutant::operator =(const SuperMutant& other){
 	this->Enemy::operator=(other);
+	return *this;
 }
 
 void	SuperMutant::takeDamage(int dmgAmount){

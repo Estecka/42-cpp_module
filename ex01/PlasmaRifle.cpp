@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 17:56:06 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/01 18:05:09 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/02 14:36:14 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ PlasmaRifle::~PlasmaRifle() {
 
 PlasmaRifle&	PlasmaRifle::operator =(const PlasmaRifle& other) {
 	this->AWeapon::operator=(other);
+	return *this;
 }
 
 void PlasmaRifle::attack() const {

@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 17:19:29 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/01 17:23:41 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/02 14:30:06 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,28 @@ class Character
 public:
 	Character(void);
 	Character(const Character&);
-	Character(int hp, const std::string& type);
+	Character(const std::string& name);
 	~Character();
 	Character&	operator =(const Character&);
 
 	std::string	getName() const;
+	int	getAP() const;
+	int getAPMax() const;
+	const AWeapon*	getWeapon() const;
 
 	void	recoverAP();
 	void	equip(AWeapon*);
 	void	attack(Enemy*);
+
+private:
+	std::string	name;
+	int	actionPoints;
+	int	actionPointsMax;
+	AWeapon*	weapon;
+
+	void	defaultInit(const std::string& name);
 };
+
+std::ostream&	operator <<(std::ostream& dst, const Character& src);
 
 #endif
