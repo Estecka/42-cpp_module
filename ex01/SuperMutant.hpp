@@ -1,41 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Enemy.hpp                                          :+:      :+:    :+:   */
+/*   SuperMutant.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/01 17:14:31 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/02 14:03:59 by abaur            ###   ########.fr       */
+/*   Created: 2021/04/02 14:03:56 by abaur             #+#    #+#             */
+/*   Updated: 2021/04/02 14:05:10 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENEMY_HPP
-#define ENEMY_HPP
+#ifndef SUPERMUTANT_HPP
+#define SUPERMUTANT_HPP
 
-#include <iostream>
+#include "Enemy.hpp"
 
-class Enemy
+class SuperMutant : public Enemy
 {
 public:
-	Enemy(const Enemy&);
-	Enemy(int hp, const std::string& type);
-	virtual ~Enemy();
-	Enemy&	operator =(const Enemy&);
-
-	std::string	getType() const;
-	int	getHP() const;
+	SuperMutant(void);
+	SuperMutant(const SuperMutant&);
+	~SuperMutant();
+	SuperMutant&	operator =(const SuperMutant&);
 
 	virtual void	takeDamage(int amount);
-
-protected:
-	std::string	type;
-	int	healthPoints;
-
-	std::string	deathCry;
-
-private:
-	Enemy(void);
 };
 
 #endif
