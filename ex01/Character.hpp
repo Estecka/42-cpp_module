@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 17:19:29 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/02 14:30:06 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/02 15:36:33 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ public:
 
 	void	recoverAP();
 	void	equip(AWeapon*);
-	void	attack(Enemy*);
+	bool	attack(Enemy*);
 
 private:
 	std::string	name;

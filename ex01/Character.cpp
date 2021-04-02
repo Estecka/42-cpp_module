@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 14:11:16 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/02 15:05:18 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/02 15:37:05 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,19 @@ void	Character::recoverAP(){
 void	Character::equip(AWeapon* weapon){
 	this->weapon = weapon;
 }
-void	Character::attack(Enemy* enemy){
+bool	Character::attack(Enemy* enemy){
 	if (enemy && weapon && this->actionPoints >= weapon->getAPCost()) {
 		std::cout << this->name << " attacks " << enemy->getType() \
 			<< " with a " << weapon->getName() << std::endl;
 		this->actionPoints -= weapon->getAPCost();
 		weapon->attack();
 		enemy->takeDamage(weapon->getDamage());
-		if (enemy->getHP() <= 0)
+		if (enemy->getHP() <= 0){
 			delete enemy;
+			return true;
+		}
 	}
+	return false;
 }
 
 std::ostream&	operator <<(std::ostream& dst, const Character& src){
