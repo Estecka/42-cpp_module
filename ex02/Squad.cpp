@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 17:31:28 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/03 18:39:33 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/03 18:51:35 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ Squad&	Squad::operator=(const Squad& other){
 
 	for (int i=0; i<length; i++)
 		this->content[i] = other.content[i]->clone();
+	return *this;
 }
 
 int	Squad::getCount() const {

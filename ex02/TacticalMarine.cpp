@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 15:24:52 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/03 17:19:33 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/03 18:50:59 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ TacticalMarine::~TacticalMarine(){
 
 TacticalMarine&	TacticalMarine::operator=(const TacticalMarine&other){
 	this->ASpaceMarine::operator=(other);
+	return *this;
 }
 
 ISpaceMarine*	TacticalMarine::clone() const {

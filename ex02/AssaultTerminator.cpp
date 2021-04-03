@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 16:55:28 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/03 17:24:57 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/03 18:51:17 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ AssaultTerminator::~AssaultTerminator(){
 
 AssaultTerminator&	AssaultTerminator::operator=(const AssaultTerminator& other){
 	this->ASpaceMarine::operator=(other);
+	return *this;
 }
 
 ISpaceMarine*	AssaultTerminator::clone() const {
@@ -36,7 +37,7 @@ void	AssaultTerminator::battleCry() const {
 void	AssaultTerminator::rangedAttack() const {
 	std::cout << "* does nothing *" << std::endl;
 }
-void	AssaultTerminator::battleCry() const {
+void	AssaultTerminator::meleeAttack() const {
 	std::cout << "* attacks with chainfists *" << std::endl;
 }
 

@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 17:15:32 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/03 17:17:30 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/03 18:50:26 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,5 @@ ASpaceMarine::~ASpaceMarine(){
 ASpaceMarine&	ASpaceMarine::operator=(const ASpaceMarine&other){
 	this->codeName = other.codeName;
 	this->uid = ++g_marineCount;
+	return *this;
 }

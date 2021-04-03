@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 17:07:23 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/03 17:17:12 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/03 18:54:38 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ public:
 	virtual ~ASpaceMarine();
 	ASpaceMarine&	operator=(const ASpaceMarine&);
 
-	virtual ISpaceMarine*	clone() const;
+	virtual ISpaceMarine*	clone() const = 0;
 
 	virtual void	battleCry() const = 0;
 	virtual void	rangedAttack() const = 0;
