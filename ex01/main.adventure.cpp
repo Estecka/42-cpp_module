@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 16:34:35 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/02 18:15:48 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/03 14:26:38 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,18 @@
 #include "PowerFist.hpp"
 #include "RadScorpion.hpp"
 #include "SuperMutant.hpp"
+#include "NinjaTrap.hpp"
 
 #include <stdlib.h>
 
 static void	EnemyTurn(Enemy*& enemy){
 	if (!enemy && !(rand() % 3)) {
 		std::cout << "Something is moving in the far." << std::endl;
-		switch (rand() % 2) {
+		switch (rand() % 3) {
 			default:
 			case 0: enemy = new RadScorpion(); break;
 			case 1: enemy = new SuperMutant(); break;
+			case 2: enemy = new NinjaTrap();   break;
 		}
 		std::cout << "You spotted a " << enemy->getType() << "." << std::endl;
 	}

@@ -2,6 +2,7 @@ HDRS = \
 	AWeapon.hpp \
 	Character.hpp \
 	Enemy.hpp \
+	NinjaTrap.hpp \
 	PlasmaRifle.hpp \
 	PowerFist.hpp \
 	RadScorpion.hpp \
@@ -11,6 +12,7 @@ SRCS = \
 	AWeapon.cpp \
 	Character.cpp \
 	Enemy.cpp \
+	NinjaTrap.cpp \
 	PlasmaRifle.cpp \
 	PowerFist.cpp \
 	RadScorpion.cpp \
