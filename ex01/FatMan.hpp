@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PlasmaRifle.hpp                                    :+:      :+:    :+:   */
+/*   FatMan.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/01 17:54:13 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/03 14:48:06 by abaur            ###   ########.fr       */
+/*   Created: 2021/04/03 14:33:08 by abaur             #+#    #+#             */
+/*   Updated: 2021/04/03 14:42:33 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLASMARIFLE_HPP
-#define PLASMARIFLE_HPP
+#ifndef FATMAN_HPP
+#define FATMAN_HPP
 
 #include "AWeapon.hpp"
 
-class PlasmaRifle : public AWeapon
+class FatMan : public AWeapon
 {
 public:
-	PlasmaRifle(void);
-	PlasmaRifle(const PlasmaRifle&);
-	~PlasmaRifle();
-	PlasmaRifle&	operator =(const PlasmaRifle&);
+	FatMan(void);
+	FatMan(const FatMan&);
+	~FatMan();
+	FatMan&	operator =(const FatMan&);
 
 	virtual void	attack();
+
+private:
+	bool	isLoaded;
 };
 
 #endif

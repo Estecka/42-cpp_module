@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 18:07:08 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/02 14:36:22 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/03 14:42:56 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ PowerFist&	PowerFist::operator =(const PowerFist& other) {
 	return *this;
 }
 
-void PowerFist::attack() const {
+void PowerFist::attack() {
 	std::cout << "* pschhh... SBAM! *" << std::endl;
 }

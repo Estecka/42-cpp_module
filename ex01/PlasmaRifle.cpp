@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 17:56:06 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/02 14:36:14 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/03 14:42:39 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ PlasmaRifle&	PlasmaRifle::operator =(const PlasmaRifle& other) {
 	return *this;
 }
 
-void PlasmaRifle::attack() const {
+void PlasmaRifle::attack() {
 	std::cout << "* piouuu piouuu piouuu *" << std::endl;
 }

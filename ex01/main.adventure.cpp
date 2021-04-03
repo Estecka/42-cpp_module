@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 16:34:35 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/03 14:26:38 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/03 14:48:47 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "Enemy.hpp"
 #include "PlasmaRifle.hpp"
 #include "PowerFist.hpp"
+#include "FatMan.hpp"
 #include "RadScorpion.hpp"
 #include "SuperMutant.hpp"
 #include "NinjaTrap.hpp"
@@ -65,6 +66,7 @@ static void Attack(Character& player, Enemy*& prey){
 static AWeapon*	g_weapons[] = {
 	new PlasmaRifle(),
 	new PowerFist(),
+	new FatMan(),
 	NULL,
 };
 

@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 14:11:16 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/02 17:37:57 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/03 14:51:34 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,9 @@ bool	Character::attack(Enemy* enemy){
 		std::cout << this->name << " attacks " << enemy->getType() \
 			<< " with a " << weapon->getName() << std::endl;
 		this->actionPoints -= weapon->getAPCost();
+		int dmg = weapon->getDamage();
 		weapon->attack();
-		enemy->takeDamage(weapon->getDamage());
+		enemy->takeDamage(dmg);
 		if (enemy->getHP() <= 0){
 			delete enemy;
 			return true;

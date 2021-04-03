@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 17:11:00 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/01 18:00:17 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/03 14:43:52 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ public:
 	int	getAPCost() const;
 	int	getDamage() const;
 
-	virtual void	attack() const = 0;
+	virtual void	attack() = 0;
 
 protected:
 	std::string	name;

@@ -2,6 +2,7 @@ HDRS = \
 	AWeapon.hpp \
 	Character.hpp \
 	Enemy.hpp \
+	FatMan.hpp \
 	NinjaTrap.hpp \
 	PlasmaRifle.hpp \
 	PowerFist.hpp \
@@ -12,6 +13,7 @@ SRCS = \
 	AWeapon.cpp \
 	Character.cpp \
 	Enemy.cpp \
+	FatMan.cpp \
 	NinjaTrap.cpp \
 	PlasmaRifle.cpp \
 	PowerFist.cpp \
