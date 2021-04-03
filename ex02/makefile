@@ -14,17 +14,19 @@ SRCS = \
 
 OBJS = ${SRCS:.cpp=.o}
 
-NAME = squad.out
+NAMES = squad.out squad++.out
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 CXX=clang++
 
-all: ${NAME}
+all: ${NAMES}
 
-${NAME}: ${OBJS} main.o
-	${CXX} -o ${NAME} main.o ${OBJS} ${CPPFLAGS}
+squad.out: ${OBJS} main.o
+	${CXX} -o squad.out main.o ${OBJS} ${CPPFLAGS}
+squad++.out: ${OBJS} main++.o
+	${CXX} -o squad++.out main++.o ${OBJS} ${CPPFLAGS}
 
-${OBJS} main.o: ${HDRS}
+${OBJS} main.o main++.o: ${HDRS}
 
 clean:
 	rm -f *.o

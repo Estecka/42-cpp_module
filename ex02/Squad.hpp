@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 17:32:23 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/03 17:56:24 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/03 19:24:42 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ public:
 	int	getCount() const;
 	ISpaceMarine*	getUnit(int i) const;
 	int	push(ISpaceMarine* newUnit);
+
+	void	report() const;
 
 private:
 	ISpaceMarine**	content;

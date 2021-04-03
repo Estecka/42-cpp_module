@@ -6,12 +6,13 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 17:31:28 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/03 19:10:55 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/03 19:28:49 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Squad.hpp"
 
+#include <iostream>
 #include <stdlib.h>
 
 #define DEFAULT_CAP	4
@@ -60,7 +61,20 @@ ISpaceMarine*	Squad::getUnit(int i) const {
 		return this->content[i];
 }
 
+void Squad::report() const {
+	for (int i=0; i<length; i++){
+		std::cout << this->content[i] << " ";
+		this->content[i]->report();
+	}
+}
+
 int	Squad::push(ISpaceMarine* newUnit) {
+	if (newUnit == NULL)
+		return this->length;
+	for (int i=0; i<length; i++)
+		if (newUnit == content[i])
+			return this->length;
+
 	this->expand(1);
 	this->content[this->length] = newUnit;
 	return ++this->length;
