@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 23:28:01 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/03 23:30:42 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/04 01:24:54 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #define ASTEROID_HPP
 
 #include "IAsteroid.hpp"
+
+class StripMiner;
+class DeepCoreMiner;
 
 class Asteroid : public IAsteroid 
 {
@@ -28,5 +31,8 @@ public:
 	std::string beMined(const StripMiner*) const;
 	std::string beMined(const DeepCoreMiner*) const;
 };
+
+#include "StripMiner.hpp"
+#include "DeepCoreMiner.hpp"
 
 #endif

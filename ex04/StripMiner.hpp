@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 23:12:40 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 00:15:05 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/04 00:52:26 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 #define STRIPMINER_HPP
 
 #include "IMiningLaser.hpp"
+#include <iostream>
 
+class IAsteroid;
 
 class StripMiner : public IMiningLaser
 {
@@ -28,5 +30,7 @@ public:
 
 	std::string	mine(IAsteroid* target);
 };
+
+#include "IAsteroid.hpp"
 
 #endif
