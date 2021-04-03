@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   TacticalMarine.hpp                                 :+:      :+:    :+:   */
+/*   AssaultTerminator.hpp                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/03 15:20:43 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/03 15:56:22 by abaur            ###   ########.fr       */
+/*   Created: 2021/04/03 15:51:57 by abaur             #+#    #+#             */
+/*   Updated: 2021/04/03 16:09:39 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TACTICALMARINE_HPP
-#define TACTICALMARINE_HPP
+#ifndef ASSAULTTERMINATOR_HPP
+#define ASSAULTTERMINATOR_HPP
 
 #include "ISpaceMarine.hpp"
 
-#include <iostream>
-
-class TacticalMarine : public ISpaceMarine
+class AssaultTerminator : public ISpaceMarine
 {
 public:
-	TacticalMarine(void);
-	TacticalMarine(const TacticalMarine&);
-	~TacticalMarine();
-	
-	TacticalMarine&	operator=(const TacticalMarine&);
+	AssaultTerminator(void);
+	AssaultTerminator(const AssaultTerminator&);
+	~AssaultTerminator();
+
+	AssaultTerminator& operator=(const AssaultTerminator&);
 
 	ISpaceMarine*	clone() const;
 	void	battleCry() const;
@@ -34,8 +32,7 @@ public:
 	void	report() const;
 
 private:
-	std::string	codeName;
-	unsigned	uid;
+	
 };
 
 #endif
