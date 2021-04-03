@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 17:31:28 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/03 18:51:35 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/03 19:10:55 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ Squad::Squad(const Squad& other)
 		this->content[i] = other.content[i]->clone();
 }
 Squad::~Squad(){
+	for (int i=0; i<this->length; i++)
+		delete this->content[i];
+	delete[] this->content;
 }
 
 Squad&	Squad::operator=(const Squad& other){
@@ -70,7 +73,7 @@ void	Squad::expand(int newCount){
 	ISpaceMarine** newContent = new ISpaceMarine*[this->capacity];
 	for (int i=0; i<this->length; i++)
 		newContent[i] = this->content[i];
-	
-	delete this->content;
+
+	delete[] this->content;
 	this->content = newContent;
 }
