@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 23:12:40 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/03 23:27:18 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/04 00:15:05 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ public:
 	~StripMiner();
 	StripMiner&	operator=(const StripMiner&);
 
-	std::string	getName();
+	std::string	getName() const;
 
 	std::string	mine(IAsteroid* target);
 };
