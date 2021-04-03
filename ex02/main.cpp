@@ -1,3 +1,4 @@
+/*
 #include "ISpaceMarine.hpp"
 #include "ISquad.hpp"
 
@@ -24,3 +25,4 @@ int main()
 	
 	return 0;
 }
+*/

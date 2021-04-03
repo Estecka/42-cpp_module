@@ -6,19 +6,16 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 16:55:28 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/03 17:03:22 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/03 17:24:57 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AssaultTerminator.hpp"
 
-#include <iostream>
-
-AssaultTerminator::AssaultTerminator(void) {
+AssaultTerminator::AssaultTerminator(void) : ASpaceMarine() {
 	std::cout << "* teleports from space *" << std::endl;
 }
-AssaultTerminator::AssaultTerminator(const AssaultTerminator& other){
-	*this = other;
+AssaultTerminator::AssaultTerminator(const AssaultTerminator& other) : ASpaceMarine(other){
 	std::cout << "* teleports from space *" << std::endl;
 }
 AssaultTerminator::~AssaultTerminator(){
@@ -26,6 +23,7 @@ AssaultTerminator::~AssaultTerminator(){
 }
 
 AssaultTerminator&	AssaultTerminator::operator=(const AssaultTerminator& other){
+	this->ASpaceMarine::operator=(other);
 }
 
 ISpaceMarine*	AssaultTerminator::clone() const {
@@ -43,4 +41,7 @@ void	AssaultTerminator::battleCry() const {
 }
 
 void	AssaultTerminator::report() const {
+	std::cout << this->codeName << "-" << this->uid << ", "\
+		"in position."\
+		<< std::endl;
 }

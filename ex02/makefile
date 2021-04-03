@@ -1,11 +1,13 @@
 HDRS = \
 	ISquad.hpp \
 	ISpaceMarine.hpp \
+	ASpaceMarine.hpp \
 	AssaultTerminator.hpp \
 	Squad.hpp \
 	TacticalMarine.hpp \
 
 SRCS = \
+	ASpaceMarine.cpp \
 	AssaultTerminator.cpp \
 	Squad.cpp \
 	TacticalMarine.cpp \

@@ -6,18 +6,18 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 15:20:43 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/03 15:56:22 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/03 17:18:04 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TACTICALMARINE_HPP
 #define TACTICALMARINE_HPP
 
-#include "ISpaceMarine.hpp"
+#include "ASpaceMarine.hpp"
 
 #include <iostream>
 
-class TacticalMarine : public ISpaceMarine
+class TacticalMarine : public ASpaceMarine
 {
 public:
 	TacticalMarine(void);
@@ -32,10 +32,6 @@ public:
 	void	meleeAttack() const;
 
 	void	report() const;
-
-private:
-	std::string	codeName;
-	unsigned	uid;
 };
 
 #endif

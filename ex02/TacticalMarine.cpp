@@ -6,36 +6,16 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 15:24:52 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/03 15:44:50 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/03 17:19:33 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "TacticalMarine.hpp"
 
-#include <stdlib.h>
-
-static unsigned	g_marineCount = 0;
-
-static std::string randName(){
-	switch (rand() % 6)
-	{
-		default: return "-Error";
-		case 0: return "Alpha";
-		case 1: return "Zoulou";
-		case 2: return "Red";
-		case 3: return "Blue";
-		case 4: return "Viper";
-		case 5: return "Sloth";
-	}
-}
-
-TacticalMarine::TacticalMarine(void) {
-	this->codeName = randName();
-	this->uid = ++g_marineCount;
+TacticalMarine::TacticalMarine(void) : ASpaceMarine() {
 	std::cout << "Tactical Marine ready for battle!" << std::endl;
 }
-TacticalMarine::TacticalMarine(const TacticalMarine& other){
-	*this = other;
+TacticalMarine::TacticalMarine(const TacticalMarine& other) : ASpaceMarine(other) {
 	std::cout << "Tactical Marine ready for battle!" << std::endl;
 }
 TacticalMarine::~TacticalMarine(){
@@ -43,8 +23,7 @@ TacticalMarine::~TacticalMarine(){
 }
 
 TacticalMarine&	TacticalMarine::operator=(const TacticalMarine&other){
-	this->codeName = other.codeName;
-	this->uid = ++g_marineCount;
+	this->ASpaceMarine::operator=(other);
 }
 
 ISpaceMarine*	TacticalMarine::clone() const {
