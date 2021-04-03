@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   IMiningLaser.hpp                                   :+:      :+:    :+:   */
+/*   DeepCoreMiner.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/03 23:10:04 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/03 23:22:04 by abaur            ###   ########.fr       */
+/*   Created: 2021/04/03 23:05:50 by abaur             #+#    #+#             */
+/*   Updated: 2021/04/03 23:27:28 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IMININGLASER_HPP
-#define IMININGLASER_HPP
+#ifndef DEEPCOREMINER_HPP
+#define DEEPCOREMINER_HPP
 
-#include "IAsteroid.hpp"
-#include <iostream>
+#include "IMiningLaser.hpp"
 
-class IMiningLaser
+
+class DeepCoreMiner : public IMiningLaser
 {
 public:
-	virtual ~IMiningLaser() {}
-	virtual std::string mine(IAsteroid* target) = 0;
-	virtual std::string	getName() const = 0;
+	DeepCoreMiner(void);
+	DeepCoreMiner(const DeepCoreMiner&);
+	~DeepCoreMiner();
+	DeepCoreMiner& operator=(const DeepCoreMiner&);
+
+	std::string	getName();
+
+	std::string	mine(IAsteroid* target);
 };
 
 #endif
