@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 23:15:29 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 00:15:27 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/04 00:38:46 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ DeepCoreMiner::~DeepCoreMiner(){
 }
 
 DeepCoreMiner&	DeepCoreMiner::operator=(const DeepCoreMiner& other){
+	(void)other;
 	return *this;
 }
 

@@ -1,19 +1,19 @@
 HDRS = \
 	IAsteroid.hpp \
 	IMiningLaser.hpp \
+	Asteroid.hpp \
+	Comet.hpp \
 	DeepCoreMiner.hpp \
-	StripMiner.hpp \
-	AsteroKreog.hpp \
-	KoalaSteroid.hpp \
 	MiningBarge.hpp \
+	StripMiner.hpp \
 
 SRCS = \
 	main.cpp \
-	DeepCoreMiner.hpp \
-	StripMiner.hpp \
-	AsteroKreog.hpp \
-	KoalaSteroid.hpp \
-	MiningBarge.hpp \
+	Asteroid.cpp \
+	Comet.cpp \
+	DeepCoreMiner.cpp \
+	MiningBarge.cpp \
+	StripMiner.cpp \
 
 OBJS = ${SRCS:.cpp=.o}
 

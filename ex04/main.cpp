@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 00:10:21 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 00:22:41 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/04 00:31:17 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 
 #include <iostream>
 #include <stdlib.h>
+
+#pragma clang diagnostic ignored "-Wunused-parameter"
 
 static void Mine(MiningBarge& player){
 }
@@ -44,7 +46,7 @@ static void	SpaceMinerAdventures(){
 		else if (input == "mine")
 			Mine(player);
 		else if (input == "buy")
-			Buy(player)
+			Buy(player);
 		else if (input == "sell")
 			Sell(player);
 		else

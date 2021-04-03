@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 23:38:47 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 00:05:30 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/04 00:48:54 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@ MiningBarge::MiningBarge(const MiningBarge& other){
 	*this = other;
 }
 MiningBarge::~MiningBarge(){
-	for (int i=0; i<this->laserCount; i++)
+	for (unsigned i=0; i<this->laserCount; i++)
 		delete this->equipment[i];
 }
 
 MiningBarge&	MiningBarge::operator=(const MiningBarge& other){
+	(void)other;
 	throw std::invalid_argument("Mining barge copy not supported");
 }
 
@@ -39,6 +40,7 @@ bool	MiningBarge::equip(IMiningLaser* item){
 	
 	this->equipment[this->laserCount] = item;
 	this->laserCount++;
+	return true;
 }
 
 IMiningLaser* MiningBarge::unequip(unsigned index){
@@ -55,7 +57,7 @@ int	MiningBarge::mine(IAsteroid* target) const {
 		throw std::invalid_argument("Null target");
 
 	int	worth = 0;
-	for (int i=0; i<laserCount; i++){
+	for (unsigned i=0; i<laserCount; i++){
 		std::string result = this->equipment[i]->mine(target);
 		// increase worth
 	}
