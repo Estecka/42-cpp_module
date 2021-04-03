@@ -29,19 +29,16 @@ ${NAME}: ${OBJS}
 
 ${OBJS}: ${HDRS}
 
-headers_test: ${HDRS:.hpp=.hpp.o}
-${HDRS:.hpp=.hpp.cpp}: ${HDRS}
-	cp ${@F:.hpp.cpp=.hpp} ${@F}
-
-# Why is this needed ? Only God knows.
-# It's never called at all, it shouldn't have to be ever called,
-# and yet `header_test` breaks completely without it.
-${HDRS}:
-	echo "Beep "${@F};
+# For some reason, the `.test` pre-extension is absolutely needed.
+# The rule breaks completely if the files are named `.hpp.cpp` and `.hpp.o`.
+headers_test: ${HDRS:.hpp=.hpp.test.o}
+${HDRS:.hpp=.hpp.test.cpp}: ${HDRS}
+	cp ${@F:.hpp.test.cpp=.hpp} ${@F} ;
 
 clean:
 	rm -f *.o
 	rm -f *.hpp.cpp
+	rm -f *.hpp.test.cpp
 
 fclean: clean
 	rm -f *.out
