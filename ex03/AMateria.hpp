@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 18:23:04 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 19:01:09 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/04 19:35:29 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ class	ICharacter;
 class AMateria
 {
 public:
-	AMateria(void);
 	AMateria(const AMateria&);
 	AMateria(std::string const & type);
 	virtual ~AMateria();
@@ -35,6 +34,8 @@ public:
 	virtual void	use(ICharacter& target) = 0;
 
 protected:
+	AMateria(void);
+
 	std::string	type;
 	unsigned int	_xp;
 };
