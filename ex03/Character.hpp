@@ -1,29 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 18:45:47 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 18:46:09 by abaur            ###   ########.fr       */
+/*   Created: 2021/04/04 18:33:05 by abaur             #+#    #+#             */
+/*   Updated: 2021/04/04 18:42:47 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IMATERIASOURCE_HPP
-#define IMATERIASOURCE_HPP
+#ifndef CHARACTER_HPP
+#define CHARACTER_HPP
 
+#include "ICharacter.hpp"
 #include "AMateria.hpp"
 
 #include <iostream>
 
-class IMateriaSource
+class Character : public ICharacter
 {
 public:
-	virtual ~IMateriaSource() {}
+	Character(void);
+	Character(const Character&);
+	Character(const std::string& name);
+	~Character();
+	Character&	operator=(const Character&);
 
-	virtual void learnMateria(const AMateria*) = 0;
-	virtual AMateria* createMateria(const std::string& type) = 0;
+	const std::string&	getName() const;
+
+	bool	equip(AMateria* item);
+	AMateria*	unequip(int index);
+	bool	use(int index, ICharacter& target);
+
+private:
+	std::string	name;
+
+	AMateria*	inventory[4];
+	int	invCount;
 };
 
 #endif
