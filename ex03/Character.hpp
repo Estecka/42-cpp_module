@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 18:33:05 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 18:42:47 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/04 21:01:46 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include "AMateria.hpp"
 
 #include <iostream>
+
+#define INVMAX	4
 
 class Character : public ICharacter
 {
@@ -36,7 +38,7 @@ public:
 private:
 	std::string	name;
 
-	AMateria*	inventory[4];
+	AMateria*	inventory[INVMAX];
 	int	invCount;
 };
 
