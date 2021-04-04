@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 18:37:16 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 19:01:22 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/05 00:08:05 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ public:
 	virtual ~ICharacter() {}
 
 	virtual const std::string&	getName() const = 0;
+
+	virtual void	status() const = 0;
 
 	virtual bool	equip(AMateria* m) = 0;
 	virtual AMateria*	unequip(int idx) = 0;

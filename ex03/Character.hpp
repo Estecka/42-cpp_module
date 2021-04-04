@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 18:33:05 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 21:01:46 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/04 23:38:43 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ public:
 	Character&	operator=(const Character&);
 
 	const std::string&	getName() const;
+
+	void	status() const;
 
 	bool	equip(AMateria* item);
 	AMateria*	unequip(int index);
