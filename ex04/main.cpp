@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 00:10:21 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 03:37:24 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/04 03:56:50 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,24 @@ static unsigned	getInt(){
 }
 
 static void Mine(MiningBarge& player){
+	IAsteroid*	target;
+
+	switch (rand() % 4)
+	{
+		default: target = new Asteroid(); break;
+		case 0:  target = new Comet();    break;
+	}
+
+	std::cout << "After traveling for a while, you stumble upon a " \
+		<< target->getName() << ", and proceed to harvest its content."\
+		<< std::endl;
+
+	int worth = player.mine(target);
+	std::cout << "You sell the material for a total of " << worth << " imperial "\
+		"credits." << std::endl;
+	delete target;
 }
+
 static void Buy(MiningBarge& player){
 	std::cout << "Select the product you wish to buy :" << std::endl \
 		<< "[0] Strip Miner" << std::endl \
@@ -95,7 +112,7 @@ static void	SpaceMinerAdventures(){
 		std::string	input;
 
 		std::cout << "[hint: exit, mine, buy, sell]" << std::endl \
-			<< "> " << std::endl;
+			<< "> ";
 		std::getline(std::cin, input);
 		std::cout << std::endl;
 

@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 23:23:24 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 00:38:53 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/04 03:53:27 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ std::string	StripMiner::mine(IAsteroid* target){
 	else
 		result = target->beMined(this);
 
-	std::cout << "* mining deep... got " << result << "! *" << std::endl;
+	std::cout << "* strip mining... got " << result << "! *" << std::endl;
 	return result;
 }

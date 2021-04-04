@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 23:15:29 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 00:38:46 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/04 03:53:18 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ std::string	DeepCoreMiner::mine(IAsteroid* target){
 	else
 		result = target->beMined(this);
 
-	std::cout << "* strip mining... got " << result << "! *" << std::endl;
+	std::cout << "* mining deep... got " << result << "! *" << std::endl;
 	return result;
 }
