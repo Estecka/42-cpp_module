@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 23:38:47 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 00:48:54 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/04 02:50:13 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,14 @@ MiningBarge&	MiningBarge::operator=(const MiningBarge& other){
 	throw std::invalid_argument("Mining barge copy not supported");
 }
 
+unsigned	MiningBarge::getLaserCount() const { return this->laserCount; }
+
+const IMiningLaser* MiningBarge::getLaser(unsigned index) const {
+	if (index < 0 || laserCount <= index)
+		throw std::out_of_range("Index out of Range");
+	return this->equipment[index];
+}
+
 bool	MiningBarge::equip(IMiningLaser* item){
 	if (item == NULL)
 		throw std::invalid_argument("Null equipment");
@@ -44,11 +52,15 @@ bool	MiningBarge::equip(IMiningLaser* item){
 }
 
 IMiningLaser* MiningBarge::unequip(unsigned index){
-	if (index < 0 || LASERMAX <= index)
-		throw std::out_of_range("Invalid equipement slot");
+	if (index < 0 || this->laserCount <= index)
+		throw std::out_of_range("Index out of range");
 	
 	IMiningLaser* item = this->equipment[index];
-	this->equipment[index] = NULL;
+	for (unsigned i=index; i<laserCount-1; i++)
+		this->equipment[index] = this->equipment[index+1];
+	this->equipment[laserCount-1] = NULL;
+	laserCount--;
+
 	return item;
 }
 

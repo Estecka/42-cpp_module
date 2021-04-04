@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 23:39:02 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/03 23:58:34 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/04 02:46:36 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ class MiningBarge
 public:
 	MiningBarge(void);
 	~MiningBarge();
+
+	unsigned	getLaserCount() const;
+	const IMiningLaser*	getLaser(unsigned index) const;
 
 	bool	equip(IMiningLaser* item);
 	IMiningLaser*	unequip(unsigned index);
