@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 18:23:04 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 18:35:11 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/04 19:01:09 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include "ICharacter.hpp"
 
 #include <iostream>
+
+class	ICharacter;
 
 class AMateria
 {
