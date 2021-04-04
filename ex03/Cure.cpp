@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 22:25:34 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 22:56:39 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/05 00:35:30 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,5 @@ AMateria*	Cure::clone() const{
 
 void	Cure::use(ICharacter& target) {
 	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
+	this->_xp += 10;
 }
