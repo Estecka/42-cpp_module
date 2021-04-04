@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 20:56:12 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 21:21:52 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/04 22:56:23 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ Character&	Character::operator=(const Character& other){
 		this->inventory[i] = other.inventory[i]->clone();
 	for (int i=invCount; i<INVMAX; i++)
 		this->inventory[i] = NULL;
+	return *this;
 }
 
 const std::string&	Character::getName() const { return this->name; }

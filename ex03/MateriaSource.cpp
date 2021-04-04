@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 22:42:12 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 22:55:18 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/04 22:56:13 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ MateriaSource&	MateriaSource::operator=(const MateriaSource& other) {
 		this->inventory[i] = other.inventory[i]->clone();
 	for (int i=invCount; i<4; i++)
 		this->inventory[i] = NULL;
+	return *this;
 }
 
 void	MateriaSource::learnMateria(const AMateria* materia){

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Amateria.cpp                                       :+:      :+:    :+:   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 19:31:49 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 22:41:37 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/04 22:57:33 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ AMateria::~AMateria(){
 AMateria&	AMateria::operator=(const AMateria& other){
 	this->type = other.type;
 	this->_xp = other._xp;
+	return *this;
 }
 
 const std::string&	AMateria::getType() const { return this->type; }

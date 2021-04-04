@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 22:39:57 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 22:40:38 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/04 22:56:47 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ Ice::~Ice(){
 
 Ice&	Ice::operator=(const Ice& other) {
 	this->AMateria::operator=(other);
+	return *this;
+
 }
 
 AMateria*	Ice::clone() const{
