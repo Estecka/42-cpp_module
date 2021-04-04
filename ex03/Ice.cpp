@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Amateria.cpp                                       :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 19:31:49 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 22:41:37 by abaur            ###   ########.fr       */
+/*   Created: 2021/04/04 22:39:57 by abaur             #+#    #+#             */
+/*   Updated: 2021/04/04 22:40:38 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
+#include "Ice.hpp"
 
-#include <exception>
-
-AMateria::AMateria(void){
-	this->_xp = 0;
+Ice::Ice(void) : AMateria(){
+	this->type = "ice";
 }
-AMateria::AMateria(const AMateria& other){
-	*this = other;
+Ice::Ice(const Ice& other) : AMateria(other) {
 }
-AMateria::~AMateria(){
+Ice::~Ice(){
 }
 
-AMateria&	AMateria::operator=(const AMateria& other){
-	this->type = other.type;
-	this->_xp = other._xp;
+Ice&	Ice::operator=(const Ice& other) {
+	this->AMateria::operator=(other);
 }
 
-const std::string&	AMateria::getType() const { return this->type; }
-unsigned int	AMateria::getXP() const { return this->_xp; }
+AMateria*	Ice::clone() const{
+	return new Ice(*this);
+}
+
+void	Ice::use(ICharacter& target) {
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+}

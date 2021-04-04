@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Amateria.cpp                                       :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 19:31:49 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 22:41:37 by abaur            ###   ########.fr       */
+/*   Created: 2021/04/04 22:25:34 by abaur             #+#    #+#             */
+/*   Updated: 2021/04/04 22:39:06 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
+#include "Cure.hpp"
 
-#include <exception>
-
-AMateria::AMateria(void){
-	this->_xp = 0;
+Cure::Cure(void) : AMateria(){
+	this->type = "cure";
 }
-AMateria::AMateria(const AMateria& other){
-	*this = other;
+Cure::Cure(const Cure& other) : AMateria(other) {
 }
-AMateria::~AMateria(){
+Cure::~Cure(){
 }
 
-AMateria&	AMateria::operator=(const AMateria& other){
-	this->type = other.type;
-	this->_xp = other._xp;
+Cure&	Cure::operator=(const Cure& other) {
+	this->AMateria::operator=(other);
 }
 
-const std::string&	AMateria::getType() const { return this->type; }
-unsigned int	AMateria::getXP() const { return this->_xp; }
+AMateria*	Cure::clone() const{
+	return new Cure(*this);
+}
+
+void	Cure::use(ICharacter& target) {
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
+}
