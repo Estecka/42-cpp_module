@@ -10,10 +10,8 @@
 int main()
 {
 	IMateriaSource* src = new MateriaSource();
-	Ice ice;
-	Cure cure;
-	src->learnMateria(&ice);
-	src->learnMateria(&cure);
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
 
 	ICharacter* me = new Character("me");
 
