@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 23:38:47 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 02:50:13 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/04 03:40:46 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ IMiningLaser* MiningBarge::unequip(unsigned index){
 	
 	IMiningLaser* item = this->equipment[index];
 	for (unsigned i=index; i<laserCount-1; i++)
-		this->equipment[index] = this->equipment[index+1];
+		this->equipment[i] = this->equipment[i+1];
 	this->equipment[laserCount-1] = NULL;
 	laserCount--;
 

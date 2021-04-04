@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 00:10:21 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 03:05:34 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/04 03:37:24 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,66 @@
 
 #pragma clang diagnostic ignored "-Wunused-parameter"
 
+static unsigned	getInt(){
+	unsigned	i;
+
+	std::cout << "> ";
+	std::cin >> i;
+	std::cout << std::endl;
+	if (std::cin.fail()) {
+		std::cin.clear();
+		i = -1;
+	}
+	std::cin.ignore(STREAM_MAX, '\n');
+
+	return i;
+}
+
 static void Mine(MiningBarge& player){
 }
 static void Buy(MiningBarge& player){
+	std::cout << "Select the product you wish to buy :" << std::endl \
+		<< "[0] Strip Miner" << std::endl \
+		<< "[1] DeepCore Miner" << std::endl \
+		;
+
+	unsigned i = getInt();
+	IMiningLaser* item;
+	switch (i)
+	{
+		default: item = NULL; break;
+		case 0: item = new StripMiner(); break;
+		case 1: item = new DeepCoreMiner(); break;
+	}
+
+	if (item){
+		if (player.equip(item))
+			std::cout << "You mount the " << item->getName() \
+				<< " onto your ship " << std::endl;
+		else {
+			std::cout << "You realize you don't have enough room for your new "\
+				"toy, so you throw it away." << std::endl;
+			delete item;
+		}
+	}
+	else
+		std::cout << "Operation cancelled" << std::endl;
 }
+
 static void Sell(MiningBarge& player){
 	std::cout << "Select a device to scrap :" << std::endl;
 	for (unsigned i=0; i<player.getLaserCount(); i++)
 		std::cout << "["<<i<<"] " << player.getLaser(i)->getName() << std::endl;
 
-	unsigned	i;
-	std::cout << "> ";
-	std::cin >> i;
-	std::cout << std::endl;
-	if (!std::cin.fail() && 0 <= i && i < player.getLaserCount()){
+	unsigned i = getInt();
+	if (0 <= i && i < player.getLaserCount()){
 		IMiningLaser* item = player.unequip(i);
 		std::cout << "You scrap your old " << item->getName() << " for a "\
 			"reasonnable price." << std::endl;
 		delete item;
 	}
-	else {
+	else
 		std::cout << "Operation cancelled." << std::endl;
-		std::cin.clear();
-	}
-	std::cin.ignore(STREAM_MAX, '\n');
 }
 
 static void	SpaceMinerAdventures(){
@@ -70,7 +106,13 @@ static void	SpaceMinerAdventures(){
 		else if (input == "buy")
 			Buy(player);
 		else if (input == "sell")
-			Sell(player);
+		{
+			if (player.getLaserCount() > 1)
+				Sell(player);
+			else
+				std::cout << "You don't have any spare equipement you can afford "\
+					"to sell away." << std::endl;
+		}
 		else
 			continue;
 	}
