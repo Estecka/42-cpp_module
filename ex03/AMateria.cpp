@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 19:31:49 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 22:57:33 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/05 15:04:11 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,3 +31,8 @@ AMateria&	AMateria::operator=(const AMateria& other){
 
 const std::string&	AMateria::getType() const { return this->type; }
 unsigned int	AMateria::getXP() const { return this->_xp; }
+
+void	AMateria::use(ICharacter& target){
+	(void)target;
+	this->_xp += 10;
+}

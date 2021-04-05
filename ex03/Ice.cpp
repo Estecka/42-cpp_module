@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 22:39:57 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/05 00:35:35 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/05 15:04:52 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ AMateria*	Ice::clone() const{
 
 void	Ice::use(ICharacter& target) {
 	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
-	this->_xp += 10;
+	this->AMateria::use(target);
 }

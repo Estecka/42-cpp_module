@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 18:23:04 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 19:35:29 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/05 15:03:36 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ public:
 	unsigned int	getXP() const;
 
 	virtual AMateria*	clone() const = 0;
-	virtual void	use(ICharacter& target) = 0;
+	virtual void	use(ICharacter& target);
 
 protected:
 	AMateria(void);
