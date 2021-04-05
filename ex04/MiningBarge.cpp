@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 23:38:47 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 03:40:46 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/05 17:06:37 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,12 @@ unsigned	MiningBarge::getLaserCount() const { return this->laserCount; }
 
 const IMiningLaser* MiningBarge::getLaser(unsigned index) const {
 	if (index < 0 || laserCount <= index)
-		throw std::out_of_range("Index out of Range");
+		return NULL;
 	return this->equipment[index];
 }
 
 bool	MiningBarge::equip(IMiningLaser* item){
-	if (item == NULL)
-		throw std::invalid_argument("Null equipment");
-	if (this->laserCount >= LASERMAX)
+	if (item == NULL || this->laserCount >= LASERMAX)
 		return false;
 	
 	this->equipment[this->laserCount] = item;
@@ -53,7 +51,7 @@ bool	MiningBarge::equip(IMiningLaser* item){
 
 IMiningLaser* MiningBarge::unequip(unsigned index){
 	if (index < 0 || this->laserCount <= index)
-		throw std::out_of_range("Index out of range");
+		return NULL;
 	
 	IMiningLaser* item = this->equipment[index];
 	for (unsigned i=index; i<laserCount-1; i++)
@@ -66,7 +64,7 @@ IMiningLaser* MiningBarge::unequip(unsigned index){
 
 int	MiningBarge::mine(IAsteroid* target) const {
 	if (target == NULL)
-		throw std::invalid_argument("Null target");
+		return 0;
 
 	int	worth = 0;
 	for (unsigned i=0; i<laserCount; i++){
