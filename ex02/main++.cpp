@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 19:16:21 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/03 19:44:08 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/05 14:41:51 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ extern int	main(){
 	std::cout << squad1.getCount() << std::endl;
 	squad1.report();
 
-	std::cout << squad1.getUnit(-1) << " " << squad1.getUnit(999) << std::endl;
+	std::cout << std::endl << squad1.getUnit(-1) << " " << squad1.getUnit(999) << std::endl;
 
 	std::cout << std::endl << "== Squad 2 copy ==" << std::endl;
 	Squad	squad2 = Squad(squad1);
