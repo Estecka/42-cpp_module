@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 18:31:56 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 18:52:47 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/05 15:55:23 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ public:
 
 	AMateria*	clone() const;
 	void	use(ICharacter& target);
+	void	status() const;
+
+protected:
+	const std::string&	type() const;
 };
 
 #endif

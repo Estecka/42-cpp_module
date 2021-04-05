@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 20:56:12 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/05 00:49:08 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/05 16:00:29 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,11 @@ void	Character::status() const {
 	{
 		AMateria* item = this->inventory[i];
 		std::cout << "["<<i<<"] " << item;
-		if (item)
-			std::cout << " " << item->getType() << " ("<<item->getXP()<<")";
-		std::cout << std::endl;
+		if (item) {
+			std::cout << " ";
+			item->status();
+		} else
+			std::cout << std::endl;
 	}
 }
 
