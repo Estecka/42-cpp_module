@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 23:05:50 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/05 17:37:04 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/05 18:17:08 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ public:
 
 	std::string	getName() const;
 	int	getDurability() const;
+	int	getDurabilityMax() const;
 	int	getFullPrice() const;
-	int	getWorth() const;
 
 	std::string	mine(IAsteroid* target);
 	IMiningLaser*	clone() const;

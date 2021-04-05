@@ -6,24 +6,23 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:09:47 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/05 17:41:23 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/05 18:19:40 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef SHOP_HPP
+#define SHOP_HPP
 
 #include "IMiningLaser.hpp"
 
 #include <iostream>
 
 namespace Shop {
-	static const DeepCoreMiner	factoryDeeCore;
-	static const DeepCoreMiner	factoryStrip;
+	extern const unsigned int	productCount;
+	extern const IMiningLaser*const	products[];
 
-	const IMiningLaser*const	products[] = {
-		&factoryDeeCore,
-		&factoryStrip,
-		NULL
-	};
-
-	int	Sell(IMiningLaser*);
+	int	Sell(IMiningLaser&);
 	int	Sell(std::string ore);
 }
+
+#endif

@@ -6,14 +6,14 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 23:23:24 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/05 17:40:15 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/05 18:26:49 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "StripMiner.hpp"
 
 StripMiner::StripMiner(void){
-	this->durability = 20;
+	this->durability = this->getDurabilityMax();
 }
 StripMiner::StripMiner(const StripMiner& other){
 	*this = other;
@@ -27,9 +27,9 @@ StripMiner&	StripMiner::operator=(const StripMiner& other){
 }
 
 std::string	StripMiner::getName() const { return "StripMiner"; }
-int	StripMiner::getDurability() const { return this->durability;}
+int	StripMiner::getDurability() const { return this->durability; }
+int	StripMiner::getDurabilityMax() const { return 20; }
 int	StripMiner::getFullPrice() const { return 1000; }
-int	StripMiner::getWorth() const { return getFullPrice() * this->durability / 40; }
 
 std::string	StripMiner::mine(IAsteroid* target){
 	std::string	result;
@@ -41,4 +41,8 @@ std::string	StripMiner::mine(IAsteroid* target){
 
 	std::cout << "* strip mining... got " << result << "! *" << std::endl;
 	return result;
+}
+
+IMiningLaser*	StripMiner::clone() const {
+	return new StripMiner(*this);
 }

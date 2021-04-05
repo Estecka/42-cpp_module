@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 00:10:21 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/05 17:29:57 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/05 18:30:31 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,38 +55,46 @@ static void Mine(MiningBarge& player){
 		<< std::endl;
 
 	int worth = player.mine(target);
-	std::cout << "You sell the material for a total of " << worth << " imperial "\
+	std::cout << "You sell the materials for a total of " << worth << " imperial "\
 		"credits." << std::endl;
+	player.addMoney(worth);
 	delete target;
 }
 
 static void Buy(MiningBarge& player){
-	std::cout << "Select the product you wish to buy :" << std::endl \
-		<< "[0] Strip Miner" << std::endl \
-		<< "[1] DeepCore Miner" << std::endl \
-		;
+	std::cout << "Select the product you wish to buy :" << std::endl;
+	for (unsigned i=0; i<Shop::productCount; i++) {
+		const IMiningLaser* product = Shop::products[i];
+		std::cout \
+			<< "["<<i<<"] " << product->getName() \
+			<< " ($"<<product->getFullPrice()<<")"\
+			<< std::endl;
+	}
 
 	unsigned i = getInt();
-	IMiningLaser* item;
-	switch (i)
+	if (i < 0 || Shop::productCount <= i)
+		std::cout << "Operation cancelled" << std::endl;
+	else 
 	{
-		default: item = NULL; break;
-		case 0: item = new StripMiner(); break;
-		case 1: item = new DeepCoreMiner(); break;
-	}
-
-	if (item){
-		if (player.equip(item))
-			std::cout << "You mount the " << item->getName() \
-				<< " onto your ship " << std::endl;
-		else {
-			std::cout << "You realize you don't have enough room for your new "\
-				"toy, so you throw it away." << std::endl;
-			delete item;
+		if (player.getMoney() < Shop::products[i]->getFullPrice())
+		{
+			std::cout << "You don't have enough money to buy a "\
+				<< Shop::products[i]->getName() << std::endl;
+		}
+		else 
+		{
+			IMiningLaser* item = Shop::products[i]->clone();
+			player.addMoney(-item->getFullPrice());
+			if (player.equip(item))
+				std::cout << "You mount the " << item->getName() \
+					<< " onto your ship " << std::endl;
+			else {
+				std::cout << "You realize you don't have enough room for your new "\
+					"toy, so you throw it away." << std::endl;
+				delete item;
+			}
 		}
 	}
-	else
-		std::cout << "Operation cancelled" << std::endl;
 }
 
 static void Sell(MiningBarge& player){
@@ -114,7 +122,7 @@ static void	SpaceMinerAdventures(int initialMoney){
 		std::string	input;
 
 		std::cout \
-			<< "You have " << player.getMoney() << " imperial Credits to your name."\
+			<< "You have " << player.getMoney() << " imperial Credits to your name." << std::endl \
 			<< "[hint: exit, mine, buy, sell]" << std::endl \
 			<< "> ";
 		std::getline(std::cin, input);

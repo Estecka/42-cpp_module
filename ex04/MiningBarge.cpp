@@ -6,11 +6,12 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 23:38:47 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/05 17:32:14 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/05 17:49:49 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MiningBarge.hpp"
+#include "Shop.hpp"
 
 #include <exception>
 
@@ -75,7 +76,7 @@ int	MiningBarge::mine(IAsteroid* target) const {
 	int	worth = 0;
 	for (unsigned i=0; i<laserCount; i++){
 		std::string result = this->equipment[i]->mine(target);
-		// increase worth
+		worth += Shop::Sell(result);
 	}
 	return worth;
 }
