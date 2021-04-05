@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   IMiningLaser.hpp                                   :+:      :+:    :+:   */
+/*   Shop.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/03 23:10:04 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/05 17:25:41 by abaur            ###   ########.fr       */
+/*   Created: 2021/04/05 17:09:47 by abaur             #+#    #+#             */
+/*   Updated: 2021/04/05 17:32:43 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IMININGLASER_HPP
-#define IMININGLASER_HPP
+#include "IMiningLaser.hpp"
 
 #include <iostream>
 
-class IAsteroid;
+namespace Shop {
+	static const DeepCoreMiner	factoryDeeCore;
+	static const DeepCoreMiner	factoryStrip;
 
-class IMiningLaser
-{
-public:
-	virtual ~IMiningLaser() {}
+	const IMiningLaser*const	products[] = {
+		&factoryDeeCore,
+		&factoryStrip,
+		NULL
+	};
 
-	virtual std::string	getName() const = 0;
-	virtual int	getWorth() const = 0;
-	virtual int	getDurability() const = 0;
+	int	Sell(IMiningLaser*);
+	int	Sell(std::string ore);
 
-	virtual std::string mine(IAsteroid* target) = 0;
-	virtual IMiningLaser*	clone() const = 0;
-};
-
-#include "IAsteroid.hpp"
-
-#endif
+	int	GetCost(IMiningLaser*);
+}

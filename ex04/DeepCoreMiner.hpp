@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 23:05:50 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 01:25:19 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/05 17:28:27 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ public:
 	DeepCoreMiner& operator=(const DeepCoreMiner&);
 
 	std::string	getName() const;
+	int	getWorth() const;
+	int	getDurability() const;
 
 	std::string	mine(IAsteroid* target);
+	IMiningLaser*	clone() const;
 };
 
 #include "IAsteroid.hpp"

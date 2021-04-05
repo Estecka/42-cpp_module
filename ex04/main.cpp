@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 00:10:21 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 03:56:50 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/05 17:29:57 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "Asteroid.hpp"
 #include "Comet.hpp"
 #include "DeepCoreMiner.hpp"
+#include "Shop.hpp"
 #include "StripMiner.hpp"
 
 #include <iostream>
@@ -104,14 +105,17 @@ static void Sell(MiningBarge& player){
 		std::cout << "Operation cancelled." << std::endl;
 }
 
-static void	SpaceMinerAdventures(){
+static void	SpaceMinerAdventures(int initialMoney){
 	MiningBarge	player;
+	player.addMoney(initialMoney);
 	player.equip(new StripMiner());
 
 	while(!std::cin.eof()) {
 		std::string	input;
 
-		std::cout << "[hint: exit, mine, buy, sell]" << std::endl \
+		std::cout \
+			<< "You have " << player.getMoney() << " imperial Credits to your name."\
+			<< "[hint: exit, mine, buy, sell]" << std::endl \
 			<< "> ";
 		std::getline(std::cin, input);
 		std::cout << std::endl;
@@ -135,6 +139,13 @@ static void	SpaceMinerAdventures(){
 	}
 }
 
-extern int	main(){
-	SpaceMinerAdventures();
+extern int	main(int argc, char** argv){
+	int	money;
+
+	if (argc>1)
+		money = atoi(argv[1]);
+	else
+		money = 1000;
+
+	SpaceMinerAdventures(money);
 }

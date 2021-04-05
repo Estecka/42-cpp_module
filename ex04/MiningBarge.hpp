@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 23:39:02 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/04 02:46:36 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/05 17:16:42 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ public:
 	bool	equip(IMiningLaser* item);
 	IMiningLaser*	unequip(unsigned index);
 
+	void	addMoney(int amount);
+	int		getMoney() const;
+
 	int	mine(IAsteroid* target) const;
 
 private:
@@ -38,6 +41,7 @@ private:
 
 	IMiningLaser* equipment[LASERMAX];
 	unsigned	laserCount;
+	int	wallet;
 };
 
 #endif

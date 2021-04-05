@@ -5,6 +5,7 @@ HDRS = \
 	Comet.hpp \
 	DeepCoreMiner.hpp \
 	MiningBarge.hpp \
+	Shop.hpp \
 	StripMiner.hpp \
 
 SRCS = \
@@ -13,6 +14,7 @@ SRCS = \
 	Comet.cpp \
 	DeepCoreMiner.cpp \
 	MiningBarge.cpp \
+	Shop.cpp \
 	StripMiner.cpp \
 
 OBJS = ${SRCS:.cpp=.o}

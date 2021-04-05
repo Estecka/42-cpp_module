@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 23:38:47 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/05 17:06:37 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/05 17:32:14 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ MiningBarge::MiningBarge(void){
 	for (int i=0; i<LASERMAX; i++)
 		this->equipment[i] = NULL;
 	this->laserCount = 0;
+	this->wallet = 0;
 }
 MiningBarge::MiningBarge(const MiningBarge& other){
 	*this = other;
@@ -33,6 +34,7 @@ MiningBarge&	MiningBarge::operator=(const MiningBarge& other){
 }
 
 unsigned	MiningBarge::getLaserCount() const { return this->laserCount; }
+int	MiningBarge::getMoney() const { return this->wallet; }
 
 const IMiningLaser* MiningBarge::getLaser(unsigned index) const {
 	if (index < 0 || laserCount <= index)
@@ -60,6 +62,10 @@ IMiningLaser* MiningBarge::unequip(unsigned index){
 	laserCount--;
 
 	return item;
+}
+
+void	MiningBarge::addMoney(int amount) {
+	this->wallet += amount;
 }
 
 int	MiningBarge::mine(IAsteroid* target) const {
