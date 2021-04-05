@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:09:47 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/05 17:32:43 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/05 17:41:23 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,4 @@ namespace Shop {
 
 	int	Sell(IMiningLaser*);
 	int	Sell(std::string ore);
-
-	int	GetCost(IMiningLaser*);
 }
