@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 23:23:24 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/06 13:59:43 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/06 14:15:59 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,19 @@ int	StripMiner::getDurabilityMax() const { return 20; }
 int	StripMiner::getFullPrice() const { return 1000; }
 
 std::string	StripMiner::mine(IAsteroid* target){
-	std::string	result;
+	std::string	result = "nothing";
 
-	if (target == NULL)
-		result = "nothing";
-	else
+	if (this->durability <= 0)
+		std::cout << "* This mining equipement is broken and cannot operate. *"\
+			<< std::endl;
+	else if (target == NULL)
+		std::cout << "*There is nothing to mine.*" << std::endl;
+	else {
 		result = target->beMined(this);
+		std::cout << "* strip mining... got " << result << "! *" << std::endl;
+		this->durability--;
+	}
 
-	std::cout << "* strip mining... got " << result << "! *" << std::endl;
 	return result;
 }
 

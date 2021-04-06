@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 00:10:21 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/06 13:54:12 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/06 14:14:11 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,12 @@ static void Buy(MiningBarge& player){
 
 static void Sell(MiningBarge& player){
 	std::cout << "Select a device to scrap :" << std::endl;
-	for (unsigned i=0; i<player.getLaserCount(); i++)
-		std::cout << "["<<i<<"] " << player.getLaser(i)->getName() << std::endl;
+	for (unsigned i=0; i<player.getLaserCount(); i++) {
+		const IMiningLaser* item = player.getLaser(i);
+		std::cout << "["<<i<<"] " << item->getName() \
+			<< " ("<< item->getDurability()<<"/"<<item->getDurabilityMax()<<" uses)"\
+			<< std::endl;
+	}
 
 	unsigned i = getInt();
 	if (0 <= i && i < player.getLaserCount())

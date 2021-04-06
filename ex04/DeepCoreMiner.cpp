@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 23:15:29 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/06 13:59:15 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/06 14:16:02 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,19 @@ int	DeepCoreMiner::getDurabilityMax() const { return 10; }
 int	DeepCoreMiner::getFullPrice() const { return 5000; }
 
 std::string	DeepCoreMiner::mine(IAsteroid* target){
-	std::string	result;
+	std::string	result = "nothing";
 
-	if (target == NULL)
-		result = "nothing";
-	else
+	if (this->durability <= 0)
+		std::cout << "* This mining equipement is broken and cannot operate. *"\
+			<< std::endl;
+	else if (target == NULL)
+		std::cout << "*There is nothing to mine.*" << std::endl;
+	else {
 		result = target->beMined(this);
+		std::cout << "* mining deep... got " << result << "! *" << std::endl;
+		this->durability--;
+	}
 
-	std::cout << "* mining deep... got " << result << "! *" << std::endl;
 	return result;
 }
 
