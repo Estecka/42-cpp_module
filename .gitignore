@@ -1,5 +1,7 @@
 *.out
 *.o
 
+*hpp.test.cpp
+
 *.log
 /.vscode

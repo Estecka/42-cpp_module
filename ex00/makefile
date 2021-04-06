@@ -1,9 +1,9 @@
 HDRS = \
-	BureauCrat.hpp \
+	Bureaucrat.hpp \
 
 SRCS = \
 	main.cpp \
-	BureauCrat.cpp \
+	Bureaucrat.cpp \
 
 OBJS = ${SRCS:.cpp=.o}
 
