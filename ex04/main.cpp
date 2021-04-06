@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 00:10:21 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/05 18:30:31 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/06 13:54:12 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,11 +103,11 @@ static void Sell(MiningBarge& player){
 		std::cout << "["<<i<<"] " << player.getLaser(i)->getName() << std::endl;
 
 	unsigned i = getInt();
-	if (0 <= i && i < player.getLaserCount()){
+	if (0 <= i && i < player.getLaserCount())
+	{
 		IMiningLaser* item = player.unequip(i);
 		std::cout << "You scrap your old " << item->getName() << " for a "\
-			"reasonnable price." << std::endl;
-		delete item;
+			"reasonnable $" << Shop::Sell(*item) << "." << std::endl;
 	}
 	else
 		std::cout << "Operation cancelled." << std::endl;

@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 23:23:24 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/05 18:26:49 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/06 13:59:43 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ StripMiner::~StripMiner(){
 }
 
 StripMiner&	StripMiner::operator=(const StripMiner& other){
-	(void)other;
+	this->durability = other.durability;
 	return *this;
 }
 

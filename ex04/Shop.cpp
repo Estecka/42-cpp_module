@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:42:10 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/05 18:30:02 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/06 13:48:39 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,11 @@ const IMiningLaser*const	Shop::products[] = {
 int	Shop::Sell(IMiningLaser& item) {
 	int	worth;
 	
-	worth = item.getFullPrice() * item.getDurability();
-	worth /= 2 * item.getDurabilityMax();
+	worth = item.getFullPrice();
+	worth = worth * item.getDurability() / item.getDurabilityMax();
+	worth = worth * 4 / 5;
+	worth /= 2;
+	worth += item.getFullPrice() / 5;
 	delete &item;
 	return worth;
 }
