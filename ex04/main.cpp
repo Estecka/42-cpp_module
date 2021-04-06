@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 00:10:21 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/06 14:14:11 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/06 14:24:52 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,9 +109,11 @@ static void Sell(MiningBarge& player){
 	unsigned i = getInt();
 	if (0 <= i && i < player.getLaserCount())
 	{
-		IMiningLaser* item = player.unequip(i);
-		std::cout << "You scrap your old " << item->getName() << " for a "\
-			"reasonnable $" << Shop::Sell(*item) << "." << std::endl;
+		IMiningLaser& item = *player.unequip(i);
+		std::cout << "You scrap your old " << item.getName() << " for ";
+		int worth = Shop::Sell(item);
+		std::cout << "a reasonnable $" << worth << "." << std::endl;
+		player.addMoney(worth);
 	}
 	else
 		std::cout << "Operation cancelled." << std::endl;
@@ -132,13 +134,13 @@ static void	SpaceMinerAdventures(int initialMoney){
 		std::getline(std::cin, input);
 		std::cout << std::endl;
 
-		if (input == "exit")
+		if (input == "x" || input == "exit")
 			break;
-		else if (input == "mine")
+		else if (input == "m" || input == "mine")
 			Mine(player);
-		else if (input == "buy")
+		else if (input == "b" || input == "buy")
 			Buy(player);
-		else if (input == "sell")
+		else if (input == "s" || input == "sell")
 		{
 			if (player.getLaserCount() > 1)
 				Sell(player);

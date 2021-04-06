@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:42:10 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/06 13:48:39 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/06 14:30:52 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int	Shop::Sell(IMiningLaser& item) {
 }
 
 int Shop::Sell(std::string material) {
-	if (material == "Flavium")   return 100;
-	if (material == "Dragonite") return 300;
-	if (material == "Tartarite") return 400;
-	if (material == "Meium")     return 1000;
+	if (material == "Flavium")   return   100; // Enough for 2 StripMiners
+	if (material == "Dragonite") return   750; // Enough 1.5 DeepCores
+	if (material == "Tartarite") return   400; // 4x
+	if (material == "Meium")     return 10000; // >10x
 	return 0;
 }
