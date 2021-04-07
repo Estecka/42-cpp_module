@@ -6,11 +6,22 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 17:28:27 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/07 17:53:06 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/07 18:09:10 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
+
+void	Form::validateGrades() const {
+	if (signingGrade > BUREAUGRADEMAX)
+		throw GradeTooLowException(signingGrade);
+	if (signingGrade < BUREAUGRADEMIN)
+		throw GradeTooHighException(signingGrade);
+	if (executingGrade > BUREAUGRADEMAX)
+		throw GradeTooLowException(executingGrade);
+	if (executingGrade < BUREAUGRADEMIN)
+		throw GradeTooHighException(executingGrade);
+}
 
 Form::Form(void) 
 : name("Nondescript Form"), 
@@ -18,6 +29,7 @@ signingGrade(BUREAUGRADEMAX),
 executingGrade(BUREAUGRADEMAX)
 {
 	this->isSigned = false;
+	this->validateGrades();
 }
 
 Form::Form(const Form& other)
@@ -26,6 +38,7 @@ signingGrade(other.signingGrade),
 executingGrade(other.executingGrade)
 {
 	this->isSigned = false;
+	this->validateGrades();
 }
 
 Form::Form(std::string _name, int _sign, int _exec)
@@ -34,6 +47,7 @@ signingGrade(_sign),
 executingGrade(_exec)
 {
 	this->isSigned = false;
+	this->validateGrades();
 }
 
 Form::~Form(){

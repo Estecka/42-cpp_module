@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 17:01:13 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/07 17:52:25 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/07 18:07:17 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ private:
 	const int	executingGrade;
 
 	bool	isSigned;
+
+	void	validateGrades() const;
 
 //=======================================================
 public:
