@@ -1,0 +1,72 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Form.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/07 17:28:27 by abaur             #+#    #+#             */
+/*   Updated: 2021/04/07 17:50:14 by abaur            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Form.hpp"
+
+Form::Form(void) 
+: name("Nondescript Form"), 
+signingGrade(BUREAUGRADEMAX), 
+executingGrade(BUREAUGRADEMAX)
+{
+	this->isSigned = false;
+}
+
+Form::Form(const Form& other)
+: name(other.name),
+signingGrade(other.signingGrade),
+executingGrade(other.executingGrade)
+{
+	this->isSigned = false;
+}
+
+Form::Form(std::string _name, int _sign, int _exec)
+: name(_name),
+signingGrade(_sign),
+executingGrade(_exec)
+{
+	this->isSigned = false;
+}
+
+Form::~Form(){
+}
+
+Form&	Form::operator=(const Form& other){
+	(void)other;
+	throw std::logic_error("A form is constant and cannot be overwritten.");
+}
+
+std::string	Form::GetName() const { return this->name; }
+int	Form::GetSigningGrade() const { return this->signingGrade; }
+int	Form::GetExecutingGrade() const { return this->executingGrade; }
+bool	Form::IsSigned() const { return this->isSigned; }
+
+void	Form::beSigned(const Bureaucrat& signer) {
+	if (signer.getGrade() < this->signingGrade)
+		throw GradeTooLowException(signer.getGrade());
+	else
+		this->isSigned = true;
+}
+
+std::ostream&	operator<<(std::ostream& dst, const Form& src) {
+	return dst << "Form " << src.GetName() << ", "\
+		<< (src.IsSigned() ? "signed" : "unsigned") << ", "\
+		<< "Signing grade " << src.GetSigningGrade() << ", "\
+		<< "Executing grade" << src.GetExecutingGrade() << ", "\
+		<< std::endl;
+}
+
+Form::GradeTooHighException::GradeTooHighException(int grade)
+: GradeException("Grade is too high : ", grade)
+{}
+Form::GradeTooLowException::GradeTooLowException(int grade)
+: GradeException("Grade is too low : ", grade)
+{}
