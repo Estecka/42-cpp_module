@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 17:29:04 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/07 15:58:15 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/07 17:24:09 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@ int	Bureaucrat::upgrade(){
 int	Bureaucrat::downgrade(){
 	this->setGrade(this->grade + 1);
 	return this->grade;
+}
+
+std::ostream&	operator<<(std::ostream& dst, const Bureaucrat& src) {
+	return dst << src.getName() << ", bureaucrat grade " << src.getGrade() << ".";
 }
 
 // =============================================================

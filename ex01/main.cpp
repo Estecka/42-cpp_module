@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 15:11:20 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/07 16:56:54 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/07 17:26:30 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ extern int	main() {
 			std::cout << names[i] << " was not created." << std::endl;
 			continue;
 		}
+		std::cout << *minion << std::endl;
 
 
 		std::cout << "Upgrading once..." << std::endl;

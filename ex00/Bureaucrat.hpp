@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:16:20 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/07 15:53:26 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/07 17:24:20 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ public:
 	};
 };
 
+std::ostream&	operator<<(std::ostream&, const Bureaucrat&);
 
 #endif
