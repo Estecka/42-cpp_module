@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:16:20 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/07 15:31:06 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/07 15:53:26 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ public:
 		~GradeException() throw();
 		const char* what() const throw();
 	protected:
+		GradeException(std::string what, int grade) throw();
 		int _grade;
 		std::string	_what;
 	};

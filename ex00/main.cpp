@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 15:11:20 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/07 15:46:35 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/07 15:59:37 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ extern int	main() {
 	{
 		Bureaucrat*	minion = NULL;
 
-		std::cout << std::endl << names[i] << ", grade " << grades[i] << std::endl;
+		std::cout << std::endl << "== " << names[i] << ", grade " << grades[i] << " ==" << std::endl;
 		std::cout << "Creating bureaucrat..." << std::endl;
 		try {
 			minion = new Bureaucrat(names[i], grades[i]);
 		}
 		catch(const Bureaucrat::GradeException& e) {
-			std::cout << "An exception was thrown !" << std::endl \
+			std::cout << "!! An exception was thrown !!" << std::endl \
 				<< e.what() << std::endl;
 				;
 		}
@@ -60,7 +60,7 @@ extern int	main() {
 			minion->upgrade();
 		}
 		catch(const Bureaucrat::GradeException& e) {
-			std::cout << "An exception was thrown !" << std::endl \
+			std::cout << "!! An exception was thrown !!" << std::endl \
 				<< e.what() << std::endl;
 		}
 		std::cout << minion->getName() << "'s grade is "\
@@ -73,7 +73,7 @@ extern int	main() {
 			minion->downgrade();
 		}
 		catch(const Bureaucrat::GradeException& e) {
-			std::cout << "An exception was thrown !" << std::endl \
+			std::cout << "!! An exception was thrown !!" << std::endl \
 				<< e.what() << std::endl;
 		}
 		std::cout << minion->getName() << "'s grade is "\
