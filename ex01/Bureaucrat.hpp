@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:16:20 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/07 16:52:29 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/07 17:20:08 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,14 @@
 
 #include "GradeException.hpp"
 
+#include "Form.hpp"
 #include <iostream>
 #include <exception>
 
 #define BUREAUGRADEMIN	1
 #define BUREAUGRADEMAX	150
+
+class Form;
 
 class Bureaucrat
 {
@@ -35,6 +38,8 @@ public:
 
 	void	setName(std::string name);
 	void	setGrade(int grade);
+
+	bool	signForm(const Form&);
 
 	int	upgrade();
 	int	downgrade();
