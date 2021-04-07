@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 17:01:13 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/07 17:37:48 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/07 17:52:25 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ public:
 	int	GetExecutingGrade() const;
 	bool	IsSigned() const;
 
-	void	beSigned(const Bureaucrat& signer);
+	bool	beSigned(const Bureaucrat& signer);
 
 private:
 	Form&	operator=(const Form&);

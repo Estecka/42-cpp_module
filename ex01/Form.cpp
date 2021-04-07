@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 17:28:27 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/07 17:50:14 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/07 17:53:06 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,15 @@ int	Form::GetSigningGrade() const { return this->signingGrade; }
 int	Form::GetExecutingGrade() const { return this->executingGrade; }
 bool	Form::IsSigned() const { return this->isSigned; }
 
-void	Form::beSigned(const Bureaucrat& signer) {
+bool	Form::beSigned(const Bureaucrat& signer) {
 	if (signer.getGrade() < this->signingGrade)
 		throw GradeTooLowException(signer.getGrade());
-	else
+	else if (this->isSigned)
+		return false;
+	else {
 		this->isSigned = true;
+		return true;
+	}
 }
 
 std::ostream&	operator<<(std::ostream& dst, const Form& src) {

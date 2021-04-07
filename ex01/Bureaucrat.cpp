@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 17:29:04 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/07 17:26:56 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/07 18:01:51 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,29 @@ int	Bureaucrat::upgrade(){
 int	Bureaucrat::downgrade(){
 	this->setGrade(this->grade + 1);
 	return this->grade;
+}
+
+bool	Bureaucrat::signForm(Form& form){
+	if (form.IsSigned()) 
+	{
+		std::cout << this->name << " cannot sign the form " << form.GetName() \
+			<< " because it is already signed." << std::endl;
+		return false;
+	}
+	else
+	{
+		try {
+			form.beSigned(*this);
+		} catch (const GradeTooLowException& e) {
+			std::cout << *this << " cannot sign form " << form.GetName() \
+				<< " because it requires a grade" << form.GetSigningGrade() \
+				<< " or above."\
+				<< std::endl;
+			return false;
+		}
+		std::cout << this->name << " signed form " << form.GetName() << std::endl;
+		return true;
+	}
 }
 
 std::ostream&	operator<<(std::ostream& dst, const Bureaucrat& src) {

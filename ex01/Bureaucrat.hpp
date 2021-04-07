@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:16:20 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/07 17:27:13 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/07 17:57:13 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ public:
 	void	setName(std::string name);
 	void	setGrade(int grade);
 
-	bool	signForm(const Form&);
-
 	int	upgrade();
 	int	downgrade();
+
+	bool	signForm(Form&);
 
 private:
 	std::string	name;
