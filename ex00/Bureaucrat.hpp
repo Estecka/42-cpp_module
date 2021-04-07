@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:16:20 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/07 14:54:09 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/07 15:09:43 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,26 +43,25 @@ private:
 
 //==================================================
 public:
-	class AGradeException : public std::exception {
+	class GradeException : public std::exception {
 	public:
-		AGradeException(int grade) throw();
-		virtual const char* what() const throw() = 0;
+		GradeException(int grade) throw();
+		const char* what() const throw();
 	protected:
-		int grade;
+		int _grade;
+		std::string	_what;
 	};
 
-	class GradeTooHighException : public AGradeException
+	class GradeTooHighException : public GradeException
 	{
 	public:
 		GradeTooHighException(int grade) throw();
-		const char*	what() const throw();
 	};
 
-	class GradeTooLowException : public std::exception
+	class GradeTooLowException : public GradeException
 	{
 	public:
 		GradeTooLowException(int grade) throw();
-		const char*	what() const throw();
 	};
 };
 

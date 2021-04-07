@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 17:29:04 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/07 14:57:59 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/07 15:10:19 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,25 @@ int	Bureaucrat::upgrade(){
 int	Bureaucrat::downgrade(){
 	this->setGrade(this->grade - 1);
 	return this->grade;
+}
+
+// =============================================================
+Bureaucrat::GradeException::GradeException(int grade) throw() {
+	this->_grade = grade;
+	this->_what = "Grade is invalid : ";
+	this->_what += grade;
+}
+Bureaucrat::GradeTooHighException::GradeTooHighException(int grade) throw()
+: GradeException(grade){
+	this->_what = "Grade is too high : ";
+	this->_what += grade;
+}
+Bureaucrat::GradeTooLowException::GradeTooLowException(int grade) throw()
+: GradeException(grade){
+	this->_what = "Grade is too low : ";
+	this->_what += grade;
+}
+
+const char*	Bureaucrat::GradeException::what() const throw(){
+	return this->_what.data();
 }
