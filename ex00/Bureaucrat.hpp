@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:16:20 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/06 17:23:25 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/07 14:54:09 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 #include <iostream>
 #include <exception>
+
+#define BUREAUGRADEMIN	1
+#define BUREAUGRADEMAX	150
 
 class Bureaucrat
 {
