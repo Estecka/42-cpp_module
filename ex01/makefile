@@ -1,10 +1,12 @@
 HDRS = \
 	Bureaucrat.hpp \
+	GradeException.hpp \
 	Form.hpp \
 
 SRCS = \
 	main.cpp \
 	Bureaucrat.cpp \
+	GradeException.cpp \
 	Form.cpp \
 
 OBJS = ${SRCS:.cpp=.o}

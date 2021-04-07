@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 17:29:04 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/07 15:58:15 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/07 16:54:33 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,30 +60,9 @@ int	Bureaucrat::downgrade(){
 }
 
 // =============================================================
-Bureaucrat::GradeException::GradeException(int grade) throw() {
-	std::stringstream what;
-
-	what << "Grade is invalid : " << grade;
-	this->_grade = grade;
-	this->_what = what.str();
-}
-Bureaucrat::GradeException::GradeException(std::string whatchar, int grade) throw() {
-	std::stringstream whatstream;
-
-	whatstream << whatchar << grade;
-	this->_grade = grade;
-	this->_what = whatstream.str();
-}
 Bureaucrat::GradeTooHighException::GradeTooHighException(int grade) throw()
 : GradeException("Grade is too high : ", grade){
 }
 Bureaucrat::GradeTooLowException::GradeTooLowException(int grade) throw()
 : GradeException("Grade is too low : ", grade){
-}
-
-Bureaucrat::GradeException::~GradeException() throw(){
-}
-
-const char*	Bureaucrat::GradeException::what() const throw(){
-	return this->_what.data();
 }

@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 15:11:20 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/07 15:59:37 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/07 16:56:54 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ extern int	main() {
 		try {
 			minion = new Bureaucrat(names[i], grades[i]);
 		}
-		catch(const Bureaucrat::GradeException& e) {
+		catch(const GradeException& e) {
 			std::cout << "!! An exception was thrown !!" << std::endl \
 				<< e.what() << std::endl;
 				;
@@ -59,7 +59,7 @@ extern int	main() {
 		try {
 			minion->upgrade();
 		}
-		catch(const Bureaucrat::GradeException& e) {
+		catch(const GradeException& e) {
 			std::cout << "!! An exception was thrown !!" << std::endl \
 				<< e.what() << std::endl;
 		}
@@ -72,7 +72,7 @@ extern int	main() {
 			minion->downgrade();
 			minion->downgrade();
 		}
-		catch(const Bureaucrat::GradeException& e) {
+		catch(const GradeException& e) {
 			std::cout << "!! An exception was thrown !!" << std::endl \
 				<< e.what() << std::endl;
 		}

@@ -6,12 +6,14 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:16:20 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/07 15:53:26 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/07 16:52:29 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
+
+#include "GradeException.hpp"
 
 #include <iostream>
 #include <exception>
@@ -43,17 +45,6 @@ private:
 
 //==================================================
 public:
-	class GradeException : public std::exception {
-	public:
-		GradeException(int grade) throw();
-		~GradeException() throw();
-		const char* what() const throw();
-	protected:
-		GradeException(std::string what, int grade) throw();
-		int _grade;
-		std::string	_what;
-	};
-
 	class GradeTooHighException : public GradeException
 	{
 	public:
