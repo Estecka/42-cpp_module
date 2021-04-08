@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:32:11 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/08 18:37:17 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/08 19:25:09 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 
 bool	RobotomyRequestForm::execute(const Bureaucrat& executor) const {
 	this->Form::execute(executor);
+	std::cout << "* TACTACTACTACTACTACTAC *" << std::endl;
 	if (rand() % 2) {
 		std::cout << target << " has been robotomised succesfully." << std::endl;
 		return true;
