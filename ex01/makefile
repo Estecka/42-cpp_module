@@ -11,7 +11,7 @@ SRCS = \
 
 OBJS = ${SRCS:.cpp=.o}
 
-NAME = bureaucrat.out
+NAME = form.out
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 CXX=clang++

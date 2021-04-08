@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 17:28:27 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/07 18:09:10 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/08 17:34:22 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	Form::GetExecutingGrade() const { return this->executingGrade; }
 bool	Form::IsSigned() const { return this->isSigned; }
 
 bool	Form::beSigned(const Bureaucrat& signer) {
-	if (signer.getGrade() < this->signingGrade)
+	if (signer.getGrade() > this->signingGrade)
 		throw GradeTooLowException(signer.getGrade());
 	else if (this->isSigned)
 		return false;
@@ -78,8 +78,8 @@ std::ostream&	operator<<(std::ostream& dst, const Form& src) {
 	return dst << "Form " << src.GetName() << ", "\
 		<< (src.IsSigned() ? "signed" : "unsigned") << ", "\
 		<< "Signing grade " << src.GetSigningGrade() << ", "\
-		<< "Executing grade" << src.GetExecutingGrade() << ", "\
-		<< std::endl;
+		<< "Executing grade " << src.GetExecutingGrade() << ", "\
+		;
 }
 
 Form::GradeTooHighException::GradeTooHighException(int grade)

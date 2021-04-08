@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 17:29:04 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/08 17:22:38 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/08 17:33:33 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ bool	Bureaucrat::signForm(Form& form){
 			form.beSigned(*this);
 		} catch (const Form::GradeTooLowException& e) {
 			std::cout << *this << " cannot sign form " << form.GetName() \
-				<< " because it requires a grade" << form.GetSigningGrade() \
+				<< " because it requires a grade " << form.GetSigningGrade() \
 				<< " or above."\
 				<< std::endl;
 			return false;

@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 15:11:20 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/08 17:22:54 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/08 17:33:18 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,28 +33,55 @@ static Form	forms[] = {
 	Form(),
 };
 
+static void	tryCreateForm(std::string name, int sign, int exec){
+	Form*	f;
+
+	try  {
+		f = new Form(name, sign, exec);
+	}
+	catch (const GradeException& e)	{ 
+		std::cout << name << " " << e.what() << std::endl;
+	}
+
+	if (f) {
+		std::cout << *f << std::endl;
+		delete f;
+	}
+}
+
+static void	trySignForm(Bureaucrat& bureaucrat, Form& form){
+	std::cout << std::endl;
+	std::cout << "+ " << bureaucrat << std::endl;
+	std::cout << "+ " << form << std::endl;
+	std::cout << ">> "; bureaucrat.signForm(form);
+	std::cout << std::endl;
+}
+
 extern int	main()
 {
 	{
-		Form*	f;
+		std::cout << std::endl << "== Creating some forms ==" << std::endl;
+		tryCreateForm("Invalid-W", 0, 1);
+		tryCreateForm("Invalid-X", 151, 1);
+		tryCreateForm("Invalid-Y", 1, 0);
+		tryCreateForm("Invalid-Z", 1, 151);
 
-		std::cout << std::endl << "Creating invalid forms..." << std::endl;
-		try { f = new Form("W", 0, 1);   } catch (const GradeException& e) { std::cout << e.what() << std::endl; }
-		try { f = new Form("X", 151, 1); } catch (const GradeException& e) { std::cout << e.what() << std::endl; }
-		try { f = new Form("Y", 2, 0);   } catch (const GradeException& e) { std::cout << e.what() << std::endl; }
-		try { f = new Form("Z", 2, 156); } catch (const GradeException& e) { std::cout << e.what() << std::endl; }
+		tryCreateForm("Valid-W", 2, 149);
+		tryCreateForm("Valid-X", 1, 150);
+		tryCreateForm("Valid-Y", 150, 1);
+		tryCreateForm("Valid-Z", 2, 149);
 	}
 	{
-		std::cout << std::endl << "Signing a bunch of forms..." << std::endl;
-		bureaucrats[0].signForm(forms[0]);
-		bureaucrats[6].signForm(forms[6]);
-		bureaucrats[6].signForm(forms[0]);
-		bureaucrats[6].signForm(forms[1]);
-		bureaucrats[1].signForm(forms[5]);
-		bureaucrats[2].signForm(forms[2]);
-		bureaucrats[2].signForm(forms[3]);
-		bureaucrats[1].signForm(forms[3]);
-		bureaucrats[4].signForm(forms[3]);
-		bureaucrats[5].signForm(forms[5]);
+		std::cout << std::endl << "==== Signing a bunch of forms... ====" << std::endl;
+		trySignForm(bureaucrats[0], forms[0]);
+		trySignForm(bureaucrats[6], forms[6]);
+		trySignForm(bureaucrats[6], forms[0]);
+		trySignForm(bureaucrats[6], forms[1]);
+		trySignForm(bureaucrats[1], forms[5]);
+		trySignForm(bureaucrats[2], forms[2]);
+		trySignForm(bureaucrats[2], forms[3]);
+		trySignForm(bureaucrats[1], forms[3]);
+		trySignForm(bureaucrats[4], forms[3]);
+		trySignForm(bureaucrats[5], forms[5]);
 	}
 }
