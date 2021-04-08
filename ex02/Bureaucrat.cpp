@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 17:29:04 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/08 17:33:33 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/08 19:06:14 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,25 @@ bool	Bureaucrat::signForm(Form& form){
 		std::cout << this->name << " signed form " << form.GetName() << std::endl;
 		return true;
 	}
+}
+
+bool	Bureaucrat::executeForm(const Form& form){
+	try {
+		form.execute(*this);
+	}
+	catch (const std::logic_error& e) {
+		std::cout << this->name << " could not execute " << form.GetName() \
+			<< " because it wasn't signed." << std::endl;
+		return false;
+	}
+	catch (const Form::GradeTooLowException& e) {
+		std::cout << this->name << " could not execute " << form.GetName() \
+			<< " because it requires a grade of " << form.GetExecutingGrade() \
+			<< " or above." << std::endl;
+		return false;
+	}
+	std::cout << this->name << " excecuted form " << form.GetName() << std::endl;
+	return true;
 }
 
 std::ostream&	operator<<(std::ostream& dst, const Bureaucrat& src) {

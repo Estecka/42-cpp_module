@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:16:20 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/07 17:57:13 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/08 18:56:15 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ public:
 	int	downgrade();
 
 	bool	signForm(Form&);
+	bool	executeForm(const Form&);
 
 private:
 	std::string	name;
