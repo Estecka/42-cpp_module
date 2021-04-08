@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 17:28:27 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/08 18:10:20 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/08 18:27:08 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ bool	Form::beSigned(const Bureaucrat& signer) {
 
 bool	Form::execute(const Bureaucrat& executor) const {
 	if (!this->isSigned)
-		return false;
+		throw std::logic_error("Cannot execute an unsigned form");
 	else if (executor.getGrade() > this->executingGrade)
 		throw GradeTooLowException(executor.getGrade());
 	else
