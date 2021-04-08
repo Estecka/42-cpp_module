@@ -6,83 +6,55 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 15:11:20 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/07 17:26:30 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/08 17:22:54 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
-static const std::string	names[] = {
-	"Robert",
-	"Norbert",
-	"Francis",
-	"Fabrice",
-	"Josephine",
-	"Camille",
-	"Marguerite"
+static Bureaucrat	bureaucrats[] = {
+	Bureaucrat("Jeanne", BUREAUGRADEMIN),
+	Bureaucrat("Marceline", 50),
+	Bureaucrat("Morgan", 93),
+	Bureaucrat("Alfred", 142),
+	Bureaucrat("Arthur", BUREAUGRADEMAX),
+	Bureaucrat(bureaucrats[4]),
+	Bureaucrat(),
 };
 
-static const int	grades[] = {
-	0,
-	1,
-	2,
-	75,
-	149,
-	150,
-	151,
+static Form	forms[] = {
+	Form("A1", BUREAUGRADEMIN, 1),
+	Form("B2", 2, 1),
+	Form("C3", 50, 1),
+	Form("D4", 100, 1),
+	Form("E5", BUREAUGRADEMAX, 1),
+	Form(forms[4]),
+	Form(),
 };
 
-extern int	main() {
-	for (int i=0; i<7; i++)
+extern int	main()
+{
 	{
-		Bureaucrat*	minion = NULL;
+		Form*	f;
 
-		std::cout << std::endl << "== " << names[i] << ", grade " << grades[i] << " ==" << std::endl;
-		std::cout << "Creating bureaucrat..." << std::endl;
-		try {
-			minion = new Bureaucrat(names[i], grades[i]);
-		}
-		catch(const GradeException& e) {
-			std::cout << "!! An exception was thrown !!" << std::endl \
-				<< e.what() << std::endl;
-				;
-		}
-
-		std::cout << names[i] <<"'s pointer is " << minion << std::endl;
-		if (!minion){
-			std::cout << names[i] << " was not created." << std::endl;
-			continue;
-		}
-		std::cout << *minion << std::endl;
-
-
-		std::cout << "Upgrading once..." << std::endl;
-		try {
-			minion->upgrade();
-		}
-		catch(const GradeException& e) {
-			std::cout << "!! An exception was thrown !!" << std::endl \
-				<< e.what() << std::endl;
-		}
-		std::cout << minion->getName() << "'s grade is "\
-			 << minion->getGrade() << "." << std::endl;
-
-
-		std::cout << "Downgrading twice..." << std::endl;
-		try {
-			minion->downgrade();
-			minion->downgrade();
-		}
-		catch(const GradeException& e) {
-			std::cout << "!! An exception was thrown !!" << std::endl \
-				<< e.what() << std::endl;
-		}
-		std::cout << minion->getName() << "'s grade is "\
-			 << minion->getGrade() << "." << std::endl;
-
-
-		std::cout << "Disposing " << minion->getName() << "." << std::endl;
-		delete minion;
-		continue;
+		std::cout << std::endl << "Creating invalid forms..." << std::endl;
+		try { f = new Form("W", 0, 1);   } catch (const GradeException& e) { std::cout << e.what() << std::endl; }
+		try { f = new Form("X", 151, 1); } catch (const GradeException& e) { std::cout << e.what() << std::endl; }
+		try { f = new Form("Y", 2, 0);   } catch (const GradeException& e) { std::cout << e.what() << std::endl; }
+		try { f = new Form("Z", 2, 156); } catch (const GradeException& e) { std::cout << e.what() << std::endl; }
+	}
+	{
+		std::cout << std::endl << "Signing a bunch of forms..." << std::endl;
+		bureaucrats[0].signForm(forms[0]);
+		bureaucrats[6].signForm(forms[6]);
+		bureaucrats[6].signForm(forms[0]);
+		bureaucrats[6].signForm(forms[1]);
+		bureaucrats[1].signForm(forms[5]);
+		bureaucrats[2].signForm(forms[2]);
+		bureaucrats[2].signForm(forms[3]);
+		bureaucrats[1].signForm(forms[3]);
+		bureaucrats[4].signForm(forms[3]);
+		bureaucrats[5].signForm(forms[5]);
 	}
 }
