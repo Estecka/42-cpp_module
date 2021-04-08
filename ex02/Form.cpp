@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 17:28:27 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/08 18:27:08 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/08 18:45:34 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ executingGrade(BUREAUGRADEMAX)
 	this->validateGrades();
 }
 
-Form::Form(const Form& other)
-: name(other.name),
+Form::Form(const Form& other) :
+target(other.target),
+name(other.name),
 signingGrade(other.signingGrade),
-executingGrade(other.executingGrade),
-target(other.target)
+executingGrade(other.executingGrade)
 {
 	this->isSigned = false;
 	this->validateGrades();
@@ -49,6 +49,9 @@ executingGrade(_exec)
 {
 	this->isSigned = false;
 	this->validateGrades();
+}
+
+Form::~Form(){
 }
 
 Form&	Form::operator=(const Form& other){
