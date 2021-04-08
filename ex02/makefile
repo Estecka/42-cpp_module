@@ -2,16 +2,22 @@ HDRS = \
 	Bureaucrat.hpp \
 	GradeException.hpp \
 	Form.hpp \
+	PresidentialPardonForm.hpp \
+	RobotomyRequestForm.hpp \
+	ShrubberyCreationForm.hpp \
 
 SRCS = \
 	main.cpp \
 	Bureaucrat.cpp \
 	GradeException.cpp \
 	Form.cpp \
+	PresidentialPardonForm.cpp \
+	RobotomyRequestForm.cpp \
+	ShrubberyCreationForm.cpp \
 
 OBJS = ${SRCS:.cpp=.o}
 
-NAME = form.out
+NAME = execution.out
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 CXX=clang++
