@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 19:30:30 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/09 18:29:57 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/09 18:56:24 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ static const char*	GetBranch(short directions){
 		default:
 			return "?";
 
+		case branchNone:
+			return " ";
 		case branchAll:
 			return "┼";
 
@@ -61,22 +63,21 @@ static const char*	GetBranch(short directions){
 		
 		case branchUp:    return "╹";
 		case branchDown:  return "╻";
-		case branchLeft: return "╸";
-		case branchRight:  return "╺";
+		case branchLeft:  return "╸";
+		case branchRight: return "╺";
 	}
 }
 
-static std::stringstream&	printNest(std::stringstream& dst, int nestLvl){
-	// dst << "+";
-	for (int i=0; i<nestLvl; i++)
-		dst << GetBranch(branchUp | branchDown);
-	return dst;
+static std::string	nest = "";
+static void	printNest(std::ostream& dst){
+	for (unsigned i=0; i<nest.size(); i++)
+		dst << GetBranch(nest[i]);
 }
 
 static int	drawBranch(std::stringstream& dst, int leafMax, int nestLvl){
 	(void)nestLvl;
 	int	branchCount = leafMax ? rand() % leafMax : 0;
-	std::cerr << "["<<branchCount<<"/"<<leafMax<<":"<<nestLvl<<"]" << std::endl;
+	// std::cerr << "["<<branchCount<<"/"<<leafMax<<":"<<nestLvl<<"]" << std::endl;
 
 	if (!branchCount) {
 		dst << GetBranch(branchLeft) << std::endl;
@@ -93,23 +94,28 @@ static int	drawBranch(std::stringstream& dst, int leafMax, int nestLvl){
 		if (rand()%2) {
 			branchType |= branchDown;
 			if (i)
-				printNest(dst, nestLvl);
+				printNest(dst);
 			dst << GetBranch(branchType);
 			dst << std::endl;
 			branchType &= ~branchLeft;
 			branchType &= ~branchDown;
 			branchType |= branchUp;
 			if (!i)
-				printNest(dst, nestLvl);
+				printNest(dst);
 		}
 
 		if (i+1 != branchCount)
 			branchType |= branchDown;
 		branchType |= branchRight;
 		if (i)
-			printNest(dst, nestLvl);
+			printNest(dst);
 		dst << GetBranch(branchType);
+
+		nest += (branchType & branchDown) ?
+			(char)branchUp|branchDown:
+			(char)branchNone;
 		drawBranch(dst, leafMax - branchCount, nestLvl + 1);
+		nest = nest.substr(0, nest.size() - 1);
 	}
 	return leafMax - branchCount;
 }
