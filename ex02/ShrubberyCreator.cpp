@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 19:30:30 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/09 18:04:48 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/09 18:16:08 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,9 @@ static int	drawBranch(std::stringstream& dst, int leafMax, int nestLvl){
 
 		if (rand()%2) {
 			branchType |= branchDown;
-			printNest(dst, nestLvl) << GetBranch(branchType);
+			if (i)
+				printNest(dst, nestLvl);
+			dst << GetBranch(branchType);
 			dst << std::endl;
 			branchType &= ~branchLeft;
 			branchType &= ~branchDown;
@@ -97,8 +99,10 @@ static int	drawBranch(std::stringstream& dst, int leafMax, int nestLvl){
 		if (i+1 != branchCount)
 			branchType |= branchDown;
 		branchType |= branchRight;
-		printNest(dst, nestLvl) << GetBranch(branchType);
-		drawBranch(dst, 0, nestLvl + 1);
+		if (i)
+			printNest(dst, nestLvl);
+		dst << GetBranch(branchType);
+		drawBranch(dst, leafMax - branchCount, nestLvl + 1);
 	}
 	return leafMax - branchCount;
 }
@@ -116,9 +120,12 @@ std::string	ShrubberyCreator::CreateBush(std::string author, std::string target)
 		throw std::runtime_error(what);
 	}
 	ostream << "This tree was planted by " << author << std::endl;
-
+	return CreateBush(ostream, 5);
+}
+std::string	ShrubberyCreator::CreateBush(std::ostream& dst, int branchCount) {
 	std::stringstream	tree;
-	drawBranch(tree, 5, 0);
-	ostream << tree.str();
+
+	drawBranch(tree, branchCount, 0);
+	dst << tree.str();
 	return tree.str();
 }

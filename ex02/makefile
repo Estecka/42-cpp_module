@@ -24,12 +24,16 @@ NAME = execution.out
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 CXX=clang++
 
-all: ${NAME}
+all: ${NAME} shrubgen.out
 
 ${NAME}: ${OBJS}
 	${CXX} -o ${NAME} ${OBJS} ${CPPFLAGS}
 
 ${OBJS}: ${HDRS}
+
+shrubgen.out: main.shrubgen.cpp ShrubberyCreator.cpp ShrubberyCreator.hpp
+	${CXX} -o shrubgen.out main.shrubgen.cpp ShrubberyCreator.cpp ${CPPFLAGS}
+
 
 headers_test: ${HDRS:.hpp=.hpp.test.o}
 ${HDRS:.hpp=.hpp.test.cpp}: ${HDRS}

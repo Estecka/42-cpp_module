@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreator.hpp                               :+:      :+:    :+:   */
+/*   main.shrubgen.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/08 19:28:02 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/09 18:14:21 by abaur            ###   ########.fr       */
+/*   Created: 2021/04/09 18:10:41 by abaur             #+#    #+#             */
+/*   Updated: 2021/04/09 18:14:14 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATOR_HPP
-#define SHRUBBERYCREATOR_HPP
+#include "ShrubberyCreator.hpp"
 
-#include <iostream>
+#include <stdlib.h>
 
-namespace ShrubberyCreator
-{
-	std::string	CreateBush(std::string author, std::string target);
-	std::string	CreateBush(std::ostream& dst, int bcount);
+extern int main(int argc, char** argv) {
+	int	bcount;
+
+	if (argc > 1)
+		bcount = atoi(argv[1]);
+	else
+		bcount = 5;
+	if (argc > 2)
+		srand(atoi(argv[2]));
+
+	ShrubberyCreator::CreateBush(std::cout, bcount);
 }
-
-#endif
