@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 19:30:30 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/09 16:27:48 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/09 17:43:50 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <exception>
 #include <fstream>
 #include <sstream>
+#include <stdlib.h>
 
 enum	EBranch {
 	branchNone  = 0,
@@ -26,8 +27,8 @@ enum	EBranch {
 	branchAll   = branchUp | branchLeft | branchRight | branchDown,
 };
 
-static const char*	GetBranch(enum EBranch directions){
-	switch ((int)directions)
+static const char*	GetBranch(short directions){
+	switch ((short)directions)
 	{
 		default:
 			return "?";
@@ -65,6 +66,30 @@ static const char*	GetBranch(enum EBranch directions){
 	}
 }
 
+static void	printChar(std::stringstream& dst, short branchType, int nestLvl){
+	(void)nestLvl;
+	dst << GetBranch(branchType);
+}
+
+static int	drawBranch(std::stringstream& dst, int leafMax, int nestLvl){
+	(void)nestLvl;
+	int	branchCount = rand() % leafMax;
+
+	for (int i=branchCount; i>=0; i--){
+		short branchType = branchNone;
+		if (i == branchCount)
+			branchType |= branchLeft;
+		else
+			branchType |= branchUp;
+		if (i != 0)
+			branchType |= branchDown;
+		branchType |= branchRight;
+		printChar(dst, branchType, nestLvl);
+		dst << std::endl;
+	}
+	return leafMax - branchCount;
+}
+
 std::string	ShrubberyCreator::CreateBush(std::string author, std::string target) {
 	std::ofstream	ostream;
 
@@ -80,7 +105,7 @@ std::string	ShrubberyCreator::CreateBush(std::string author, std::string target)
 	ostream << "This tree was planted by " << author << std::endl;
 
 	std::stringstream	tree;
-	tree << GetBranch(branchAll) << "Î <(I am a tree!)" << std::endl;
+	drawBranch(tree, 5, 0);
 	ostream << tree.str();
 	return tree.str();
 }
