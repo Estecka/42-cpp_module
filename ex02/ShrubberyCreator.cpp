@@ -6,15 +6,64 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 19:30:30 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/09 15:25:17 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/09 16:27:48 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreator.hpp"
 
+#include <cwchar>
 #include <exception>
 #include <fstream>
 #include <sstream>
+
+enum	EBranch {
+	branchNone  = 0,
+	branchLeft  = 1 << 0,
+	branchDown  = 1 << 1,
+	branchRight = 1 << 2,
+	branchUp    = 1 << 3,
+	branchAll   = branchUp | branchLeft | branchRight | branchDown,
+};
+
+static const char*	GetBranch(enum EBranch directions){
+	switch ((int)directions)
+	{
+		default:
+			return "?";
+
+		case branchAll:
+			return "┼";
+
+		case branchAll & ~branchUp:
+			return "┬";
+		case branchAll & ~branchLeft:
+			return "├";
+		case branchAll & ~branchRight:
+			return "┤";
+		case branchAll & ~branchDown:
+			return "┴";
+
+		case branchLeft | branchDown:
+			return "┐";
+		case branchLeft | branchUp:
+			return "┘";
+		case branchRight | branchDown:
+			return "┌";
+		case branchRight | branchUp:
+			return "└";
+
+		case branchUp | branchDown:
+			return "│";
+		case branchRight | branchLeft:
+			return "─";
+		
+		case branchUp:    return "╵";
+		case branchLeft:  return "╷";
+		case branchRight: return "╴";
+		case branchDown:  return "╶";
+	}
+}
 
 std::string	ShrubberyCreator::CreateBush(std::string author, std::string target) {
 	std::ofstream	ostream;
@@ -30,9 +79,8 @@ std::string	ShrubberyCreator::CreateBush(std::string author, std::string target)
 	}
 	ostream << "This tree was planted by " << author << std::endl;
 
-
 	std::stringstream	tree;
-	tree << "Î <(I am a tree!)" << std::endl;
+	tree << GetBranch(branchAll) << "Î <(I am a tree!)" << std::endl;
 	ostream << tree.str();
 	return tree.str();
 }
