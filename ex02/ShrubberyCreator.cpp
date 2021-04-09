@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 19:30:30 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/09 17:49:16 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/09 18:04:48 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,43 +59,46 @@ static const char*	GetBranch(short directions){
 		case branchRight | branchLeft:
 			return "─";
 		
-		case branchUp:    return "╵";
-		case branchLeft:  return "╷";
-		case branchRight: return "╴";
-		case branchDown:  return "╶";
+		case branchUp:    return "╹";
+		case branchDown:  return "╻";
+		case branchLeft: return "╸";
+		case branchRight:  return "╺";
 	}
 }
 
-static void	printChar(std::stringstream& dst, short branchType, int nestLvl){
-	(void)nestLvl;
-	dst << GetBranch(branchType);
+static std::stringstream&	printNest(std::stringstream& dst, int nestLvl){
+	for (int i=0; i<nestLvl; i++)
+		dst << GetBranch(branchUp | branchDown);
+	return dst;
 }
 
 static int	drawBranch(std::stringstream& dst, int leafMax, int nestLvl){
 	(void)nestLvl;
-	int	branchCount = rand() % leafMax;
+	int	branchCount = leafMax ? rand() % leafMax : 0;
+	if (!branchCount)
+		dst << GetBranch(branchLeft) << std::endl;
 
-	for (int i=branchCount; i>=0; i--){
+	for (int i=0; i<branchCount; i++){
 		short branchType = branchNone;
-		if (i == branchCount)
+		if (i == 0)
 			branchType |= branchLeft;
 		else
 			branchType |= branchUp;
 
 		if (rand()%2) {
 			branchType |= branchDown;
-			printChar(dst, branchType, nestLvl);
+			printNest(dst, nestLvl) << GetBranch(branchType);
 			dst << std::endl;
 			branchType &= ~branchLeft;
 			branchType &= ~branchDown;
 			branchType |= branchUp;
 		}
 
-		if (i != 0)
+		if (i+1 != branchCount)
 			branchType |= branchDown;
 		branchType |= branchRight;
-		printChar(dst, branchType, nestLvl);
-		dst << std::endl;
+		printNest(dst, nestLvl) << GetBranch(branchType);
+		drawBranch(dst, 0, nestLvl + 1);
 	}
 	return leafMax - branchCount;
 }
