@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 17:01:13 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/08 18:10:48 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/09 19:20:59 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ public:
 	Form(void);
 	Form(const Form&);
 	Form(std::string name, int signingGrade, int executingGrade);
+	Form(std::string name, int signingGrade, int executingGrade, std::string target);
 	virtual ~Form() = 0;
 
 	std::string	GetName() const;
@@ -37,9 +38,8 @@ public:
 
 	virtual bool	execute(const Bureaucrat& executor) const;
 
-protected:
-	const std::string	target;
 private:
+	const std::string	target;
 	Form&	operator=(const Form&);
 	const std::string	name;
 	const int	signingGrade;

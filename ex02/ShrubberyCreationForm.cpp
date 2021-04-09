@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:38:21 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/09 15:34:07 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/09 19:25:37 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@ ShrubberyCreationForm::ShrubberyCreationForm(void) {
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)
 : Form(other)
 {}
-ShrubberyCreationForm::ShrubberyCreationForm(std::string _target)
-: Form("Shrubbery Creation", 145, 137),
-target(_target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
+: Form("Shrubbery Creation", 145, 137, target)
 {}
 ShrubberyCreationForm::~ShrubberyCreationForm(){}
 
@@ -36,9 +35,9 @@ bool	ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
 	std::string	tree;
 
 	this->Form::execute(executor);
-	std::cout << this->target << " shrubbery tree on its way to creation. Please stand by..." << std::endl;
+	std::cout << this->GetTarget() << " shrubbery tree on its way to creation. Please stand by..." << std::endl;
 	try {
-		tree = ShrubberyCreator::CreateBush(executor.getName(), this->target);
+		tree = ShrubberyCreator::CreateBush(executor.getName(), this->GetTarget());
 	}
 	catch (const std::runtime_error& e){
 		std::cout << e.what() << std::endl;

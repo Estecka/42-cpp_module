@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:19:12 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/08 18:32:42 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/09 19:26:10 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ PresidentialPardonForm::PresidentialPardonForm(void) {
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other)
 : Form(other)
 {}
-PresidentialPardonForm::PresidentialPardonForm(std::string _target)
-: Form("Presidential Pardon", 25, 5),
-target(_target)
+PresidentialPardonForm::PresidentialPardonForm(std::string target)
+: Form("Presidential Pardon", 25, 5, target)
 {}
 PresidentialPardonForm::~PresidentialPardonForm(){}
 
@@ -33,6 +32,6 @@ PresidentialPardonForm&	PresidentialPardonForm::operator=(const PresidentialPard
 
 bool	PresidentialPardonForm::execute(const Bureaucrat& executor) const {
 	this->Form::execute(executor);
-	std::cout << this->target << " has been pardoned by Zafod Beeblebrox." << std::endl;
+	std::cout << this->GetTarget() << " has been pardoned by Zafod Beeblebrox." << std::endl;
 	return true;
 }

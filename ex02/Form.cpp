@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 17:28:27 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/08 18:45:34 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/09 19:22:27 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ void	Form::validateGrades() const {
 		throw GradeTooHighException(executingGrade);
 }
 
-Form::Form(void) 
-: name("Nondescript Form"), 
+Form::Form(void) :
+target("none"),
+name("Nondescript Form"), 
 signingGrade(BUREAUGRADEMAX), 
 executingGrade(BUREAUGRADEMAX)
 {
@@ -42,8 +43,19 @@ executingGrade(other.executingGrade)
 	this->validateGrades();
 }
 
-Form::Form(std::string _name, int _sign, int _exec)
-: name(_name),
+Form::Form(std::string _name, int _sign, int _exec) :
+target("none"),
+name(_name),
+signingGrade(_sign),
+executingGrade(_exec)
+{
+	this->isSigned = false;
+	this->validateGrades();
+}
+
+Form::Form(std::string _name, int _sign, int _exec, std::string _target) :
+target(_target),
+name(_name),
 signingGrade(_sign),
 executingGrade(_exec)
 {
