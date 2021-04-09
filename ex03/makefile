@@ -2,6 +2,7 @@ HDRS = \
 	Bureaucrat.hpp \
 	GradeException.hpp \
 	Form.hpp \
+	Intern.hpp \
 	PresidentialPardonForm.hpp \
 	RobotomyRequestForm.hpp \
 	ShrubberyCreationForm.hpp \
@@ -12,6 +13,7 @@ SRCS = \
 	Bureaucrat.cpp \
 	GradeException.cpp \
 	Form.cpp \
+	Intern.cpp \
 	PresidentialPardonForm.cpp \
 	RobotomyRequestForm.cpp \
 	ShrubberyCreationForm.cpp \
