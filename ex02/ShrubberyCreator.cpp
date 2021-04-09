@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 19:30:30 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/09 18:16:08 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/09 18:29:57 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ static const char*	GetBranch(short directions){
 }
 
 static std::stringstream&	printNest(std::stringstream& dst, int nestLvl){
+	// dst << "+";
 	for (int i=0; i<nestLvl; i++)
 		dst << GetBranch(branchUp | branchDown);
 	return dst;
@@ -75,8 +76,12 @@ static std::stringstream&	printNest(std::stringstream& dst, int nestLvl){
 static int	drawBranch(std::stringstream& dst, int leafMax, int nestLvl){
 	(void)nestLvl;
 	int	branchCount = leafMax ? rand() % leafMax : 0;
-	if (!branchCount)
+	std::cerr << "["<<branchCount<<"/"<<leafMax<<":"<<nestLvl<<"]" << std::endl;
+
+	if (!branchCount) {
 		dst << GetBranch(branchLeft) << std::endl;
+		return leafMax;
+	}
 
 	for (int i=0; i<branchCount; i++){
 		short branchType = branchNone;
@@ -94,6 +99,8 @@ static int	drawBranch(std::stringstream& dst, int leafMax, int nestLvl){
 			branchType &= ~branchLeft;
 			branchType &= ~branchDown;
 			branchType |= branchUp;
+			if (!i)
+				printNest(dst, nestLvl);
 		}
 
 		if (i+1 != branchCount)
