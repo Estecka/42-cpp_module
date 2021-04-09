@@ -6,11 +6,12 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:38:21 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/08 18:40:02 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/09 15:34:07 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
+#include "ShrubberyCreator.hpp"
 
 #include <exception>
 
@@ -32,7 +33,20 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationF
 }
 
 bool	ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
+	std::string	tree;
+
 	this->Form::execute(executor);
 	std::cout << this->target << " shrubbery tree on its way to creation. Please stand by..." << std::endl;
+	try {
+		tree = ShrubberyCreator::CreateBush(executor.getName(), this->target);
+	}
+	catch (const std::runtime_error& e){
+		std::cout << e.what() << std::endl;
+		return false;
+	}
+	std::cout << executor.getName() << " planted a tree, "\
+		"look at that sick tree !" << std::endl \
+		<< tree;
+
 	return true;
 }

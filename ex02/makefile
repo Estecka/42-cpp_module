@@ -5,6 +5,7 @@ HDRS = \
 	PresidentialPardonForm.hpp \
 	RobotomyRequestForm.hpp \
 	ShrubberyCreationForm.hpp \
+	ShrubberyCreator.hpp \
 
 SRCS = \
 	main.cpp \
@@ -14,6 +15,7 @@ SRCS = \
 	PresidentialPardonForm.cpp \
 	RobotomyRequestForm.cpp \
 	ShrubberyCreationForm.cpp \
+	ShrubberyCreator.cpp \
 
 OBJS = ${SRCS:.cpp=.o}
 
