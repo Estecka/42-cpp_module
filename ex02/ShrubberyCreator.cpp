@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 19:30:30 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/09 17:43:50 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/09 17:49:16 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,16 @@ static int	drawBranch(std::stringstream& dst, int leafMax, int nestLvl){
 			branchType |= branchLeft;
 		else
 			branchType |= branchUp;
+
+		if (rand()%2) {
+			branchType |= branchDown;
+			printChar(dst, branchType, nestLvl);
+			dst << std::endl;
+			branchType &= ~branchLeft;
+			branchType &= ~branchDown;
+			branchType |= branchUp;
+		}
+
 		if (i != 0)
 			branchType |= branchDown;
 		branchType |= branchRight;
