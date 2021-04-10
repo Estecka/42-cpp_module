@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 19:50:40 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/09 21:14:27 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/10 15:05:21 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ Form*	Intern::makeForm(std::string type, std::string target){
 	for (int i=0; i<TYPECOUNTS; i++)
 		if (names[i] == type)
 			return funcs[i](target);
+	std::cout << type << " is not a valid Form type." << std::endl;
 	return NULL;
 }
