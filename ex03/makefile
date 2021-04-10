@@ -21,7 +21,7 @@ SRCS = \
 
 OBJS = ${SRCS:.cpp=.o}
 
-NAME = execution.out
+NAME = intern.out
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 CXX=clang++
