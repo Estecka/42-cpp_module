@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 19:30:30 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/09 18:56:24 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/10 15:34:42 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,36 +30,23 @@ enum	EBranch {
 static const char*	GetBranch(short directions){
 	switch ((short)directions)
 	{
-		default:
-			return "?";
+		default: return "?";
 
-		case branchNone:
-			return " ";
-		case branchAll:
-			return "┼";
+		case branchNone: return " ";
+		case branchAll:  return "┼";
 
-		case branchAll & ~branchUp:
-			return "┬";
-		case branchAll & ~branchLeft:
-			return "├";
-		case branchAll & ~branchRight:
-			return "┤";
-		case branchAll & ~branchDown:
-			return "┴";
+		case branchAll & ~branchUp:    return "┬";
+		case branchAll & ~branchLeft:  return "├";
+		case branchAll & ~branchRight: return "┤";
+		case branchAll & ~branchDown:  return "┴";
 
-		case branchLeft | branchDown:
-			return "┐";
-		case branchLeft | branchUp:
-			return "┘";
-		case branchRight | branchDown:
-			return "┌";
-		case branchRight | branchUp:
-			return "└";
+		case branchLeft  | branchDown: return "┐";
+		case branchLeft  | branchUp:   return "┘";
+		case branchRight | branchDown: return "┌";
+		case branchRight | branchUp:   return "└";
 
-		case branchUp | branchDown:
-			return "│";
-		case branchRight | branchLeft:
-			return "─";
+		case branchUp    | branchDown: return "│";
+		case branchRight | branchLeft: return "─";
 		
 		case branchUp:    return "╹";
 		case branchDown:  return "╻";
@@ -74,8 +61,7 @@ static void	printNest(std::ostream& dst){
 		dst << GetBranch(nest[i]);
 }
 
-static int	drawBranch(std::stringstream& dst, int leafMax, int nestLvl){
-	(void)nestLvl;
+static int	drawBranch(std::stringstream& dst, int leafMax){
 	int	branchCount = leafMax ? rand() % leafMax : 0;
 	// std::cerr << "["<<branchCount<<"/"<<leafMax<<":"<<nestLvl<<"]" << std::endl;
 
@@ -114,7 +100,7 @@ static int	drawBranch(std::stringstream& dst, int leafMax, int nestLvl){
 		nest += (branchType & branchDown) ?
 			(char)branchUp|branchDown:
 			(char)branchNone;
-		drawBranch(dst, leafMax - branchCount, nestLvl + 1);
+		drawBranch(dst, leafMax - branchCount);
 		nest = nest.substr(0, nest.size() - 1);
 	}
 	return leafMax - branchCount;
@@ -138,7 +124,7 @@ std::string	ShrubberyCreator::CreateBush(std::string author, std::string target)
 std::string	ShrubberyCreator::CreateBush(std::ostream& dst, int branchCount) {
 	std::stringstream	tree;
 
-	drawBranch(tree, branchCount, 0);
+	drawBranch(tree, branchCount);
 	dst << tree.str();
 	return tree.str();
 }
