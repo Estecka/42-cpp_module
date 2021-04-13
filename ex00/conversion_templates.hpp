@@ -6,21 +6,19 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 16:51:00 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/13 18:05:54 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/13 19:10:36 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONVERSION_TEMPLATES_HPP
 #define CONVERSION_TEMPLATES_HPP
 
+#include "math.h"
 #include <exception>
 #include <iostream>
+#include <limits>
 #include <sstream>
 #include <typeinfo>
-
-template <typename SRC, typename DST> bool	IsCastable(SRC value) {
-	return (value == (SRC)(DST)value);
-}
 
 template <typename T> T	CastLiteral(std::string literal){
 	std::istringstream stream(literal);
@@ -32,21 +30,46 @@ template <typename T> T	CastLiteral(std::string literal){
 	return (value);
 }
 
+
 template <typename T> void	CastToChar(T value){
-	std::cout << "char:   " << (char)value << std::endl;
-}
-template <typename T> void	CastToInt(T value){
-	std::cout << "int:    " << (int)value << std::endl;
-}
-template <typename T> void	CastToFloat(T value){
-	std::cout << "float:  " << (float)value << std::endl;
-}
-template <typename T> void	CastToDouble(T value){
-	std::cout << "double: " << (double)value << std::endl;
+	std::cout << "char:   ";
+
+	if (isnan(value) || value < std::numeric_limits<char>::min() || std::numeric_limits<char>::max() < value)
+		std::cout << "impossible";
+	else
+		std::cout << static_cast<int>(value);
+	std::cout << std::endl;
 }
 
+template <typename T> void	CastToInt(T value){
+	std::cout << "int:    ";
+	if(isnan(value) || value < std::numeric_limits<int>::min() || std::numeric_limits<int>::max() < value)
+		std::cout << "impossible";
+	else
+		std::cout << static_cast<int>(value);
+	std::cout << std::endl;
+}
+
+template <typename T> void	CastToFloat(T value){
+	std::cout << "float:  " << static_cast<float>(value) << 'f' << std::endl;
+}
+
+template <typename T> void	CastToDouble(T value){
+	std::cout << "double: " << static_cast<double>(value) << std::endl;
+}
+
+
 template <typename T> void	CastToAll(T value){
-	std::cout << "This is a " << typeid(T).name() << std::endl;
+	std::cout << "This is a ";
+	switch (typeid(T).name()[0])
+	{
+		default:  std::cout << "???";    break;
+		case 'c': std::cout << "char";   break;
+		case 'i': std::cout << "int";    break;
+		case 'f': std::cout << "float";  break;
+		case 'd': std::cout << "double"; break;
+	}
+	std::cout << std::endl;
 	CastToChar<T>(value);
 	CastToInt<T>(value);
 	CastToFloat<T>(value);

@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 14:30:58 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/13 18:09:50 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/13 19:07:30 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 extern int	main(int argc, char** argv){
 	for (int i=1; i<argc; i++) {
 		if (i > 1)
-			std::cout << "========" << std::endl;
+			std::cout << std::endl << std::endl;
 
 		std::cout << "Input : " << argv[i] << std::endl;
 
