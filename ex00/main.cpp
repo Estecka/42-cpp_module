@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 14:30:58 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/13 16:07:22 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/13 17:06:25 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ extern int	main(int argc, char** argv){
 		std::cout << "Input : " << argv[i] << std::endl;
 		if (ValidateChar(argv[i]))
 			ParseChar(argv[i]);
-		if (ValidateInt(argv[i]))
+		else if (ValidateInt(argv[i]))
 			ParseInt(argv[i]);
 		else
 			std::cout << "Unknown value type" << std::endl;

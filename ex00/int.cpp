@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:54:04 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/13 16:06:11 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/13 17:01:09 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,5 @@ void	ParseInt(std::string str) {
 	int	i;
 
 	i = atoi(str.data());
-	DisplayValues(
-		static_cast<char>(i),
-		i,
-		static_cast<float>(i),
-		static_cast<double>(i)
-	);
+	CastToAll<int>(i);
 }

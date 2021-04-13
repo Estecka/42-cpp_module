@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:14:16 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/13 15:51:40 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/13 17:00:43 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,5 @@ void	ParseChar(std::string str) {
 	else
 		c = str[1];
 
-	DisplayValues(
-		c,
-		static_cast<int>(c),
-		static_cast<float>(c),
-		static_cast<double>(c)
-	);
+	CastToAll<char>(c);
 }

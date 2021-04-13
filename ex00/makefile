@@ -1,5 +1,6 @@
 HDRS = \
 	conversions.hpp \
+	conversion_templates.hpp \
 
 SRCS = \
 	main.cpp \

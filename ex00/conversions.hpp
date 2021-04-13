@@ -6,16 +6,16 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:12:48 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/13 15:54:44 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/13 17:03:32 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONVERSIONS_HPP
 #define CONVERSIONS_HPP
 
-#include <iostream>
+#include "conversion_templates.hpp"
 
-void	DisplayValues(char, int, float, double);
+#include <iostream>
 
 bool	ValidateChar(std::string);
 void	ParseChar(std::string);
