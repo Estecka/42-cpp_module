@@ -6,6 +6,7 @@ SRCS = \
 	main.cpp \
 	char.cpp \
 	int.cpp \
+	float.cpp \
 
 OBJS = ${SRCS:.cpp=.o}
 
