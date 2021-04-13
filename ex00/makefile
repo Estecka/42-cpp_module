@@ -4,6 +4,7 @@ HDRS = \
 SRCS = \
 	main.cpp \
 	char.cpp \
+	int.cpp \
 
 OBJS = ${SRCS:.cpp=.o}
 
