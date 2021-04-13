@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 16:51:00 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/13 19:10:36 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/13 19:13:44 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ template <typename T> void	CastToChar(T value){
 
 	if (isnan(value) || value < std::numeric_limits<char>::min() || std::numeric_limits<char>::max() < value)
 		std::cout << "impossible";
+	else if (!isprint(value))
+		std::cout << "non displayable";
 	else
 		std::cout << static_cast<int>(value);
 	std::cout << std::endl;
