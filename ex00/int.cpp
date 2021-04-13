@@ -6,16 +6,17 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:54:04 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/13 17:01:09 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/13 18:10:13 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "conversions.hpp"
+#include "conversion_templates.hpp"
 
 #include <limits>
 #include <stdlib.h>
 
-bool	ValidateInt(std::string str){
+extern bool	ConvertInt(std::string str){
 	unsigned	i;
 	if (str[0] == '+' || str[0] == '-')
 		i = 1;
@@ -26,12 +27,7 @@ bool	ValidateInt(std::string str){
 		if (str[i] < '0' || '9' < str[i])
 			return false;
 
+	int value = atoi(str.data());
+	CastToAll<int>(value);
 	return true;
-}
-
-void	ParseInt(std::string str) {
-	int	i;
-
-	i = atoi(str.data());
-	CastToAll<int>(i);
 }

@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 16:51:00 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/13 17:42:08 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/13 18:05:54 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <exception>
 #include <iostream>
 #include <sstream>
+#include <typeinfo>
 
 template <typename SRC, typename DST> bool	IsCastable(SRC value) {
 	return (value == (SRC)(DST)value);
@@ -26,7 +27,7 @@ template <typename T> T	CastLiteral(std::string literal){
 	T	value;
 
 	stream >> value;
-	if (stream.fail())
+	if (stream.fail() || !stream.eof())
 		throw std::invalid_argument(std::string("Could not convert ") + literal);
 	return (value);
 }
@@ -45,6 +46,7 @@ template <typename T> void	CastToDouble(T value){
 }
 
 template <typename T> void	CastToAll(T value){
+	std::cout << "This is a " << typeid(T).name() << std::endl;
 	CastToChar<T>(value);
 	CastToInt<T>(value);
 	CastToFloat<T>(value);

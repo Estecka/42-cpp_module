@@ -6,44 +6,39 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 17:15:17 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/13 17:44:01 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/13 18:14:55 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "conversions.hpp"
 
-bool	ValidateFloat(std::string str){
-	return ValidateDouble(str.substr(0, str.size()-1)) 
-		&& str[str.size()-1] == 'f';
-}
-bool	ValidateDouble(std::string str){
-	bool	floatingPoint;
+bool	ConvertDouble(std::string str){
+	double	value;
 
-	for (unsigned i=0; i<str.size(); i++)
-	{
-		if (str[i] == '.')
-		{
-			if (floatingPoint)
-				return false;
-			else
-				floatingPoint = true;
-		}
-		else if (str[i] < '0' || '9' < str[i])
-			return false;
+	try { 
+		value = CastLiteral<double>(str); 
+	} catch (const std::invalid_argument& e){
+		return false;
 	}
+	
+	CastToAll<double>(value);
 	return true;
 }
 
-void	ParseFloat(std::string str){
-	float	f;
 
-	f = CastLiteral<float>(str);
-	CastToAll<float>(f);
-}
+bool	ConvertFloat(std::string str){
+	float value;
 
-void	ParseDouble(std::string str){
-	double	f;
+	if (str[str.size() - 1] != 'f')
+		return false;
+	str = str.substr(0, str.size() - 1);
 
-	f = CastLiteral<double>(str);
-	CastToAll<double>(f);
+	try { 
+		value = CastLiteral<float>(str); 
+	} catch (const std::invalid_argument& e){
+		return false;
+	}
+	
+	CastToAll<float>(value);
+	return true;
 }
