@@ -12,7 +12,9 @@
 
 #include "C.hpp"
 
-C::C(void){}
+#include <iostream>
+
+C::C(void){ std::cout << "Created a C" << std::endl; }
 C::C(const C&){}
 C::~C(){}
 C&	C::operator=(const C&){ return *this; }

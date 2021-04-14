@@ -12,7 +12,9 @@
 
 #include "B.hpp"
 
-B::B(void){}
+#include <iostream>
+
+B::B(void){ std::cout << "Created a B" << std::endl; }
 B::B(const B&){}
 B::~B(){}
 B&	B::operator=(const B&){ return *this; }
