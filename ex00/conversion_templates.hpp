@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 16:51:00 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/14 18:51:06 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/14 19:27:28 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,12 @@ template <typename T> void	CastToInt(T value){
 }
 
 template <typename T> void	CastToFloat(T value){
-	std::cout << "float:  " << static_cast<float>(value) << 'f' << std::endl;
+	std::cout << "float:  ";
+	if(isinf(value) || isnan(value) || (std::numeric_limits<float>::min() <= value && value <= std::numeric_limits<float>::max()))
+		std::cout << static_cast<float>(value) << 'f';
+	else
+		std::cout << "impossible";
+	std::cout << std::endl;
 }
 
 template <typename T> void	CastToDouble(T value){
