@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 16:51:00 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/14 18:31:25 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/14 18:51:06 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 #include <iostream>
 #include <limits>
 #include <sstream>
-#include <typeinfo>
 
 template <typename T> T	CastLiteral(std::string literal){
 	std::istringstream stream(literal);

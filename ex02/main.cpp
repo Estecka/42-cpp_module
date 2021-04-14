@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 17:37:31 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/14 18:15:47 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/14 18:49:32 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@
 #include <stdexcept>
 #include <stdlib.h>
 #include <time.h>
-#include <typeinfo>
-
-#define typename(x)	#x
 
 Base*	generate(){
 	switch (rand() % 3) {
@@ -49,7 +46,7 @@ template <typename T> bool	IsRefType(Base& ref, const char* name){
 		std::cout << "Ref is a " << name << std::endl;
 		return true;
 	}
-	catch (const std::bad_cast&e){
+	catch (const std::exception&){
 		return false;
 	}
 }
