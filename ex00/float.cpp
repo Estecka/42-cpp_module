@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 17:15:17 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/13 18:25:59 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/14 18:33:09 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ bool	ConvertDouble(std::string str){
 		return false;
 	}
 	
-	CastToAll<double>(value);
+	CastToAll<double>(value, "double");
 	return true;
 }
 
@@ -54,6 +54,6 @@ bool	ConvertFloat(std::string str){
 		return false;
 	}
 	
-	CastToAll<float>(value);
+	CastToAll<float>(value, "float");
 	return true;
 }

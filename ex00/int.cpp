@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:54:04 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/13 18:10:13 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/14 18:32:37 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ extern bool	ConvertInt(std::string str){
 			return false;
 
 	int value = atoi(str.data());
-	CastToAll<int>(value);
+	CastToAll<int>(value, "int");
 	return true;
 }

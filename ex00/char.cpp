@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:14:16 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/13 18:10:07 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/14 18:32:47 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ extern bool	ConvertChar(std::string str) {
 	else
 		c = str[1];
 
-	CastToAll<char>(c);
+	CastToAll<char>(c, "char");
 	return true;
 }

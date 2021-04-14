@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 16:51:00 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/13 20:04:00 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/14 18:31:25 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,8 @@ template <typename T> void	CastToDouble(T value){
 }
 
 
-template <typename T> void	CastToAll(T value){
-	std::cout << "This is a ";
-	switch (typeid(T).name()[0])
-	{
-		default:  std::cout << "???";    break;
-		case 'c': std::cout << "char";   break;
-		case 'i': std::cout << "int";    break;
-		case 'f': std::cout << "float";  break;
-		case 'd': std::cout << "double"; break;
-	}
-	std::cout << std::endl;
+template <typename T> void	CastToAll(T value, const char* name){
+	std::cout << "This is a " << name << std::endl;
 	CastToChar<T>(value);
 	CastToInt<T>(value);
 	CastToFloat<T>(value);
