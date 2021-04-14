@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 17:37:31 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/14 18:49:32 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/14 18:53:52 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,6 @@ extern int	main(int argc, char** argv){
 
 	identify_from_pointer(ptr);
 	identify_from_reference(ref);
+
+	delete ptr;
 }
