@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 17:31:08 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/14 17:33:31 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/14 17:40:41 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "Base.hpp"
 
-class A : Base
+class A : public Base
 {
 public:
 	A(void);
