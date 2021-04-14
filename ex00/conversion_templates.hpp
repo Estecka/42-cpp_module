@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 16:51:00 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/13 19:13:44 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/13 20:04:00 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,12 @@ template <typename T> void	CastToChar(T value){
 	else if (!isprint(value))
 		std::cout << "non displayable";
 	else
-		std::cout << static_cast<int>(value);
+	{
+		std::cout << "'";
+		if (value == '\'' || value == '\\')
+			std::cout << '\\';
+		std::cout << static_cast<char>(value) << "'";
+	}
 	std::cout << std::endl;
 }
 
