@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 17:37:39 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/17 17:42:47 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/17 17:49:10 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define WHATEVER_HPP
 
 template <typename T>
-void	swap(T a, T b) {
+void	swap(T& a, T& b) {
 	T olda = a;
 
 	a = b;
