@@ -6,7 +6,7 @@ SRCS = \
 
 OBJS = ${SRCS:.cpp=.o}
 
-NAME = templates.out
+NAME = iter.out
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 CXX=clang++
