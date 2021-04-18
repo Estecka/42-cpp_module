@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 18:28:47 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/17 20:09:49 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/18 16:50:00 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ extern int	main(){
 
 	std::cout << "empty ";    empty.Dump();
 
-	std::cout << "decimals (before assignation) "; decimals.Dump();
 	for (size_t i=0; i<decimals.size(); i++)
 		decimals[i] = i;
-	std::cout << "decimals (after assignation)  "; decimals.Dump();
+	std::cout << "decimals                      "; decimals.Dump();
 
 	negated = new Array<int>(decimals);
 	std::cout << "negated  (before assignation) "; negated->Dump();
