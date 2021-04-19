@@ -6,16 +6,33 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 14:06:38 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/19 14:08:37 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/19 16:16:06 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EASYFIND_HPP
 #define EASYFIND_HPP
 
+#include <vector>
+#include <list>
+
 template <typename T>
 int	easyfind(T& container, int target)
 {
+	typename T::iterator it = container.begin();
+	int	i = 0;
+	int	value;
+
+	while (it != container.end())
+	{
+		value = *it;
+		if (value == target)
+			return i;
+
+		it++;
+		i++;
+	}
+	return -1;
 }
 
 #endif

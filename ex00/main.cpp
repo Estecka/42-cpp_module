@@ -6,11 +6,15 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 14:08:59 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/19 14:09:52 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/19 16:04:56 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "easyfind.hpp"
 
 extern int	main(){
+	std::vector<int>	vector;
+	std::list  <int>	list;
+
+	std::list<int>::iterator it;
 }
