@@ -3,4 +3,4 @@
 make subject.out || exit;
 
 ./subject.out > result.log;
-diff subject.log resylt.log;
+diff subject.log result.log;

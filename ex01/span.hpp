@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 17:56:28 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/19 18:25:13 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/19 18:54:00 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ public:
 	size_t	size() const;
 
 	void	addNumber(int n);
-	int	shortestSpan() const;
-	int	longestSpan () const;
+	unsigned int	shortestSpan() const;
+	unsigned int	longestSpan () const;
 
 private:
 	int*	content;

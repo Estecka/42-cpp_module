@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 17:56:06 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/19 18:40:40 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/19 18:56:58 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,20 @@
 #include <sstream>
 #include <limits>
 
-int	max(int a, int b){
+unsigned int	max(unsigned int a, unsigned int b){
 	if (a > b)
 		return a;
 	else
 		return b;
 }
-int	min(int a, int b){
+unsigned int	min(unsigned int a, unsigned int b){
 	if (a < b)
 		return a;
 	else
 		return b;
 }
 
-int	span(int a, int b){
+unsigned int	span(int a, int b){
 	if (a < b)
 		return b - a;
 	else
@@ -47,6 +47,7 @@ Span::Span(size_t cap){
 	this->length   = 0;
 }
 Span::Span(const Span& other) {
+	this->capacity = 0;
 	*this = other;
 }
 Span::~Span(){
@@ -71,7 +72,7 @@ size_t	Span::size()     const { return this->length; }
 void	Span::addNumber(int n) {
 	if (this->length >= this->capacity)
 		throw std::length_error("Can't add any more to the Span.");
-	this[length] = n;
+	this->content[length] = n;
 	this->length++;
 }
 
@@ -89,20 +90,20 @@ int&      	Span::operator[](size_t i) {
 	}
 }
 
-int	Span::shortestSpan() const {
+unsigned int	Span::shortestSpan() const {
 	if (this->length < 2)
 		throw std::logic_error("Not enough elements to span.");
 	
-	int	shortest = std::numeric_limits<int>::max();
+	unsigned int	shortest = std::numeric_limits<unsigned int>::max();
 	for (size_t i=0; (i+1)<this->length; i++)
 		shortest = min(shortest, span(content[i], content[i+1]));
 	return shortest;
 }
-int	Span::longestSpan() const {
+unsigned int	Span::longestSpan() const {
 	if (this->length < 2)
 		throw std::logic_error("Not enough elements to span.");
 	
-	int	longest = std::numeric_limits<int>::max();
+	unsigned int	longest = 0;
 	for (size_t i=0; (i+1)<this->length; i++)
 		longest = max(longest, span(content[i], content[i+1]));
 	return longest;
