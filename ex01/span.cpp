@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 17:56:06 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/19 18:56:58 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/19 19:13:12 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ Span&	Span::operator=(const Span& other) {
 	return *this;
 }
 
-size_t	Span::size()     const { return this->length; }
+size_t	Span::size() const { return this->length;   }
+size_t	Span::cap()  const { return this->capacity; }
 
 void	Span::addNumber(int n) {
 	if (this->length >= this->capacity)

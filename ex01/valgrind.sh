@@ -1,6 +1,6 @@
 #!/bin/bash
 
-EXEC=./subject.out
+EXEC=./span.out
 LOG=valgrind
 
 valgrind \

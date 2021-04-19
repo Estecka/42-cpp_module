@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 17:56:28 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/19 18:54:00 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/19 19:13:21 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ public:
 	const int&	operator[](size_t index) const;
 
 	size_t	size() const;
+	size_t	cap()  const;
 
 	void	addNumber(int n);
 	unsigned int	shortestSpan() const;

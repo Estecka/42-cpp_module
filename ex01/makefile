@@ -14,7 +14,7 @@ CXX=clang++
 all: ${NAME} subject.out
 
 ${NAME}: ${OBJS} main.o
-	${CXX} -o ${NAME} ${OBJS} ${CPPFLAGS}
+	${CXX} -o ${NAME} main.o ${OBJS} ${CPPFLAGS}
 
 subject.out: ${OBJS} main.subject.o
 	${CXX} -o subject.out main.subject.o ${OBJS} ${CPPFLAGS}
