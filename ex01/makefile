@@ -2,7 +2,6 @@ HDRS = \
 	span.hpp \
 
 SRCS = \
-	main.cpp \
 	span.cpp \
 
 OBJS = ${SRCS:.cpp=.o}
@@ -12,10 +11,13 @@ NAME = span.out
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 CXX=clang++
 
-all: ${NAME}
+all: ${NAME} subject.out
 
-${NAME}: ${OBJS}
+${NAME}: ${OBJS} main.o
 	${CXX} -o ${NAME} ${OBJS} ${CPPFLAGS}
+
+subject.out: ${OBJS} main.subject.o
+	${CXX} -o subject.out main.subject.o ${OBJS} ${CPPFLAGS}
 
 ${OBJS}: ${HDRS}
 
