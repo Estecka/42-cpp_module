@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 17:56:06 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/20 15:12:04 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/20 15:54:39 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,18 +97,29 @@ unsigned int	Span::shortestSpan() const {
 		throw std::logic_error("Not enough elements to span.");
 	
 	unsigned int	shortest = std::numeric_limits<unsigned int>::max();
-	for (size_t i=0; (i+1)<this->length; i++)
-		shortest = min(shortest, span(content[i], content[i+1]));
+	for (size_t i=0  ; i<(this->length-1); i++)
+	for (size_t j=i+1; j< this->length   ; j++)
+	{
+		shortest = min(shortest, span(content[i], content[j]));
+		if (shortest == 0)
+			return shortest;
+	}
 	return shortest;
 }
 unsigned int	Span::longestSpan() const {
 	if (this->length < 2)
 		throw std::logic_error("Not enough elements to span.");
-	
-	unsigned int	longest = 0;
-	for (size_t i=0; (i+1)<this->length; i++)
-		longest = max(longest, span(content[i], content[i+1]));
-	return longest;
+
+	int	smallest = std::numeric_limits<int>::max();
+	int	highest  = std::numeric_limits<int>::min();
+
+	for (size_t i=0; i<length; i++){
+		if (smallest > content[i])
+			smallest = content[i];
+		if (highest < content[i])
+			highest = content[i];
+	}
+	return span(smallest, highest);
 }
 
 void	Span::Dump() const {
