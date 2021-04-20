@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 18:56:35 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/20 21:52:24 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/20 22:18:49 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ public:
 
 		iterator&	operator++() { this->index++; return *this; }
 		iterator&	operator--() { this->index--; return *this; }
-		iterator 	operator++(int) { iterator tmp(target, index); this->index++; return tmp;}
-		iterator 	operator--(int) { iterator tmp(target, index); this->index--; return tmp;}
+		iterator 	operator++(int) { iterator tmp(*target, index); this->index++; return tmp;}
+		iterator 	operator--(int) { iterator tmp(*target, index); this->index--; return tmp;}
 
-		iterator	operator+(const iterator& other) { checkTarget(other); return iterator(target, index + other.index); }
-		iterator	operator-(const iterator& other) { checkTarget(other); return iterator(target, index - other.index); }
+		iterator	operator+(const iterator& other) { checkTarget(other); return iterator(*target, index + other.index); }
+		iterator	operator-(const iterator& other) { checkTarget(other); return iterator(*target, index - other.index); }
 
 		T&	operator*(){
 			if (target)

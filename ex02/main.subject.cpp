@@ -14,6 +14,7 @@ int	main()
 
 	std::cout << mstack.size() << std::endl;
 
+	std::cout << std::endl;
 	mstack.push(3);
 	mstack.push(5);
 	mstack.push(737);
@@ -26,6 +27,7 @@ int	main()
 	++it;
 	--it;
 
+	mstack.Dump();
 	while (it != ite)
 	{
 		std::cout << *it << std::endl;
