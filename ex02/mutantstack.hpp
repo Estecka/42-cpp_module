@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 18:56:35 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/20 22:18:49 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/20 22:33:34 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ public:
 	iterator	end()   { return iterator(*this, this->size()); }
 
 	void	Dump() const {
-		std::cout << "["<<this->size()<<"]{ ";
+		std::cout << "stck["<<this->size()<<"]{ ";
 		for (size_t i=0; i<this->size(); i++)
 		{
 			std::cout << this->c[i];
