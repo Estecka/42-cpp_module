@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 18:56:35 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/20 21:17:30 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/20 21:19:52 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ public:
 
 	void	Dump() const {
 		std::cout << "["<<this->size()<<"]{ ";
-		for (int i=0; i<this->size(); i++)
+		for (size_t i=0; i<this->size(); i++)
 		{
 			std::cout << this->c[i];
-			if (i+1 < this->size)
+			if (i+1 < this->size())
 				std::cout << ", ";
 		}
-		std::cout << " }";
+		std::cout << " }" << std::endl;
 	}
 };
 

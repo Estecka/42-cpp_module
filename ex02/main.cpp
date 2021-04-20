@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 19:01:36 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/20 20:00:22 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/20 21:18:50 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,13 @@
 
 extern int	main()
 {
-	mutantstack<int> mstack;
+	MutantStack<int>	ms;
+
+	ms.Dump();
+	ms.push(12);
+	ms.Dump();
+	ms.push(16);
+	ms.push(0);
+	ms.push(3);
+	ms.Dump();
 }
