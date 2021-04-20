@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 18:56:35 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/20 20:03:10 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/20 21:12:41 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,48 +15,38 @@
 
 #include <stack>
 
-#define Tcontainer_type 	typename std::stack<T>::container_type
-#define Tvalue_type     	typename std::stack<T>::value_type
-#define Tsize_type      	typename std::stack<T>::size_type
-#define Treference      	typename std::stack<T>::reference
-#define Tconst_reference	typename std::stack<T>::const_reference
-
 template <typename T, class Container = std::deque<T> >
-class mutantstack
+class MutantStack : public std::stack<T, Container>
 {
 public:
-	mutantstack(void) : _stack() {}
-	mutantstack(const mutantstack& other) : _stack(other._stack) {}
-	~mutantstack() {}
+	MutantStack(void) : std::stack<T, Container>() {}
+	MutantStack(const std::stack<T, Container>& other) : std::stack<T, Container>(other) {}
+	~MutantStack() {}
 
-	mutantstack&	operator=(const mutantstack& other) { _stack = other._stack; }
+	MutantStack&	operator=(const std::stack<T, Container>& other) {
+		this->std::stack<T, Container>::operator=(other);
+		return *this;
+	}
 
-	// All c++11 extension; cannot be implemented
-	//using container_type  = typename std::stack<T>::container_type;
-	//using value_type      = typename std::stack<T>::value_type;
-	//using size_type       = typename std::stack<T>::size_type;
-	//using refernce        = typename std::stack<T>::reference;
-	//using const_reference = typename std::stack<T>::const_reference;
+	struct iterator {
+		iterator&	operator++();
+		iterator&	operator++(int);
+		iterator&	operator--();
+		iterator&	operator--(int);
 
-	Treference      	top()       { return _stack.top(); }
-	Tconst_reference	top() const { return _stack.top(); }
+		iterator&	operator+(const iterator& other);
+		iterator&	operator-(const iterator& other);
 
-	bool	empty() const { return _stack.empty(); }
+		bool	operator==(const iterator& other);
+		bool	operator!=(const iterator& other);
+		bool	operator<=(const iterator& other);
+		bool	operator>=(const iterator& other);
+		bool	operator< (const iterator& other);
+		bool	operator> (const iterator& other);
+	};
 
-	Tsize_type	size() const { return _stack.size(); }
-
-	void	push(const Tvalue_type& value) { return _stack.push(value); }
-	void	pop() { _stack.pop(); }
-
-	bool	operator==(const mutantstack& rhs) const { return _stack == rhs._stack; }
-	bool	operator!=(const mutantstack& rhs) const { return _stack != rhs._stack; }
-	bool	operator<=(const mutantstack& rhs) const { return _stack <= rhs._stack; }
-	bool	operator>=(const mutantstack& rhs) const { return _stack >= rhs._stack; }
-	bool	operator< (const mutantstack& rhs) const { return _stack <  rhs._stack; }
-	bool	operator> (const mutantstack& rhs) const { return _stack >  rhs._stack; }
-
-private:
-	std::stack<T, Container>	_stack;
+	iterator	begin() { return iterator(); }
+	iterator	end()   { return iterator(); }
 };
 
 #endif
