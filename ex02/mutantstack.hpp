@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 18:56:35 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/20 21:19:52 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/20 21:52:24 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <stack>
+#include <stdexcept>
 
 template <typename T>
 class MutantStack : public std::stack<T>
@@ -30,24 +31,49 @@ public:
 	}
 
 	struct iterator {
-		iterator&	operator++();
-		iterator&	operator++(int);
-		iterator&	operator--();
-		iterator&	operator--(int);
+	public:
+		iterator(void){
+			this->target = NULL;
+			this->index = 0;
+		}
+		iterator(MutantStack& target, size_t startIndex){
+			this->target = &target;
+			this->index = startIndex;
+		}
 
-		iterator&	operator+(const iterator& other);
-		iterator&	operator-(const iterator& other);
+		iterator&	operator++() { this->index++; return *this; }
+		iterator&	operator--() { this->index--; return *this; }
+		iterator 	operator++(int) { iterator tmp(target, index); this->index++; return tmp;}
+		iterator 	operator--(int) { iterator tmp(target, index); this->index--; return tmp;}
 
-		bool	operator==(const iterator& other);
-		bool	operator!=(const iterator& other);
-		bool	operator<=(const iterator& other);
-		bool	operator>=(const iterator& other);
-		bool	operator< (const iterator& other);
-		bool	operator> (const iterator& other);
+		iterator	operator+(const iterator& other) { checkTarget(other); return iterator(target, index + other.index); }
+		iterator	operator-(const iterator& other) { checkTarget(other); return iterator(target, index - other.index); }
+
+		T&	operator*(){
+			if (target)
+				return target->c[this->index];
+			throw std::domain_error("Dereferenced a NULL iterator.");
+		}
+
+		bool	operator==(const iterator& other) { return target == other.target && index == other.index; }
+		bool	operator!=(const iterator& other) { return target != other.target || index != other.index; }
+		bool	operator<=(const iterator& other) { checkTarget(other); return this->index <= other.index; }
+		bool	operator>=(const iterator& other) { checkTarget(other); return this->index >= other.index; }
+		bool	operator< (const iterator& other) { checkTarget(other); return this->index <  other.index; }
+		bool	operator> (const iterator& other) { checkTarget(other); return this->index >  other.index; }
+
+	private:
+		MutantStack*	target;
+		size_t	index;
+
+		void	checkTarget(const iterator& other) const {
+			if (this->target != other.target)
+				throw std::domain_error("Iterators point to different containers.");
+		}
 	};
 
-	iterator	begin() { return iterator(); }
-	iterator	end()   { return iterator(); }
+	iterator	begin() { return iterator(*this, 0           ); }
+	iterator	end()   { return iterator(*this, this->size()); }
 
 	void	Dump() const {
 		std::cout << "["<<this->size()<<"]{ ";
