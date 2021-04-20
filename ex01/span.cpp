@@ -6,15 +6,16 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 17:56:06 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/19 19:13:12 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/20 15:12:04 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "span.hpp"
 
+#include <iostream>
+#include <limits>
 #include <stdexcept>
 #include <sstream>
-#include <limits>
 
 unsigned int	max(unsigned int a, unsigned int b){
 	if (a > b)
@@ -108,4 +109,15 @@ unsigned int	Span::longestSpan() const {
 	for (size_t i=0; (i+1)<this->length; i++)
 		longest = max(longest, span(content[i], content[i+1]));
 	return longest;
+}
+
+void	Span::Dump() const {
+	std::cout \
+		<< this->content << "[" << this->length << "/" << this->capacity << "]{";
+	for (size_t i=0; i<this->length; i++) {
+		std::cout << this->content[i];
+		if (i+1 != length)
+			std::cout << ", ";
+	}
+	std::cout << " }" << std::endl;
 }
