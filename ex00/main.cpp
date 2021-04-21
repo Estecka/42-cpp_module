@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 14:08:59 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/19 17:42:36 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/21 15:55:49 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 template <typename T>
 void	Test(T& container, int value){
-	int i;
+	typename T::iterator	i;
 
 	try {
 		i = easyfind<T>(container, value);
@@ -29,12 +29,15 @@ void	Test(T& container, int value){
 		return;
 	}
 
-	if (i < 0)
+	if (i == container.end())
 		std::cout \
 			<< "Could not find " << value \
-			<< " (returned " << i << ")" << std::endl;
+			<< " (returned  end())" << std::endl;
 	else
-		std::cout << "Located " << value << " at index " << i << std::endl;
+		std::cout \
+			<< "Searching for " << value << " found " << *i \
+			<< " at adress " << &*i \
+			<< std::endl;
 }
 
 extern int	main(){
