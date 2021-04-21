@@ -13,10 +13,10 @@ CXX=clang++
 
 all: ${NAME} subject.out
 
-${NAME}: ${OBJS} main.o
+${NAME}: ${OBJS} ${HDRS} main.o
 	${CXX} -o ${NAME} main.o ${OBJS} ${CPPFLAGS}
 
-subject.out: ${OBJS} main.subject.o
+subject.out: ${OBJS} ${HDRS} main.subject.o
 	${CXX} -o subject.out main.subject.o ${OBJS} ${CPPFLAGS}
 
 ${OBJS}: ${HDRS}

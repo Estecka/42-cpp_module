@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 17:55:32 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/21 16:41:16 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/21 17:21:18 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <vector>
 
 #define CHEAPC	6
-const int	cheapMyriades[CHEAPC] = { -2000000000, 2, -3, 2000000001, -2, 128, };
+const int	cheapMyriades[CHEAPC] = { -2000000000, 2, -3, 2000000123, -2, 128, };
 
 template <typename IT>
 static void tryAdd(Span& span, const IT& begin, const IT&end) {
@@ -32,7 +32,7 @@ static void tryAdd(Span& span, const IT& begin, const IT&end) {
 extern int	main() {
 	Span	decimals(10);
 	Span	myriades(10000);
-	Span	unlimitedPawa(10000);
+	Span	unlimitedPawa(100000);
 
 	for (size_t i=0; i<decimals.capacity(); i++)
 		decimals.addNumber(i);

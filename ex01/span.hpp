@@ -6,13 +6,14 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 17:56:28 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/21 16:41:46 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/21 17:12:47 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SPAN_HPP
 #define SPAN_HPP
 
+#include <algorithm>
 #include <stdexcept>
 #include <stdlib.h>
 #include <vector>
@@ -29,6 +30,8 @@ public:
 
 	size_t	size() const;
 	size_t	capacity() const;
+	std::vector<int>::const_iterator	cbegin() const;
+	std::vector<int>::const_iterator	cend()   const;
 
 	void	addNumber(int n);
 
@@ -46,12 +49,17 @@ public:
 				throw std::logic_error("Iterator exceeded expected amount.");
 			this->push_back(*it);
 		}
+		this->_dirty = true;
 	}
 
-	unsigned int	shortestSpan() const;
-	unsigned int	longestSpan () const;
+	unsigned int	shortestSpan();
+	unsigned int	longestSpan ();
 
 	void Dump() const;
+private:
+	bool	_dirty;
+
+	void	CheckSpanability();
 };
 
 #endif
