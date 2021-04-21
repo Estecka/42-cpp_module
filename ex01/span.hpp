@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 17:56:28 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/21 16:29:46 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/21 16:41:46 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <vector>
 
-class Span : public std::vector<int>
+class Span : private std::vector<int>
 {
 public:
 	Span(void);
@@ -27,6 +27,9 @@ public:
 
 	Span&	operator=(const Span&);
 
+	size_t	size() const;
+	size_t	capacity() const;
+
 	void	addNumber(int n);
 
 	template <typename IT>
@@ -34,15 +37,14 @@ public:
 	{
 		if ((end - begin) < 0)
 			throw std::invalid_argument("End comes after Begin");
-		if ((capacity() - _length) < (size_t)(end - begin))
+		if ((capacity() - size()) < (size_t)(end - begin))
 			throw std::length_error("Too many elements to iterate over");
 		
 		for (IT it=begin; it!=end; it++)
 		{
-			if (capacity() <= _length)
+			if (capacity() <= size())
 				throw std::logic_error("Iterator exceeded expected amount.");
-			(*this)[_length] = *it;
-			this->_length++;
+			this->push_back(*it);
 		}
 	}
 
@@ -50,9 +52,6 @@ public:
 	unsigned int	longestSpan () const;
 
 	void Dump() const;
-
-private:
-	size_t	_length;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 17:55:32 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/21 16:28:53 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/21 16:41:16 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,6 @@ extern int	main() {
 	Span	decimals(10);
 	Span	myriades(10000);
 	Span	unlimitedPawa(10000);
-	std::vector<int> boop;
-
-	boop.capacity();
 
 	for (size_t i=0; i<decimals.capacity(); i++)
 		decimals.addNumber(i);
@@ -44,12 +41,16 @@ extern int	main() {
 	for (size_t i=0; i<unlimitedPawa.capacity(); i++)
 		unlimitedPawa.addNumber((i%2) ? (i) : (unlimitedPawa.capacity() - i));
 
+	std::cout << std::endl << "==== Span Test ===="  << std::endl;
+	std::cout << decimals.capacity()     << std::endl;
 	std::cout << decimals.shortestSpan() << std::endl;
 	std::cout << decimals.longestSpan()  << std::endl;
 	std::cout << std::endl;
+	std::cout << myriades.capacity()     << std::endl;
 	std::cout << myriades.shortestSpan() << std::endl;
 	std::cout << myriades.longestSpan()  << std::endl;
 	std::cout << std::endl;
+	std::cout << unlimitedPawa.capacity()     << std::endl;
 	std::cout << unlimitedPawa.shortestSpan() << std::endl;
 	std::cout << unlimitedPawa.longestSpan()  << std::endl;
 	std::cout << std::endl;
