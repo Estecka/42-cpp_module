@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 17:55:32 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/20 17:36:25 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/21 16:28:53 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,16 @@ extern int	main() {
 	Span	decimals(10);
 	Span	myriades(10000);
 	Span	unlimitedPawa(10000);
+	std::vector<int> boop;
 
-	for (size_t i=0; i<decimals.cap(); i++)
+	boop.capacity();
+
+	for (size_t i=0; i<decimals.capacity(); i++)
 		decimals.addNumber(i);
-	for (size_t i=0; i<myriades.cap(); i++)
+	for (size_t i=0; i<myriades.capacity(); i++)
 		myriades.addNumber(cheapMyriades[i % CHEAPC]);
-	for (size_t i=0; i<unlimitedPawa.cap(); i++)
-		unlimitedPawa.addNumber((i%2) ? (i) : (unlimitedPawa.cap() - i));
+	for (size_t i=0; i<unlimitedPawa.capacity(); i++)
+		unlimitedPawa.addNumber((i%2) ? (i) : (unlimitedPawa.capacity() - i));
 
 	std::cout << decimals.shortestSpan() << std::endl;
 	std::cout << decimals.longestSpan()  << std::endl;

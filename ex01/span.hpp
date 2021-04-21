@@ -6,18 +6,18 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 17:56:28 by abaur             #+#    #+#             */
-/*   Updated: 2021/04/20 15:10:25 by abaur            ###   ########.fr       */
+/*   Updated: 2021/04/21 16:29:46 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SPAN_HPP
 #define SPAN_HPP
 
-#include <iterator>
 #include <stdexcept>
 #include <stdlib.h>
+#include <vector>
 
-class Span
+class Span : public std::vector<int>
 {
 public:
 	Span(void);
@@ -26,11 +26,6 @@ public:
 	~Span();
 
 	Span&	operator=(const Span&);
-	int&	operator[](size_t index);
-	const int&	operator[](size_t index) const;
-
-	size_t	size() const;
-	size_t	cap()  const;
 
 	void	addNumber(int n);
 
@@ -39,15 +34,15 @@ public:
 	{
 		if ((end - begin) < 0)
 			throw std::invalid_argument("End comes after Begin");
-		if ((capacity - length) < (size_t)(end - begin))
+		if ((capacity() - _length) < (size_t)(end - begin))
 			throw std::length_error("Too many elements to iterate over");
 		
 		for (IT it=begin; it!=end; it++)
 		{
-			if (capacity <= length)
+			if (capacity() <= _length)
 				throw std::logic_error("Iterator exceeded expected amount.");
-			this->content[length] = *it;
-			this->length++;
+			(*this)[_length] = *it;
+			this->_length++;
 		}
 	}
 
@@ -57,9 +52,7 @@ public:
 	void Dump() const;
 
 private:
-	int*	content;
-	size_t	capacity;
-	size_t	length;
+	size_t	_length;
 };
 
 #endif
